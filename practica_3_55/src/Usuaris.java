@@ -8,7 +8,7 @@ public class Usuaris {
         this.correu = correu;
     }
 
-    //Getter
+    //Getter i setters
     public String getAlies(){
         return alies;
     }
@@ -16,14 +16,18 @@ public class Usuaris {
     public String getCorreu(){
         return correu;
     }
-
-    //Setter
-        public void setAlies(String alies){
+        
+    public void setAlies(String alies){
         this.alies = alies;
     }
     
     public void setCorreu(String correu){
         this.correu = correu;
+    }
+
+    public String getNomDept() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getNomDept'");
     }
 
     
