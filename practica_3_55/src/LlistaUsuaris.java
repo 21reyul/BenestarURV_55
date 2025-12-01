@@ -8,6 +8,24 @@ public class LlistaUsuaris {
 
     }
 
+    public void Afegir(Usuaris a ){
+        llistaUsuaris[nUsuaris]=a;
+        nUsuaris++;
+    }
+
+    public void Elimina(Usuaris a){
+        boolean trobat=false;
+        int i=0;
+        while(!trobat){
+            if(llistaUsuaris[i]==a){
+                trobat=true;
+                for(int j=i; j<nUsuaris; j++){
+                    llistaUsuaris[j]=llistaUsuaris[j+1];
+                }
+                nUsuaris--;
+            }
+        }
+    }
     //getter i setter
     public int getnUsuaris() {
         return nUsuaris;
@@ -15,6 +33,12 @@ public class LlistaUsuaris {
 
     public void setnUsuaris(int nUsuaris) {
         this.nUsuaris = nUsuaris;
+    }
+    public Usuaris getUsuarisPos(int i){
+        return llistaUsuaris[i];
+    }
+    public String getUsuarisAliesPos(int i){
+        return llistaUsuaris[i].getAlies();
     }
     
     public Usuaris[] getLlistaUsuaris() {
