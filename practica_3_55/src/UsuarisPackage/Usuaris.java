@@ -1,3 +1,11 @@
+package UsuarisPackage;
+
+/**
+ * CLASSE PARE USUARIS
+ * Conte l'informació comu dels usuaris:
+ *      @alies = Identificador
+ *      @correu = adreça electronica
+ */
 public class Usuaris {
     private String alies;
     private String correu;
@@ -30,6 +38,7 @@ public class Usuaris {
         throw new UnsupportedOperationException("Unimplemented method 'getNomDept'");
     }
 
+    
     
 
     
