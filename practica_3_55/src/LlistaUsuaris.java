@@ -1,3 +1,12 @@
+import UsuarisPackage.Usuaris;
+
+/**
+ * CLASSE LLISTAUSUARIS
+ * Conte una llista de dades Usuaris
+ * Informació:
+ *      @llistaUsuaris = llista d'els usuaris
+ *      @nUsuaris = nº d'usuaris apuntats a la llista
+ */
 public class LlistaUsuaris {
     private Usuaris[] llistaUsuaris;
     private int nUsuaris;
@@ -17,8 +26,8 @@ public class LlistaUsuaris {
         this.nUsuaris = nUsuaris;
     }
     
-    public Usuaris[] getLlistaUsuaris() {
-        return llistaUsuaris;
+    public String getLlistaUsuaris() {
+        return this.toString();
     }
 
     public void setLlistaUsuaris(Usuaris[] llistaUsuaris) {
