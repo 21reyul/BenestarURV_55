@@ -1,3 +1,4 @@
+import ActivitatsPackage.Activitats;
 
 public class Inscripcions {
      private LlistaUsuaris llistaInscrits;

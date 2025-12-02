@@ -1,3 +1,5 @@
+import ActivitatsPackage.Activitats;
+
 public class LlistaActivitats {
     private Activitats[] llista;
     private int numElements;
