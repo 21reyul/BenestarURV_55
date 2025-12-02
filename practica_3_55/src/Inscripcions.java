@@ -1,3 +1,6 @@
+
+import LlistaUsuaris;
+
 import ActivitatsPackage.Activitats;
 
 public class Inscripcions {
