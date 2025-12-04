@@ -1,3 +1,4 @@
+package ActivitatsPackage;
 import java.time.LocalDate;
 
 public class ActivitatsOnline extends Activitats{

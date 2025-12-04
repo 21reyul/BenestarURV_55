@@ -1,5 +1,7 @@
+package ActivitatsPackage;
+import UsuarisPackage.*;
 import java.io.Serializable;
-import UsuarisPackage.Usuaris;
+
 
 //programador: Aroa Galvez Diaz;
 public class Inscripcions implements Serializable {
