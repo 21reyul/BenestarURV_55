@@ -1,3 +1,4 @@
+package ActivitatsPackage;
 public class LlistaActivitats {
     private Activitats[] llista;
     private int numElements;
