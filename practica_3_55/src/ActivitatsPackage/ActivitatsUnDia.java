@@ -1,3 +1,4 @@
+package ActivitatsPackage;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -46,7 +47,7 @@ public class ActivitatsUnDia extends Activitats{
 
     @Override
     public String toString() {
-        return "ActivitatsUnDia [hora=" + hora + ", places=" + Limitplaces + ", preu=" + preu + ", ciutat=" + ciutat
+        return "ActivitatsUnDia [hora=" + hora + ", places=" + limitplaces + ", preu=" + preu + ", ciutat=" + ciutat
                 + ", NomActivitat()=" + getNomActivitat() + ", Data()=" + getDataINI() + "]";
     }
 
