@@ -1,5 +1,6 @@
 package ActivitatsPackage;
 import UsuarisPackage.*;
+import java.io.Serializable;
 
 
 //programador: Aroa Galvez Diaz;
