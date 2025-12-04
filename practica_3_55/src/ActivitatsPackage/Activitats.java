@@ -1,3 +1,4 @@
+package ActivitatsPackage;
 import java.time.LocalDate;
 
 public class Activitats {
@@ -6,7 +7,7 @@ public class Activitats {
      private LocalDate dataINI, dataFi;
 
 
-    public Activitats(String n, Boolean PDI, boolean PTGAS, boolean Estud, LocalDate dataI, LocalDate dataF){
+    public Activitats(String n, boolean PDI, boolean PTGAS, boolean Estud, LocalDate dataI, LocalDate dataF){
         nomActivitat=n; this.PDI=PDI; this.PTGAS=PTGAS; Estudiants=Estud; dataINI=dataI; dataFi=dataF;
     }
 

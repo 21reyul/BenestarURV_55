@@ -1,5 +1,4 @@
-import UsuarisPackage.Usuaris;
-
+package UsuarisPackage;
 /**
  * CLASSE LLISTAUSUARIS
  * Conte una llista de dades Usuaris

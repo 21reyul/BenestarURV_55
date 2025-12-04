@@ -1,3 +1,4 @@
+package ActivitatsPackage;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -8,7 +9,7 @@ public class ActivitatsPeriodiques extends Activitats{
     private int numSetmanes, limitPlaces;
     private double preu;
 
-    public ActivitatsPeriodiques(String n, Boolean PDI, boolean PTGAS, boolean Estud, LocalDate dataI, LocalDate dataF, String diaDeLaSemana, String nomCentre, String ciutat, LocalTime hora,
+    public ActivitatsPeriodiques(String n, boolean PDI, boolean PTGAS, boolean Estud, LocalDate dataI, LocalDate dataF, String diaDeLaSemana, String nomCentre, String ciutat, LocalTime hora,
             LocalDate dataIni, int numSetmanes, int limitPlaces, double preu) {
         super(n, PDI, PTGAS, Estud, dataI, dataF);
         this.diaDeLaSemana = diaDeLaSemana;
