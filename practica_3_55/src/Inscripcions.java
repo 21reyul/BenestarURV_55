@@ -1,101 +1,42 @@
+import java.io.Serializable;
+import UsuarisPackage.Usuaris;
 
-public class Inscripcions {
-     private LlistaUsuaris llistaInscrits;
-     private LlistaUsuaris llistaDeEspera;
-     private int NumPlaçes, nApuntats, nEspera;
-     private Activitats a;
-     private double puntuacio;
-     private static int MAX =30;
+//programador: Aroa Galvez Diaz;
+public class Inscripcions implements Serializable {
 
+    private Activitats activitat;
+    private Integer valoracio; // null si no ha valorat
+    private int numPlaces, numInscrits, numEspera;
+    private LlistaUsuaris[] inscrits;
+    private LlistaUsuaris[] espera;
 
-     public Inscripcions(int numPlaçes, Activitats a) {
-        NumPlaçes = numPlaçes;
-        llistaInscrits = new LlistaUsuaris(numPlaçes);
-        llistaDeEspera = new LlistaUsuaris(MAX);
-        nApuntats=0;
-        nEspera=0;
-        this.a = a;
-     }
-     
-     public LlistaUsuaris getLlistaInscrits() {
-        return llistaInscrits;
+    public Inscripcions(Activitats a, int numPlaces) {
+        this.activitat = a;
+        this.valoracio = null;
+        inscrits = new LlistaUsuaris[numPlaces];
+        espera = new LlistaUsuaris[100];
+        numInscrits=0;
+        numEspera=0;
+    }
+    public void afegirAActivitat(){
+        
     }
 
-     public void setLlistaInscrits(LlistaUsuaris llistaInscrits) {
-         this.llistaInscrits = llistaInscrits;
-     }
-
-     public LlistaUsuaris getLlistaDeEspera() {
-         return llistaDeEspera;
-     }
-
-     public void setLlistaDeEspera(LlistaUsuaris llistaDeEspera) {
-         this.llistaDeEspera = llistaDeEspera;
-     }
-
-     public int getNumPlaçes() {
-         return NumPlaçes;
-     }
-
-     public void setNumPlaçes(int numPlaçes) {
-         NumPlaçes = numPlaçes;
-     }
-
-     public Activitats getA() {
-         return a;
-     }
-
-     public void setA(Activitats a) {
-         this.a = a;
-     }
-
-     public static int getMAX() {
-         return MAX;
-     }
-
-     public static void setMAX(int mAX) {
-         MAX = mAX;
-     }
-
-   
-    public String toString() {
-        return "Inscripcions [llistaInscrits=" + llistaInscrits + ", llistaDeEspera=" + llistaDeEspera + ", NumPlaçes="
-                + NumPlaçes + ", nApuntats=" + nApuntats + ", nEspera=" + nEspera + ", a=" + a + "]";
+    
+    //getters y setters
+    public Activitats getActivitat() {
+        return activitat;
     }
 
-    public void inscriures(Usuaris a){
-        if(nApuntats<NumPlaçes){
-            llistaInscrits.Afegir(a);
-            nApuntats++;
-        }
-        else{
-            llistaDeEspera.Afegir(a);
-            nEspera++;
-        }
+    public void setActivitat(Activitats activitat) {
+        this.activitat = activitat;
     }
 
-    public void baixa(Usuaris a){
-        llistaInscrits.Elimina(a);
-        Usuaris afegirEnLlista = llistaDeEspera.getUsuarisPos(0);
-        llistaDeEspera.Elimina(afegirEnLlista);
-        llistaInscrits.Afegir(afegirEnLlista);
+    public Integer getValoracio() {
+        return valoracio;
     }
 
-    public void puntuar(double pun, Usuaris u){
-        boolean trobat=false;
-        int i=0;
-        while(!trobat&&i<NumPlaçes){
-            if(u.getAlies().equals(llistaInscrits.getUsuarisAliesPos(i))){
-                trobat=true;
-            }
-            else{
-                i++;
-            }
-        }
-        if(trobat&&pun<11&&pun>0){
-            this.puntuacio=pun;
-        }
-    }
-
-     
+    public void setValoracio(Integer valoracio) {
+        this.valoracio = valoracio;
+    }    
 }
