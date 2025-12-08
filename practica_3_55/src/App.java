@@ -1,10 +1,14 @@
+import java.util.Scanner;
+
 public class App {
+    static Scanner teclat = new Scanner(System.in);
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
     }
 }
 
 private void main(int opcio){
+    
     boolean fi=false;
     while (!fi){
         switch(opcio) {
@@ -141,7 +145,15 @@ private void opcio9(){
 }
 
 private void opcio10(){
-
+    System.out.println("Activitats disponibles");
+    String activitat;
+    for (int i=0; i<llista.length; i++) //TODO 1 posar el nom de la llista
+    {
+        System.out.println(llista[i].getActivitat);
+    }
+    System.out.println("A quina activitat et vols inscriure?");
+    activitat=teclat.nextLine(); //TODO 2 definir Scanner teclat
+    activitat.inscriures(usuari); //TODO 3 usuari ja definit a l'inici?
 }
 
 private void opcio11(){

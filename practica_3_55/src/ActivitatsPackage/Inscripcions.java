@@ -20,7 +20,7 @@ public class Inscripcions implements Serializable {
         numInscrits=0;
         numEspera=0;
     }
-    public void afegirAActivitat(){
+    public void afegirActivitat(){
         
     }
 
