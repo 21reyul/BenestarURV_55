@@ -18,8 +18,8 @@ public class ValidacioInscripcions {
         ActivitatsUnDia actDia2 = new ActivitatsUnDia("Senderisme", true, true, true, LocalDate.of(2025, 12, 2), 
                                                 LocalDate.of(2025, 12, 9), 40, 10.0, "Amposta", LocalTime.of(10, 0)); 
 
-        Inscripcions inscripcio1 = new Inscripcions (20, actPer1);
-        Inscripcions inscripcio2 = new Inscripcions (15, actDia2);
+        Inscripcions inscripcio1 = new Inscripcions (actPer1, 20);
+        Inscripcions inscripcio2 = new Inscripcions (actDia2, 15);
 
         // getters
         System.out.println("Informacio inscripcio 1 inicial =>\n Places = " + inscripcio1.getNumPlaçes() + 
