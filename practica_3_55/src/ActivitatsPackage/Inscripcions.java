@@ -20,7 +20,8 @@ public class Inscripcions implements Serializable {
         numInscrits=0;
         numEspera=0;
     }
-    public void afegirAActivitat(Usuaris u){
+
+    public void afegirActivitat(Usuaris u){
         if(numInscrits<numPlaces){
             inscrits.Afegir(u);
             numInscrits++;
