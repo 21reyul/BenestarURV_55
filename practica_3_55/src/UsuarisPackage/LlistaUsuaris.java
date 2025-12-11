@@ -7,21 +7,30 @@ package UsuarisPackage;
  *      @nUsuaris = nº d'usuaris apuntats a la llista
  */
 public class LlistaUsuaris {
-    private Usuaris[] llistaUsuaris;
+    private Usuari[] llistaUsuaris;
     private int nUsuaris;
 
+    //Constructor
     public LlistaUsuaris(int mida){
         nUsuaris=0;
-        llistaUsuaris = new Usuaris[mida];
+        llistaUsuaris = new Usuari[mida];
 
     }
 
-    public void Afegir(Usuaris a ){
+    /**
+     * Afegir un usuari de la llista
+     * @param a, usuari que volem afegir a la llista
+     */
+    public void Afegir(Usuari a){
         llistaUsuaris[nUsuaris]=a;
         nUsuaris++;
     }
 
-    public void Elimina(Usuaris a){
+    /**
+     * Elimina usuari de la llista
+     * @param a, usuari que voldrem eliminar
+     */
+    public void Elimina(Usuari a){
         boolean trobat=false;
         int i=0;
         while(!trobat){
@@ -34,6 +43,7 @@ public class LlistaUsuaris {
             }
         }
     }
+
     //getter i setter
     public int getnUsuaris() {
         return nUsuaris;
@@ -42,7 +52,7 @@ public class LlistaUsuaris {
     public void setnUsuaris(int nUsuaris) {
         this.nUsuaris = nUsuaris;
     }
-    public Usuaris getUsuarisPos(int i){
+    public Usuari getUsuarisPos(int i){
         return llistaUsuaris[i];
     }
     public String getUsuarisAliesPos(int i){
@@ -53,7 +63,7 @@ public class LlistaUsuaris {
         return this.toString();
     }
 
-    public void setLlistaUsuaris(Usuaris[] llistaUsuaris) {
+    public void setLlistaUsuaris(Usuari[] llistaUsuaris) {
         this.llistaUsuaris = llistaUsuaris;
     }
 }

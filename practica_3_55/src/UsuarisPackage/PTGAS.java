@@ -7,11 +7,11 @@ package UsuarisPackage;
  * Informació:
  *      @campus = Campus on treballa el usuari
  */
-public class PTGAS extends Usuaris{
+public class Ptgas extends Usuari{
     private String campus;
 
     //Constructor
-    public PTGAS(String alies, String correu, String campus) {
+    public Ptgas(String alies, String correu, String campus) {
         super(alies, correu);
         this.campus=campus;
     }
@@ -36,9 +36,24 @@ public class PTGAS extends Usuaris{
     }
     
     /*Programadora: Judit Carles Pallares */
-    public PTGAS copia(){
-        PTGAS ptgas = new PTGAS(this.getAlies(), this.getCorreu(), this.getCampus());
+    public Ptgas copia(){
+        Ptgas ptgas = new Ptgas(this.getAlies(), this.getCorreu(), this.getCampus());
         return ptgas;
+    }
+
+    public void setAlies(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setAlies'");
+    }
+
+    public void setCorreu(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setCorreu'");
+    }
+
+    public String getAlies() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAlies'");
     }
 
 }

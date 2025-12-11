@@ -1,19 +1,18 @@
-package ActivitatsPackage;
 public class LlistaActivitats {
-    private Activitats[] llista;
+    private Activitat[] llista;
     private int numElements;
 
     public LlistaActivitats(int mida){
         numElements=0;
-        llista = new Activitats[mida];
+        llista = new Activitat[mida];
     }
 
-    public void afegir(Activitats a){
-        llista[numElements]=a;
+    public void Afegir(Activitat[] act ){
+        llista[numElements]=act;
         numElements++;
     }
 
-    public void elimina(Activitats a){
+    public void Elimina(Activitat a){
         boolean trobat=false;
         int i=0;
         while(!trobat){
@@ -26,12 +25,11 @@ public class LlistaActivitats {
             }
         }
     }
-    
-    public Activitats[] getLlista() {
+    public Activitat[] getLlista() {
         return llista;
     }
 
-    public void setLlista(Activitats[] llista) {
+    public void setLlista(Activitat[] llista) {
         this.llista = llista;
     }
 

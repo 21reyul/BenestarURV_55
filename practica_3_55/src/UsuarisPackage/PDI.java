@@ -7,13 +7,13 @@ package UsuarisPackage;
  *      @nomDept = nom del departamet on treballa el usuari
  *      @campus = Campus on treballa el usuari
  */
-public class PDI extends Usuaris{
+public class Pdi extends Usuari{
     private String nomDept;
     private String campus;
 
 
     //Constructor
-    public PDI(String alies, String correu, String nomDept, String campus) {
+    public Pdi(String alies, String correu, String nomDept, String campus) {
         super(alies, correu);
         this.nomDept=nomDept;
         this.campus=campus;
@@ -34,7 +34,7 @@ public class PDI extends Usuaris{
 
     /*Programadora: Judit Carles Pallares */
     public String getCorreuComplet(){
-        return getCorreu()+"@urv.cat";
+        return getCorreuComplet()+"@urv.cat";
     }
 
     public void setCampus(String campus) {
@@ -47,8 +47,8 @@ public class PDI extends Usuaris{
     }
 
     /*Programadora: Judit Carles Pallares */
-    public PDI copia(){
-        PDI pdi = new PDI(this.getAlies(), this.getCorreu(), this.getNomDept(), this.getCampus());
+    public Pdi copia(){
+        Pdi pdi = new Pdi(this.getAlies(), this.getCorreuComplet(), this.getNomDept(), this.getCampus());
         return pdi;
     }
 

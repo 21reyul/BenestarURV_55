@@ -1,8 +1,10 @@
 package Validacio;
 
 import UsuarisPackage.Estudiants;
-import UsuarisPackage.PDI;
-import UsuarisPackage.PTGAS;
+import UsuarisPackage.LlistaUsuaris;
+import UsuarisPackage.Pdi;
+import UsuarisPackage.Ptgas;
+
 
 /*Programadora: Cristina Cozma */
 /*Programadora: Judit Carles Pallares */
@@ -13,11 +15,13 @@ public class ValidacioUsuaris {
         Estudiants est1 = new Estudiants("Cristina", "cc", "GEI", 2024);
         Estudiants est2 = new Estudiants("Judit", "jcp", "GEI", 2024);
 
-        PDI pdi1 = new PDI("Neus", "n.budesca", "GEI", "SesceladeS");
-        PDI pdi2 = new PDI("Maria", "m.ferre", "GEI", "SesceladeS");
+        Pdi pdi1 = new Pdi("Neus", "n.budesca", "GEI", "SesceladeS");
+        Pdi pdi2 = new Pdi("Maria", "m.ferre", "GEI", "SesceladeS");
 
-        PTGAS ptgas1 = new PTGAS("Eustaquio", "eusta", "Catalunya");
-        PTGAS ptgas2 = new PTGAS("Juana", "juani", "Bellissens");
+        Ptgas ptgas1 = new Ptgas("Eustaquio", "eusta", "Catalunya");
+        Ptgas ptgas2 = new Ptgas("Juana", "juani", "Bellissens");
+
+        LlistaUsuaris llistaUsuaris = new LlistaUsuaris(10);
 
         //Comprobacions clase Estudiants
         System.out.println("COMPROBACIO CLASSE ESTUDIANTS:\n\n");
@@ -32,7 +36,6 @@ public class ValidacioUsuaris {
         Estudiants est3=est1.copia();
         System.out.println("Copia de estudiant 1 a estudaint 3 => "+est3.toString());
 
-
         //Comprobacions clase PDI
         System.out.println("_______________________________________________________________________________________________________________________________\n");
         System.out.println("COMPROBACIO CLASSE PDI:\n");
@@ -44,10 +47,9 @@ public class ValidacioUsuaris {
         pdi2.setCampus("Catalunya");
         System.out.println("Informacio profesor 2 =>\n   Nom ="+ pdi2.getAlies() + "  Correu = " + pdi2.getCorreuComplet() + "  NomDepartament = " + pdi2.getNomDept() + " Campus = " + pdi2.getCampus()+"\n");
         System.out.println("ToString => "+ pdi1.toString());
-        PDI pdi3=pdi1.copia();
+        Pdi pdi3=pdi1.copia();
         System.out.println("Copia de estudiant 1 a estudaint 3 => "+pdi3.toString());
         
-
         //Comprobacions clase PTGAS
         System.out.println("_______________________________________________________________________________________________________________________________\n");
         System.out.println("COMPROBACIO CLASSE PDGAS:\n");
@@ -58,9 +60,8 @@ public class ValidacioUsuaris {
         ptgas2.setCampus("Catalunya");
         System.out.println("Informacio personal tècnic i de gestió 2:\n   Nom ="+ ptgas2.getAlies() + "  Correu = " + ptgas2.getCorreuComplet() +" Campus = " + ptgas2.getCampus()+"\n");
         System.out.println("ToString => "+ ptgas1.toString());
-        PTGAS ptgas3=ptgas1.copia();
+        Ptgas ptgas3=ptgas1.copia();
         System.out.println("Copia de estudiant 1 a estudaint 3 => "+ptgas3.toString());
-
     }
-    
+
 }

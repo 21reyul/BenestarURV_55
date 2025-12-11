@@ -40,5 +40,9 @@ public class Inscripcions implements Serializable {
 
     public void setValoracio(Integer valoracio) {
         this.valoracio = valoracio;
+    }
+    public String getNumPlaçes() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getNumPlaçes'");
     }    
 }
