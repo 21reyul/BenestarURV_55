@@ -1,5 +1,5 @@
 public class LlistaActivitats {
-    private Activitat[] llista;
+    private Activitat llista;
     private int numElements;
 
     public LlistaActivitats(int mida){
