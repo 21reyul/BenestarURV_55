@@ -1,7 +1,7 @@
 package ActivitatsPackage;
 import java.time.LocalDate;
 
-public class Activitats {
+public abstract class Activitats {
      private String nomActivitat;
      private boolean PDI, PTGAS, Estudiants;
      private LocalDate dataINI, dataFi;

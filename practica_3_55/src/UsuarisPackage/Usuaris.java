@@ -6,7 +6,7 @@ package UsuarisPackage;
  *      @alies = Identificador
  *      @correu = adreça electronica
  */
-public class Usuaris {
+public abstract class Usuaris {
     private String alies;
     private String correu;
 
@@ -32,22 +32,4 @@ public class Usuaris {
     public void setCorreu(String correu){
         this.correu = correu;
     }
-
-    public String getNomDept() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getNomDept'");
-    }
-
-    
-    
-
-    
-
-    
-
-
-
-
-
-
 }

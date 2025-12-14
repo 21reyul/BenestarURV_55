@@ -21,7 +21,7 @@ public class Inscripcions implements Serializable {
         numEspera=0;
     }
 
-    public void afegirActivitat(Usuaris u){
+    public void inscriures(Usuaris u){
         if(numInscrits<numPlaces){
             inscrits.Afegir(u);
             numInscrits++;
@@ -31,13 +31,36 @@ public class Inscripcions implements Serializable {
             numEspera++;
         }
     }
-    public void EliminaDeActivitat(Usuaris u){
+    public void eliminaDeActivitat(Usuaris u){
         inscrits.Elimina(u);
         Usuaris a = espera.getUsuarisPos(0);
         inscrits.Afegir(a);
         espera.Elimina(a);
     }
-    
+
+    public void puntuar(double puntuacio, Usuaris usuari){
+        
+        // Comprovem que la puntuació sigui vàlida
+        boolean puntuacioValida = puntuacio >= 0 && puntuacio <= 10;
+
+        if (puntuacioValida) {
+            boolean isInscrit = false;
+            int i = 0;
+            
+            // Bucle de cerca de l'usuari
+            while (i < inscrits.getnUsuaris() && !isInscrit) {
+                if (inscrits.getUsuarisPos(i) == usuari) {
+                    isInscrit = true;
+                }
+                i++;
+            }
+            
+            if (isInscrit) {
+                    this.valoracio = (int) (puntuacio + 0.5);
+            }
+        }
+    }
+
     //getters y setters
     public Activitats getActivitat() {
         return activitat;
@@ -47,11 +70,32 @@ public class Inscripcions implements Serializable {
         this.activitat = activitat;
     }
 
+    public int getNumPlaces(){
+        return numPlaces;
+    }
+
+    public void setNumPlaces(int numPlaces){
+        this.numPlaces=numPlaces;
+    }
+
     public Integer getValoracio() {
         return valoracio;
     }
 
     public void setValoracio(Integer valoracio) {
         this.valoracio = valoracio;
-    }    
+    } 
+    
+    public LlistaUsuaris getLlistaInscrits() {
+        return inscrits;
+    }
+
+    public LlistaUsuaris getLlistaDeEspera() {
+        return espera;
+    }
+
+    public int getNumEspera(){
+        return numEspera; //No té un setter perquè es modifica automàticament
+    }
+
 }

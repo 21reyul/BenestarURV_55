@@ -98,7 +98,7 @@ public class App {
                     break;
 
                 default:
-                    System.out.println("Opción no válida");
+                    System.out.println("Opcio no valida");
                     break;
             }
         }

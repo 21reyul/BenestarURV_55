@@ -21,11 +21,11 @@ public class LlistaInscripcio{
             }
         }
         if(trobat){
-            inscripcions[i].afegirAActivitat(u);
+            inscripcions[i].inscriures(u);
         }
         else{
             inscripcions[i]= new Inscripcions(a, 100);
-            inscripcions[i].afegirAActivitat(u);
+            inscripcions[i].inscriures(u);
         }
     }
     public void eliminar(Usuaris u, Activitats a){
@@ -40,7 +40,7 @@ public class LlistaInscripcio{
             }
         }
         if(trobat){
-            inscripcions[i].EliminaDeActivitat(u);;
+            inscripcions[i].eliminaDeActivitat(u);;
         }
     }
 
