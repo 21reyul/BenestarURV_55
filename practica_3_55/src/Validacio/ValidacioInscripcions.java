@@ -22,20 +22,20 @@ public class ValidacioInscripcions {
         Inscripcions inscripcio2 = new Inscripcions (actDia2, 15);
 
         // getters
-        System.out.println("Informacio inscripcio 1 inicial =>\n Places = " + inscripcio1.getNumPlaçes() + 
-                            "\n Activitat = " + inscripcio1.getA().getNomActivitat() +
+        System.out.println("Informacio inscripcio 1 inicial =>\n Places = " + inscripcio1.getNumPlaces() + 
+                            "\n Activitat = " + inscripcio1.getActivitat().getNomActivitat() +
                             "\n MAX = " + Inscripcions.getMAX() + "\n");
         
-        System.out.println("Informacio inscripcio 2 inicial =>\n Places = " + inscripcio2.getNumPlaçes() + 
-                            "\n Activitat = " + inscripcio2.getA().getNomActivitat() +
+        System.out.println("Informacio inscripcio 2 inicial =>\n Places = " + inscripcio2.getNumPlaces() + 
+                            "\n Activitat = " + inscripcio2.getActivitat().getNomActivitat() +
                             "\n MAX = " + Inscripcions.getMAX() + "\n");
 
         // setters
-        inscripcio1.setNumPlaçes(25);
+        inscripcio1.setNumPlaces(25);
         Inscripcions.setMAX(50); 
         
-        System.out.println("Informacio inscripcio 1 modificada =>\n Places = " + inscripcio1.getNumPlaçes() + 
-                         "\n MAX = " + Inscripcions.getMAX() + "\n");
+        System.out.println("Informacio inscripcio 1 modificada =>\n Places = " + inscripcio1.getNumPlaces() + 
+                         "\n MAX = " + Inscripcions.getMAX + "\n");
 
         // Creació d'usuaris per proves
         Usuaris usuari1 = new Usuaris("anna123", "anna.garcia@estudiants.urv.cat");
@@ -48,35 +48,35 @@ public class ValidacioInscripcions {
         System.out.println("\n=== PROVES D'INSCRIPCIÓ ===");
         
         System.out.println("Inscripció usuari 1 a activitat 1 (Curs B2):");
-        inscripcio1.inscriures(usuari1);
+        inscripcio1.afegirActivitat(usuari1);
         System.out.println("Usuari inscrit: " + usuari1.getAlies());
         
         System.out.println("\nInscripció usuari 2 a activitat 1:");
-        inscripcio1.inscriures(usuari2);
+        inscripcio1.afegirActivitat(usuari2);
         System.out.println("Usuari inscrit: " + usuari2.getAlies());
 
         // Prova de llista d'espera
         System.out.println("\n=== PROVA LLISTA D'ESPERA ===");
-        System.out.println("Places totals a activitat 1: " + inscripcio1.getNumPlaçes());
+        System.out.println("Places totals a activitat 1: " + inscripcio1.getNumPlaces());
         
         // Inscrivim més usuaris per omplir les places
         System.out.println("\nInscrivint més usuaris per omplir places:");
         for (int i = 0; i < 18; i++) { // Ja tenim 2, en falta 18 per arribar a 20
             Usuaris usuariExtra = new Usuaris("extra" + i, "extra" + i + "@urv.cat");
-            inscripcio1.inscriures(usuariExtra);
+            inscripcio1.afegirActivitat(usuari5);(usuariExtra);
             System.out.println("Usuari extra" + i + " inscrit");
         }
         
         System.out.println("\nIntentant inscriure un usuari extra (hauria d'anar a llista d'espera):");
         Usuaris usuariEspera = new Usuaris("espera1", "espera@urv.cat");
-        inscripcio1.inscriures(usuariEspera);
+        inscripcio1.afegirActivitat(usuariEspera);;
         System.out.println("Usuari " + usuariEspera.getAlies() + " afegit a llista d'espera");
 
         // Mostrem estat actual
         System.out.println("\nEstat actual de l'inscripció 1:");
-        System.out.println("Places: " + inscripcio1.getNumPlaçes());
-        System.out.println("Llista inscrits: " + inscripcio1.getLlistaInscrits());
-        System.out.println("Llista d'espera: " + inscripcio1.getLlistaDeEspera());
+        System.out.println("Places: " + inscripcio1.getNumPlaces());
+        System.out.println("Llista inscrits: " + inscripcio1.getInscrits());
+        System.out.println("Llista d'espera: " + inscripcio1.getEspera());
 
         // Prova de baixa
         System.out.println("\n=== PROVA DE BAIXA ===");
@@ -85,8 +85,8 @@ public class ValidacioInscripcions {
         System.out.println("Baixa realitzada per a: " + usuari1.getAlies());
         
         System.out.println("\nEstat després de la baixa:");
-        System.out.println("Llista inscrits: " + inscripcio1.getLlistaInscrits());
-        System.out.println("Llista d'espera: " + inscripcio1.getLlistaDeEspera());
+        System.out.println("Llista inscrits: " + inscripcio1.getInscrits());
+        System.out.println("Llista d'espera: " + inscripcio1.getEspera());
 
         // Prova de puntuació
         System.out.println("\n=== PROVA DE PUNTUACIÓ ===");

@@ -13,6 +13,7 @@ public class ActivitatsOnline extends Activitats{
         this.periode=perio;
     }
 
+
     public String getEnllaç() {
         return enllaç;
     }
@@ -37,9 +38,10 @@ public class ActivitatsOnline extends Activitats{
         this.periode = periode;
     }
 
+
     @Override
     public String toString() {
-        return "ActivitatsOnline [enllaç=" + enllaç + ", dataIni=" + dataIni + ", periode=" + periode
-                + ", NomActivitat=" + getNomActivitat() + "]";
+        return "ActivitatsOnline [enllaç=" + enllaç + ", dataIni=" + dataIni + ", periode=" + periode + ", nom:" +this.getNomActivitat() + "]";
     }
 }
+   

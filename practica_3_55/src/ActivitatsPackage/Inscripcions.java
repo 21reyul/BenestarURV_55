@@ -53,5 +53,45 @@ public class Inscripcions implements Serializable {
 
     public void setValoracio(Integer valoracio) {
         this.valoracio = valoracio;
-    }    
+    }
+
+    public LlistaUsuaris getInscrits() {
+        return inscrits;
+    }
+
+    public void setInscrits(LlistaUsuaris inscrits) {
+        this.inscrits = inscrits;
+    }
+
+    public LlistaUsuaris getEspera() {
+        return espera;
+    }
+
+    public void setEspera(LlistaUsuaris espera) {
+        this.espera = espera;
+    }
+
+    public int getNumPlaces() {
+        return numPlaces;
+    }
+
+    public void setNumPlaces(int numPlaces) {
+        this.numPlaces = numPlaces;
+    }
+
+    public int getNumInscrits() {
+        return numInscrits;
+    }
+
+    public void setNumInscrits(int numInscrits) {
+        this.numInscrits = numInscrits;
+    }
+
+    public int getNumEspera() {
+        return numEspera;
+    }
+
+    public void setNumEspera(int numEspera) {
+        this.numEspera = numEspera;
+    } 
 }

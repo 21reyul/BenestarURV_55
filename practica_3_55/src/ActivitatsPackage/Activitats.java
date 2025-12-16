@@ -11,10 +11,9 @@ public class Activitats {
         nomActivitat=n; this.PDI=PDI; this.PTGAS=PTGAS; Estudiants=Estud; dataINI=dataI; dataFi=dataF;
     }
 
-    public String getNomActivitat() {
+    public String getNomActivitat(){
         return nomActivitat;
     }
-
     public void setNomActivitat(String nomActivitat) {
         this.nomActivitat = nomActivitat;
     }
@@ -58,6 +57,7 @@ public class Activitats {
     public void setDataFi(LocalDate dataFi) {
         this.dataFi = dataFi;
     }
+    
 
     @Override
     public String toString() {

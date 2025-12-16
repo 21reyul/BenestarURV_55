@@ -1,5 +1,7 @@
 package UsuarisPackage;
 
+import ActivitatsPackage.LlistaActivitats;
+
 /**
  * CLASSE PARE USUARIS
  * Conte l'informació comu dels usuaris:
@@ -38,6 +40,7 @@ public class Usuaris {
         throw new UnsupportedOperationException("Unimplemented method 'getNomDept'");
     }
 
+    
     
     
 

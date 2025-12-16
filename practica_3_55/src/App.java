@@ -1,12 +1,17 @@
+import java.io.FileNotFoundException;
+import java.time.LocalDate;
 import java.util.Scanner;
 
+import ActivitatsPackage.Activitats;
 import ActivitatsPackage.LlistaActivitats;
 
 public class App {
     static Scanner teclat = new Scanner(System.in);
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws FileNotFoundException{
         boolean fi=false;
         while (!fi){
+            System.out.println("Tria una opcio\n");
+            int opcio=Integer.parseInt(teclat.nextLine());
             switch(opcio) {
                 case 1:
                     opcio1();
@@ -45,7 +50,7 @@ public class App {
                     break;
 
                 case 10:
-                    opcio10(usuari);
+                    opcio10();
                     break;
 
                 case 11:
@@ -113,8 +118,9 @@ public class App {
     }
 
     private static void opcio3(){
-
+       
     }
+    
 
     private static void opcio4(){
 
@@ -140,7 +146,7 @@ public class App {
 
     }
 
-    private static void opcio10(Usuari usuari){ //TODO 1 importar fitxer per usuari
+    private static void opcio10(){ //TODO 1 importar fitxer per usuari
         /*System.out.println("Activitats disponibles");
         LlistaActivitats activitats = new LlistaActivitats();
         String activitat;

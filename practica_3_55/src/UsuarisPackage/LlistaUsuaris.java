@@ -34,6 +34,20 @@ public class LlistaUsuaris {
             }
         }
     }
+
+    public boolean BuscarUsuari(Usuaris u){
+        boolean trobat = false;
+        int i=0;
+        do{
+            if(llistaUsuaris[i].equals(u)){
+                trobat=true;
+            }
+            else{
+                i++;
+            }
+        }while(!trobat&&i<nUsuaris);
+        return(trobat);
+    }
     //getter i setter
     public int getnUsuaris() {
         return nUsuaris;
