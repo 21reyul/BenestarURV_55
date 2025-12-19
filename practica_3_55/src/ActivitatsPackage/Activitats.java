@@ -65,5 +65,10 @@ public abstract class Activitats {
                 + Estudiants + ", dataINI=" + dataINI + ", dataFi=" + dataFi + "]";
     }
 
+    public boolean haFinalitzat() {
+        // Obtenim la data actual del sistema
+        LocalDate dataActual = LocalDate.now();
+        return this.dataFi.isBefore(dataActual);
+    }
 
 }

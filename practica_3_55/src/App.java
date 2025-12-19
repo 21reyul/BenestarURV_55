@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-import ActivitatsPackage.LlistaActivitats;
+import ActivitatsPackage.*;
 
 public class App {
     static Scanner teclat = new Scanner(System.in);
@@ -73,7 +73,7 @@ public class App {
                     break;
 
                 case 17:
-                    opcio17();
+                    opcio17(llista);
                     break;
 
                 case 18:
@@ -144,7 +144,7 @@ public class App {
         /*System.out.println("Activitats disponibles");
         LlistaActivitats activitats = new LlistaActivitats();
         String activitat;
-        for (int i=0; i<activitats.length; i++) //TODO 2 posar el nom de la llista
+        for (int i=0; i<activitats.length; i++) //TODO 2 (Aina) posar el nom de la llista
         {
             System.out.println(activitats[i].getActivitat);
         }
@@ -177,8 +177,13 @@ public class App {
 
     }
 
-    private static void opcio17(){
-
+    private static void opcio17(Activitats[] llista){
+        System.out.println("--- RESUM DE LES VALORACIONS DE LES ACTIVITATS ACABADES ---");
+        LlistaActivitats actAcabades= actAcabades(llista);
+        String [] valoracioAct= calcularValoracio(actAcabades);
+        for (int i=0; i< valoracioAct.length;i++){
+            System.out.println(valoracioAct[i]);
+        }
     }
 
     private static void opcio18(){

@@ -98,4 +98,5 @@ public class Inscripcions implements Serializable {
         return numEspera; //No té un setter perquè es modifica automàticament
     }
 
+    
 }

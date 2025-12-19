@@ -42,4 +42,20 @@ public class LlistaActivitats {
         this.numElements = numElements;
     }
 
+    public Activitats getActivitatPos(int i){
+        return llista[i];
+    }
+
+    public LlistaActivitats actAcabades(LlistaInscripcio llista){
+        LlistaActivitats activitatsAcabades= new LlistaActivitats(numElements);
+        for (int i=0; i<llista.getNumElements(); i++ ){
+            Inscripcions inscripcio=llista.getInscripcionsPos(i);
+            if (inscripcio.getActivitat().haFinalitzat()){
+                Activitats activitat=inscripcio.getActivitat();
+                activitatsAcabades.Afegir(activitat);
+            }
+        }
+        return activitatsAcabades;
+    }
+
 }
