@@ -12,8 +12,7 @@ import UsuarisPackage.Usuari;
 public class ValidacioInscripcions {
     public static void main(String[] args) throws Exception {
         ActivitatsPeriodiques actPer1 = new ActivitatsPeriodiques("Curs B2 d'angles per a estudiants", false, false, true, LocalDate.of(2025, 9, 5) , 
-                                                LocalDate.of(2025, 9, 22), "dijous", "Campus Catalunya", "Tarragona", LocalTime.of(17, 30), 
-                                                LocalDate.of(2025, 10, 15), 20, 25, 100.0);
+                                                LocalDate.of(2025, 9, 22), "dijous", "Campus Catalunya", "Tarragona", LocalTime.of(17, 30), null, 0, 0, 0);
             
         ActivitatsUnDia actDia2 = new ActivitatsUnDia("Senderisme", true, true, true, LocalDate.of(2025, 12, 2), 
                                                 LocalDate.of(2025, 12, 9), 40, 10.0, "Amposta", LocalTime.of(10, 0)); 
@@ -23,26 +22,26 @@ public class ValidacioInscripcions {
 
         // getters
         System.out.println("Informacio inscripcio 1 inicial =>\n Places = " + inscripcio1.getNumPlaces() + 
-                            "\n Activitat = " + inscripcio1.getA().getNomActivitat() +
+                            "\n Activitat = " + Inscripcions.getNumInscrits().getNomActivitat() +
                             "\n MAX = " + Inscripcions.getMAX() + "\n");
         
         System.out.println("Informacio inscripcio 2 inicial =>\n Places = " + inscripcio2.getNumPlaçes() + 
-                            "\n Activitat = " + inscripcio2.getA().getNomActivitat() +
+                            "\n Activitat = " + inscripcio2.getMAX().getNomActivitat() +
                             "\n MAX = " + Inscripcions.getMAX() + "\n");
 
         // setters
-        inscripcio1.setNumPlaçes(25);
-        Inscripcions.setMAX(50); 
+        inscripcio1.setNumPlaces(25);
+        Inscripcions.setNumPlaces(50); 
         
         System.out.println("Informacio inscripcio 1 modificada =>\n Places = " + inscripcio1.getNumPlaçes() + 
                          "\n MAX = " + Inscripcions.getMAX() + "\n");
 
         // Creació d'usuaris per proves
-        Usuaris usuari1 = new Usuaris("anna123", "anna.garcia@estudiants.urv.cat");
-        Usuaris usuari2 = new Usuaris("marc45", "marc.lopez@estudiants.urv.cat");
-        Usuaris usuari3 = new Usuaris("julia99", "julia.martinez@estudiants.urv.cat");
-        Usuaris usuari4 = new Usuaris("carlos77", "carlos.sarria@urv.cat");
-        Usuaris usuari5 = new Usuaris("laura22", "laura.fernandez@urv.cat");
+        Usuari usuari1 = new Usuari("anna123", "anna.garcia@estudiants.urv.cat");
+        Usuari usuari2 = new Usuari("marc45", "marc.lopez@estudiants.urv.cat");
+        Usuari usuari3 = new Usuari("julia99", "julia.martinez@estudiants.urv.cat");
+        Usuari usuari4 = new Usuari("carlos77", "carlos.sarria@urv.cat");
+        Usuari usuari5 = new Usuari("laura22", "laura.fernandez@urv.cat");
 
        // Proves d'inscripció
         System.out.println("\n=== PROVES D'INSCRIPCIÓ ===");

@@ -1,8 +1,9 @@
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Scanner;
-
-import UsuarisPackage.Usuari;
+import UsuarisPackage.*;
+import e.*;
+import ActivitatsPackage.*;
 public class App {
     static Scanner teclat = new Scanner(System.in);
     private static LocalDate data = LocalDate.now();
@@ -10,7 +11,7 @@ public class App {
     public static void main(String[] args) throws Exception{
         boolean fi=false;
         while (!fi){
-            int opcio = 1;
+            int opcio = 11;
             switch(opcio) {
                 case 1:
                     opcio1();
@@ -112,7 +113,8 @@ public class App {
  * Conté l'opcio de modificar la data per poder elaborar els diferents jocs de proves
  */
 public static void opcio1(){
-    Scanner teclat = new Scanner(System.in);
+    
+    /*Scanner teclat = new Scanner(System.in);
     //La data inicial sera la del servidor
     System.out.println("La data del dia d'avui es:\s" + data.getDayOfMonth() + "/" + data.getMonthValue() + "/"+ data.getYear());
     String resposta;
@@ -143,7 +145,7 @@ public static void opcio1(){
         System.out.println("Les dades introduïdes han de ser enters");
     }catch(DateTimeException e){
         System.out.println("El format de la data es incorrecte");
-    }
+    }*/
 }
 
 private static void opcio2(){
@@ -156,35 +158,103 @@ private static void opcio3(){
 
 
 /**
- * Mostrar les dades de les activitats en la data d'avui
- * @param dades
- * @param data
- * @return activitatsAvui, llista de les activitats que estan disponibles avui
+ * Mostrar la informació de les activitats que tenen classe en la data d'avui, 
+ * 
 */
 private static void opcio4(){
+    boolean ple=false;
+    boolean hiHaEspera=false;
+    int compt=0;
 
+    try{
+        //canviar a les intàncies generals, sol son de prova
+        LlistaActivitats llistaActs = new LlistaActivitats(10);
+        LlistaInscripcio llistaIns = new LlistaInscripcio(10);
+        LlistaActivitats actsAvui = llistaActs.activitatsAvui(data);
+        actsAvui.toString();
+        for(int i=0; i<actsAvui.getNumElements(); i++){
+            Activitats a = actsAvui.getActivitatsPos(i);
+            Inscripcions ins = llistaIns.getIncripcionsFromActivitat(a);
+            if(ins.getNumEspera()>0){
+                hiHaEspera=true;
+                System.out.println("Per aquesta activitat hi ha una llista d'espera de "+ins.getNumEspera()+"persones");
+            }
+            if(ins.getNumInscrits()>ins.getNumPlaces()){
+                ple=true;
+                System.out.println("No queden places disponibles per aquesta activitat");
+            }
+        }
+    }catch (NullPointerException e) {
+        System.out.println("");
+    }catch (ExisteixActivitat e){
+        System.out.println(e);
+    }
 }
 
 private static void opcio5(){
 
 }
 
+//mostrar el nom de les activitats amb places disponibles
 private static void opcio6(){
+    //TODO 1: implementar les excepcions
+    try{
+        //instancies provisionals, cal canviarles en implementar el codi
+        LlistaActivitats llistaActs = new LlistaActivitats(10);
+        LlistaInscripcio llistaIns = new LlistaInscripcio(10);
+        LlistaActivitats activitatsDisponibles = new LlistaActivitats(10);
+        
+        for(int i=0; i<llistaActs.getNumElements(); i++){
+            Activitats a = llistaActs.getActivitatsPos(i);
+            Inscripcions ins = llistaIns.getIncripcionsFromActivitat(a);
+            if(ins.getNumInscrits()<ins.getNumPlaces()){
+                activitatsDisponibles.afegir(a);
+            }
+        }
+        //De la llista d'activtats dispobibles imprimim el nom
+        for(int i=0; i<activitatsDisponibles.getNumElements();i++){
+            System.out.println(activitatsDisponibles.getActivitatsPos(i).getNomActivitat());
+        }
+    }catch(){
 
+    }
 }
 
 private static void opcio7(){
 
 }
 
+//Mostrar un usuari sgeons el nom
 private static void opcio8(){
+    try{
+        //TODO 1: implementar les excepcions
+        LlistaUsuaris llistaUsu = new LlistaUsuaris(10);//tempoal, canviar per la permanent
+        Usuari u=null;
+        boolean trobat=false;
 
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introdueix el nom de l'usuari del qual vols consultar les dades");
+        String nom = sc.nextLine();   //llegim el nom per pantalla
+        
+        int i=0;
+        while(!trobat && i<llistaUsu.getnUsuaris()){
+            if(llistaUsu.getUsuarisAliesPos(i).equals(nom)){
+                trobat=true;
+                u=llistaUsu.getUsuarisPos(i);
+            }else{
+                i++;
+            }
+        }
+        u.toString();
+    }catch(){
+
+    }
 }
 
 private static void opcio9(){
 
 }
-
+ 
 private static void opcio10(){
     /* 
    private static void opcio10(Usuari usuari){ //TODO 1 importar fitxer per usuari
@@ -198,12 +268,41 @@ private static void opcio10(){
         System.out.println("A quina activitat et vols inscriure?");
         activitat=teclat.nextLine(); //TODO 3 definir Scanner teclat
         activitat.inscriures(usuari); 
-    }
-    */
+    }*/
+    
 }
 
+//Mostrar llista d'inscripcions per activitat
 private static void opcio11(){
+    try{
+        //TODO 1: implementar les excepcions
+        System.out.println("De quina activitat vols obtenir la llista d'incripcions");
+        String nomAct= teclat.nextLine();//llegim el nom de l'activitat per teclat
+        
+        //Crear instancies de les llistes
+        LlistaActivitats llistaActs = new LlistaActivitats(10);
+        LlistaInscripcio llistaIns = new LlistaInscripcio(10);
+        
+        Activitats act = llistaActs.getActivitatPerNom(nomAct);
+        Inscripcions ins = llistaIns.getIncripcionsFromActivitat(act);
 
+        //imprimim llista d'inscrits
+        System.out.println("\nUsuaris inscrits:");
+        for(int i=0; i<ins.getNumInscrits();i++){
+            System.out.println(ins.getInscrit(i));
+        }
+        //imprimim la llista d'espera
+        if(ins.getNumEspera()==0){
+            System.out.println("No hi ha perosnes en la llista d'espera");
+        }else{
+            System.out.println("\nUsuaris en espera:");
+            for(int i=0; i<ins.getNumEspera(); i++){
+                System.out.println(ins.getEspera(i));
+            }
+        }
+    }catch(){
+        
+    }
 }
 
 private static void opcio12(){
@@ -222,8 +321,9 @@ private static void opcio15(){
 
 }
 
+//valorar l'activitat per part de l'asistent
 private static void opcio16(){
-
+    
 }
 
 private static void opcio17(){
@@ -234,6 +334,7 @@ private static void opcio18(){
 
 }
 
+//calcular i mostrar la mitja de valoracions que han fet els usuaris de cada col·lectiu
 private static void opcio19(){
 
 }

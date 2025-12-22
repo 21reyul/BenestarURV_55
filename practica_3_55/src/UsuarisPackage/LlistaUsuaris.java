@@ -21,7 +21,7 @@ public class LlistaUsuaris {
      * Afegir un usuari de la llista
      * @param a, usuari que volem afegir a la llista
      */
-    public void Afegir(Usuari a){
+    public void afegir(Usuari a){
         llistaUsuaris[nUsuaris]=a;
         nUsuaris++;
     }
@@ -30,15 +30,13 @@ public class LlistaUsuaris {
      * Elimina usuari de la llista
      * @param a, usuari que voldrem eliminar
      */
-    public void Elimina(Usuari a){
-        boolean trobat=false;
-        int i=0;
-        while(!trobat){
-            if(llistaUsuaris[i]==a){
-                trobat=true;
-                for(int j=i; j<nUsuaris; j++){
+    public void elimina(Usuari a){
+        for(int i=0; i<nUsuaris; i++){
+            if(llistaUsuaris[i].equals(a)){
+                for(int j=i; j<nUsuaris-1; i--){//la meitat superior de la taula que queda, la movem una posicio cap endavant
                     llistaUsuaris[j]=llistaUsuaris[j+1];
                 }
+                llistaUsuaris[i-1]=null;
                 nUsuaris--;
             }
         }
@@ -58,12 +56,42 @@ public class LlistaUsuaris {
     public String getUsuarisAliesPos(int i){
         return llistaUsuaris[i].getAlies();
     }
-    
+
+
+    //retorna un usuari de la llista segons el seu nom
+    public Usuari getUsuariPerAlies(String alies){
+        Usuari u=null;
+        for(int i=0; i<nUsuaris; i++){
+            if(llistaUsuaris[i].getAlies().equals(alies)){
+                u=llistaUsuaris[i];
+            }
+        }
+        return u;
+    }
+
     public String getLlistaUsuaris() {
         return this.toString();
     }
 
     public void setLlistaUsuaris(Usuari[] llistaUsuaris) {
         this.llistaUsuaris = llistaUsuaris;
+    }
+
+    public Usuari copia() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'copia'");
+    }
+
+    //toString de la llista d'usuaris
+    @Override
+    public String toString() {
+        String resultat = "LLISTA D'USUARIS:\n";
+        for (int i = 0; i < nUsuaris; i++) {
+            Usuari u = llistaUsuaris[i];
+            resultat = resultat + (i + 1) + ". " + u.getAlies() 
+                        + " | Correu: " + u.getCorreu() + "\n";
+        }
+        if (nUsuaris == 0) resultat = resultat + "No hi ha usuaris.\n";
+        return resultat;
     }
 }

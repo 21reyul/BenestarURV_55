@@ -41,19 +41,4 @@ public class Ptgas extends Usuari{
         return ptgas;
     }
 
-    public void setAlies(String string) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setAlies'");
-    }
-
-    public void setCorreu(String string) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setCorreu'");
-    }
-
-    public String getAlies() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAlies'");
-    }
-
 }

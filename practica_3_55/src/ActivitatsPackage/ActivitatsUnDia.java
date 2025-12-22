@@ -4,13 +4,13 @@ import java.time.LocalTime;
 
 public class ActivitatsUnDia extends Activitats{
     private LocalTime hora;
-    private int limitplaces;
+    private int limitPlaces;
     private double preu;
     private String ciutat;
 
     public ActivitatsUnDia(String n, boolean PDI, boolean PTGAS, boolean Estud, LocalDate dataI, LocalDate dataF, int plac, double p, String ciu, LocalTime h){
         super(n, PDI, PTGAS, Estud, dataI, dataF);
-        limitplaces =plac; preu=p; ciutat=ciu; hora=h;
+        limitPlaces =plac; preu=p; ciutat=ciu; hora=h;
     }
 
     public LocalTime getHora() {
@@ -22,11 +22,11 @@ public class ActivitatsUnDia extends Activitats{
     }
 
     public int getLimitPlaces() {
-        return limitplaces;
+        return limitPlaces;
     }
 
     public void setPlaces(int places) {
-        this.limitplaces = places;
+        this.limitPlaces = places;
     }
 
     public double getPreu() {
@@ -47,8 +47,8 @@ public class ActivitatsUnDia extends Activitats{
 
     @Override
     public String toString() {
-        return "ActivitatsUnDia [hora=" + hora + ", places=" + limitplaces + ", preu=" + preu + ", ciutat=" + ciutat
-                + ", NomActivitat()=" + getNomActivitat() + ", Data()=" + getDataINI() + "]";
+        return "ActivitatsUnDia [hora=" + hora + ", places=" + limitPlaces + ", preu=" + preu + ", ciutat=" + ciutat
+                + ", NomActivitat()=" + getNomActivitat() + ", Data()=" + getDataIni() + "]";
     }
 
 }

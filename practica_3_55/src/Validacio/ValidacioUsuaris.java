@@ -1,5 +1,5 @@
 package Validacio;
-
+import UsuarisPackage.Usuari;
 import UsuarisPackage.Estudiants;
 import UsuarisPackage.LlistaUsuaris;
 import UsuarisPackage.Pdi;

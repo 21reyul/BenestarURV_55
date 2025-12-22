@@ -2,13 +2,13 @@ package ActivitatsPackage;
 import java.time.LocalDate;
 
 public class Activitats {
-     private String nomActivitat;
-     private boolean PDI, PTGAS, Estudiants;
-     private LocalDate dataINI, dataFi;
+    private String nomActivitat;
+    private boolean Pdi, Ptgas, Estudiants;
+    private LocalDate dataIni, dataFi;
 
 
     public Activitats(String n, boolean PDI, boolean PTGAS, boolean Estud, LocalDate dataI, LocalDate dataF){
-        nomActivitat=n; this.PDI=PDI; this.PTGAS=PTGAS; Estudiants=Estud; dataINI=dataI; dataFi=dataF;
+        nomActivitat=n; this.Pdi=Pdi; this.Ptgas=Ptgas; Estudiants=Estud; dataIni=dataI; dataFi=dataF;
     }
 
     public String getNomActivitat() {
@@ -20,19 +20,19 @@ public class Activitats {
     }
 
     public boolean isPDI() {
-        return PDI;
+        return Pdi;
     }
 
-    public void setPDI(boolean pDI) {
-        PDI = pDI;
+    public void setPDI(boolean Pdi) {
+        Pdi = Pdi;
     }
 
     public boolean isPTGAS() {
-        return PTGAS;
+        return Ptgas;
     }
 
-    public void setPTGAS(boolean pTGAS) {
-        PTGAS = pTGAS;
+    public void setPTGAS(boolean Ptgas) {
+        Ptgas = Ptgas;
     }
 
     public boolean isEstudiants() {
@@ -43,12 +43,12 @@ public class Activitats {
         Estudiants = estudiants;
     }
 
-    public LocalDate getDataINI() {
-        return dataINI;
+    public LocalDate getDataIni() {
+        return dataIni;
     }
 
-    public void setDataINI(LocalDate dataINI) {
-        this.dataINI = dataINI;
+    public void setDataIni(LocalDate dataINI) {
+        this.dataIni = dataINI;
     }
 
     public LocalDate getDataFi() {
@@ -61,9 +61,14 @@ public class Activitats {
 
     @Override
     public String toString() {
-        return "Activitats [nomActivitat=" + nomActivitat + ", PDI=" + PDI + ", PTGAS=" + PTGAS + ", Estudiants="
-                + Estudiants + ", dataINI=" + dataINI + ", dataFi=" + dataFi + "]";
+        return "Activitats [nomActivitat=" + nomActivitat + ", PDI=" + Pdi + ", PTGAS=" + Ptgas + ", Estudiants="
+                + Estudiants + ", dataINI=" + dataIni + ", dataFi=" + dataFi + "]";
     }
 
+    //falta implementar
+    public Activitats copia() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'copia'");
+    }
 
 }

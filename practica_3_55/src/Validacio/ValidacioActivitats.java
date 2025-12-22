@@ -92,10 +92,10 @@ public class ValidacioActivitats {
         System.out.println("COMPROBACIO CLASSE ACTIVITATSUNDIA:\n\n");
 
         // getters
-        System.out.println("Informacio activitat d'un dia 1 =>\n Nom = "+actDia1.getNomActivitat()+" Hora = "+actDia1.getHora()+" Places = "+actDia1.getPlaces()+
+        System.out.println("Informacio activitat d'un dia 1 =>\n Nom = "+actDia1.getNomActivitat()+" Hora = "+actDia1.getHora()+" Places = "+actDia1.getLimitPlaces()+
                             " Preu = "+actDia1.getPreu()+" euros Ciutat = "+actDia1.getCiutat());
 
-        System.out.println("Informacio activitat d'un dia 2 =>\n Nom = "+actDia2.getNomActivitat()+" Hora = "+actDia2.getHora()+" Places = "+actDia2.getPlaces()+
+        System.out.println("Informacio activitat d'un dia 2 =>\n Nom = "+actDia2.getNomActivitat()+" Hora = "+actDia2.getHora()+" Places = "+actDia2.getLimitPlaces()+
                             " Preu = "+actDia2.getPreu()+" euros Ciutat = "+actDia2.getCiutat());
             
         // setters
@@ -103,7 +103,7 @@ public class ValidacioActivitats {
         actDia1.setPlaces(25);
         actDia1.setPreu(7);
         actDia1.setCiutat("Barcelona");
-        System.out.println("Informacio activitat d'un dia 1 modificada =>\n Nom = "+actDia1.getNomActivitat()+" Hora = "+actDia1.getHora()+" Places = "+actDia1.getPlaces()+
+        System.out.println("Informacio activitat d'un dia 1 modificada =>\n Nom = "+actDia1.getNomActivitat()+" Hora = "+actDia1.getHora()+" Places = "+actDia1.getLimitPlaces()+
                             " Preu = "+actDia1.getPreu()+" euros Ciutat = "+actDia1.getCiutat());
 
         // toString
