@@ -1,4 +1,7 @@
 package UsuarisPackage;
+
+import ActivitatsPackage.Inscripcions;
+
 /**
  * CLASSE LLISTAUSUARIS
  * Conte una llista de dades Usuaris
@@ -56,4 +59,37 @@ public class LlistaUsuaris {
     public void setLlistaUsuaris(Usuaris[] llistaUsuaris) {
         this.llistaUsuaris = llistaUsuaris;
     }
+
+    /**
+     * Mètode que et dona la valoració d'un usuari que es troba dins d'una inscripció
+     * Programadora: Aina Garcia Albesa
+     * @param usuari
+     * @param inscripcio
+     * @return
+     */
+    public Integer getValoracioUsuari(Usuaris usuari, Inscripcions inscripcio) {
+        Integer resultat = null;
+        
+        if (usuari != null && inscripcio != null && llistaUsuaris != null) {
+            int i = 0;
+            boolean trobat = false;
+            
+            // Buscar si l'usuari està a la llista
+            while (i < nUsuaris && !trobat) {
+                Usuaris u = llistaUsuaris[i];
+                if (u != null && u.getAlies().equals(usuari.getAlies())) {
+                    trobat = true;
+                }
+                i++;
+            }
+            
+            // Si l'usuari està a la llista, obtenir la valoració de la inscripció
+            if (trobat) {
+                resultat = inscripcio.getValoracioUsuari(usuari);
+            }
+        }
+        
+        return resultat; 
+    }
+
 }

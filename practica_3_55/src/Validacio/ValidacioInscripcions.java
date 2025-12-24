@@ -97,11 +97,11 @@ public class ValidacioInscripcions {
         // Estat inicial de la valoració
         System.out.println("Valoració inicial de l'activitat: " + inscripcio1.getValoracio());
 
-        // Intent 1: Puntuació vàlida (la primera)
+        // Puntuació vàlida
         inscripcio1.puntuar(8.5, usuari2); 
         System.out.println("Valoració de l'usuari2:" + inscripcio1.getValoracio() + " (Esperat: 9)"); 
 
-        // Intent 2: Puntuació invàlida (fora de rang)
+        // Puntuació invàlida (fora de rang)
         inscripcio1.puntuar(15.0, usuari3); 
         System.out.println("Valoració de l'usuari3: " + inscripcio1.getValoracio() + " (Esperat: 9, sense canvis)"); 
 

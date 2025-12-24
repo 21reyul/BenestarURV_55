@@ -11,6 +11,8 @@ public class Inscripcions implements Serializable {
     private int numPlaces, numInscrits, numEspera;
     private LlistaUsuaris inscrits;
     private LlistaUsuaris espera;
+    private int[] valoracions;
+    int numValoracions;
 
     public Inscripcions(Activitats a, int numPlaces) {
         this.activitat = a;
@@ -19,6 +21,8 @@ public class Inscripcions implements Serializable {
         espera = new LlistaUsuaris(100);
         numInscrits=0;
         numEspera=0;
+        this.valoracions=new int[100];
+        this.numValoracions = 0;
     }
 
     public void inscriures(Usuaris u){
@@ -98,5 +102,43 @@ public class Inscripcions implements Serializable {
         return numEspera; //No té un setter perquè es modifica automàticament
     }
 
+    public int[] getValoracions() {
+        int[] copia = new int[numInscrits];
+        for (int i = 0; i < numInscrits; i++) {
+            copia[i] = valoracions[i];
+        }
+        return copia;
+    }
+
+    /**
+     * Mètode que et dona la valoració d'un usuari
+     * Programadora: Aina Garcia Albesa
+     * @param usuari
+     * @return
+     */
+    public Integer getValoracioUsuari(Usuaris usuari) {
+        Integer resultat = null;
+        
+        if (usuari != null && inscrits != null) {
+            int i = 0;
+            boolean trobat = false;
+            
+            // Buscar si l'usuari està inscrit
+            while (i < inscrits.getnUsuaris() && !trobat) {
+                Usuaris u = inscrits.getUsuarisPos(i);
+                if (u != null && u.getAlies().equals(usuari.getAlies())) {
+                    trobat = true;
+                }
+                i++;
+            }
+            
+            // Si està inscrit, retornar la valoració
+            if (trobat) {
+                resultat = this.valoracio;
+            }
+        }
+        
+        return resultat; 
+    }
     
 }

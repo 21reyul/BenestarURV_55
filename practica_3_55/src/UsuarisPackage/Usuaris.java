@@ -32,4 +32,6 @@ public abstract class Usuaris {
     public void setCorreu(String correu){
         this.correu = correu;
     }
+
+    
 }

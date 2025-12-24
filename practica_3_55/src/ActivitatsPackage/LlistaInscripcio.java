@@ -79,27 +79,56 @@ public class LlistaInscripcio{
         }
     }
 
-    // Programadora: Aina Garcia Albesa
-    public String[] calcularValoracio(LlistaInscripcio activitats){
-        double valoracio, total=0;
-        int nValoracions;
-        LlistaUsuaris usuarisActivitat;
-        int numActivitats=activitats.getNumElements();
-        String [] valoracioActivitats= new String[numActivitats];
-        ;
-        for (int i=0; i<numActivitats; i++){
-            Inscripcions inscripcio = activitats.getInscripcionsPos(i);
-            usuarisActivitat = activitats.getLlistaUsuarisInscrits(i); // Llista usuaris de l'activitat
+    /**
+     * Mètode que fa un resum de les valoracions de les activitats
+     * d'una llista
+     * Programadora: Aina Garcia Albesa
+     * @param activitats
+     * @return llista amb nom de l'activitat i valoració
+     */
+    public String[] calcularValoracio(LlistaInscripcio activitats) {
+        String[] valoracioActivitats = null;  // Únic return
+        
+        if (activitats != null) {
+            int numActivitats = activitats.getNumElements();
+            valoracioActivitats = new String[numActivitats];
             
-            for (int j=0; j<usuarisActivitat.getNumElements(); j++){
-                total= total + usuarisActivitat.getUsuarisPos(j).getValoracio();
-                nValoracions++;
+            for (int i = 0; i < numActivitats; i++) {
+                Inscripcions inscripcio = activitats.getInscripcionsPos(i);
+                String valoracioString = "0.0";  // Valor per defecte
+                
+                if (inscripcio != null) {
+                    LlistaUsuaris usuarisActivitat = inscripcio.getLlistaInscrits();
+                    double total = 0;
+                    int nValoracions = 0;
+                    
+                    // Calcular suma de valoracions
+                    for (int j = 0; j < usuarisActivitat.getnUsuaris(); j++) {
+                        Usuaris usuari = usuarisActivitat.getUsuarisPos(j);
+                        Integer val = usuarisActivitat.getValoracioUsuari(usuari, inscripcio);
+                        
+                        if (val != null) {
+                            total += val;
+                            nValoracions++;
+                        }
+                    }
+                    
+                    // Calcular mitjana
+                    double mitjana = 0;
+                    if (nValoracions > 0) {
+                        mitjana = total / nValoracions;
+                    }
+                    
+                    Activitats activitat = inscripcio.getActivitat();
+                    valoracioString = activitat.getNomActivitat() + ": " + String.format("%.2f", mitjana);
+                }
+                
+                valoracioActivitats[i] = valoracioString;
             }
-            valoracio= total/nValoracions;
-            valoracioActivitats[i]= activitats[i]+":"+valoracio;
         }
         
         return valoracioActivitats;
     }
+
 }
 
