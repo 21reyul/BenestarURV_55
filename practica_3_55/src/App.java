@@ -114,7 +114,7 @@ public class App {
  */
 public static void opcio1(){
     
-    /*Scanner teclat = new Scanner(System.in);
+    Scanner teclat = new Scanner(System.in);
     //La data inicial sera la del servidor
     System.out.println("La data del dia d'avui es:\s" + data.getDayOfMonth() + "/" + data.getMonthValue() + "/"+ data.getYear());
     String resposta;
@@ -145,7 +145,7 @@ public static void opcio1(){
         System.out.println("Les dades introduïdes han de ser enters");
     }catch(DateTimeException e){
         System.out.println("El format de la data es incorrecte");
-    }*/
+    }
 }
 
 private static void opcio2(){
@@ -256,7 +256,7 @@ private static void opcio9(){
 }
  
 private static void opcio10(){
-    /* 
+    
    private static void opcio10(Usuari usuari){ //TODO 1 importar fitxer per usuari
         System.out.println("Activitats disponibles");
         LlistaActivitats activitats = new LlistaActivitats(0);
@@ -268,7 +268,7 @@ private static void opcio10(){
         System.out.println("A quina activitat et vols inscriure?");
         activitat=teclat.nextLine(); //TODO 3 definir Scanner teclat
         activitat.inscriures(usuari); 
-    }*/
+    }
     
 }
 

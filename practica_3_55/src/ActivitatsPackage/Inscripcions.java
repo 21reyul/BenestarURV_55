@@ -74,19 +74,19 @@ public class Inscripcions implements Serializable {
 
     public void afegirActivitat(Usuari u){
         if(numInscrits<numPlaces){
-            inscrits.Afegir(u);
+            inscrits.afegir(u);
             numInscrits++;
         }
         else{
-            espera.Afegir(u);
+            espera.afegir(u);
             numEspera++;
         }
     }
     public void EliminaDeActivitat(Usuari u){
-        inscrits.Elimina(u);
+        inscrits.elimina(u);
         Usuari a = espera.getUsuarisPos(0);
-        inscrits.Afegir(a);
-        espera.Elimina(a);
+        inscrits.afegir(a);
+        espera.elimina(a);
     }
     
     //getters y setters
@@ -105,10 +105,4 @@ public class Inscripcions implements Serializable {
     public void setValoracio(Integer valoracio) {
         this.valoracio = valoracio;
     }
-    
-
-    
-
-
-
 }

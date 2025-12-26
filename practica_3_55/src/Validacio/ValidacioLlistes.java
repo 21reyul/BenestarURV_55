@@ -43,12 +43,12 @@ public class ValidacioLlistes {
         llistaActs.afegir(act7);
 
         //afegir els usuaris a la llista
-        llistaUsu.Afegir(us1);
-        llistaUsu.Afegir(us2);
-        llistaUsu.Afegir(us3);
-        llistaUsu.Afegir(us4);
-        llistaUsu.Afegir(us5);
-        llistaUsu.Afegir(us6);
+        llistaUsu.afegir(us1);
+        llistaUsu.afegir(us2);
+        llistaUsu.afegir(us3);
+        llistaUsu.afegir(us4);
+        llistaUsu.afegir(us5);
+        llistaUsu.afegir(us6);
 
         //inscriure els usuaris a la llista d'inscripcions
         llistaIns.afegir(us1, act7);
@@ -70,7 +70,6 @@ public class ValidacioLlistes {
         //eliminar algun element de la llista, no fem controls d'error exhaustius, donem per suposat que l'activitat/alies/nom existeix
         System.out.println("De quina llista vols eliminar l'element: (usuaris/inscripcions/activitats)");
         String tipus = readScanner.nextLine();
-        
         System.out.println("Escriu el nom/alies de l'element a eliminar");
         String nom = readScanner.nextLine();
         Usuari u = llistaUsu.getUsuariPerAlies(nom);
@@ -78,18 +77,21 @@ public class ValidacioLlistes {
         switch (tipus.toLowerCase()) {
             case "usuari":
                 llistaUsu.elimina(u);
+                System.out.println("Usuari eliminat correctament");
                 break;
             case "inscripcions":
-                System.out.println("De quina activitat vols eliminar a l'usuari:\s"+nom);
+                System.out.println("De quina activitat vols eliminar l'usuari:\s"+nom);
                 String nomAct = readScanner.nextLine();
                 Activitats a = llistaActs.getActivitatPerNom(nomAct);
                 llistaIns.eliminar(u, a);
+                System.out.println("Usuari eliminat correctament");
                 break;
-            case "activitat":
+            case "activitats":
                 System.out.println("Quina activitat vols eliminar?");
                 String nomA = readScanner.nextLine();
                 Activitats ac = llistaActs.getActivitatPerNom(nomA);
-                llistaIns.eliminar(u, ac);
+                llistaActs.elimina(ac);
+                System.out.println("Usuari eliminat correctament");
                 break;
             default:
                 System.out.println("No existeix aquesta opcio");
@@ -100,7 +102,65 @@ public class ValidacioLlistes {
         System.out.println(llistaActs.toString());
         System.out.println(llistaIns.toString());
         System.out.println(llistaUsu.toString()); 
+
+
+        //obtenir alguna activitat
+        System.out.println("OBTENIR ACTIVITAT DE LA LLISTA SEGONS EL SEU NOM");
+        System.out.println("Quina activitat es vol mostrar?");
+        String act = readScanner.nextLine();
+        Activitats a = llistaActs.getActivitatPerNom(act);
+        System.out.println(a.toString());
+
+
+        //obtenir l'activitat segons la posicio
+        System.out.println("OBTENIR ACTIVITAT DE LA LLISTA SEGONS UNA POSICIO");
+        System.out.println("Introdueix la posicio");
+        int i = readScanner.nextInt();
+        System.out.println(llistaActs.getActivitatsPos(i-1).toString());
+
+        //obtenir la llista d'inscripcio d'una activitat
+        System.out.println("OBTENIR LA LLISTA D'INSCRIPCIONS D'UNA ACTIVITAT SEGONS EL NOM");
+        System.out.println("De quina activitat vols obtenir la inscripció?");
+        String n = readScanner.nextLine();
+        Activitats a2 = llistaActs.getActivitatPerNom(n);
+        System.out.println(llistaIns.getIncripcionsFromActivitat(a2).toString());
+
+        //obtenir la inscripcio segons una posicio
+        System.out.println("OBTENIR LA LLISTA D'INSCRIPCIONS D'UNA ACTIVITAT SEGONS UNA POSICIO");
+        System.out.println("De quina activitat vols obtenir la inscripció?");
+        int p2 = readScanner.nextInt();
+        Activitats a3 = llistaActs.getActivitatsPos(p2);
+        System.out.println(llistaIns.getIncripcionsFromActivitat(a3).toString());
+
+
+        //obtenir la llista d'espera segons una activitat
+        System.out.println("OBTENIR LA LLISTA D'ESPERA D'UNA ACTIVITAT SEGONS EL SEU NOM");
+        System.out.println("De quina activitat vols obtenir la llista d'espera?");
+        String n2 = readScanner.nextLine();
+        Activitats a4 = llistaActs.getActivitatPerNom(n2);
+        LlistaInscripcio i1 = llistaIns.getLlistaEspera(a4);
+        System.out.println(i1.toString());
+
+        //tractament de la llista d'usuaris
+        System.out.println("OBTENIR UN USUARI SEGONS EL SEU ALIES");
+        System.out.println("Introdueix l'alies d el'usuari");
+        String alies = readScanner.nextLine();
+        Usuari u2 = llistaUsu.getUsuariPerAlies(alies);
+        System.out.println(u2.toString());
+
+        System.out.println("OBTENIR UN USUARI SEGONS LA POSICIO");
+        System.out.println("Introdueix la poscio");
+        int p3 = readScanner.nextInt();
+        Usuari u3 = llistaUsu.getUsuarisPos(p3);
+        System.out.println(u3.toString());
+
+        System.out.println("OBTENIR UN ALIES SEGONS LA POSICIO");
+        System.out.println("Introdueix ls posicio");
+        int p4 = readScanner.nextInt();
+        String alies1 = llistaUsu.getUsuarisAliesPos(p4);
+        System.out.println(alies1.toString());
+
+        //tancar el scanner
+        readScanner.close();
     }
-
-
 }

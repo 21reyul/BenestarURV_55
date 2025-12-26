@@ -34,4 +34,8 @@ public class Usuari{
         this.correu = correu;
     }
 
+    public Usuari copia() {
+        return new Usuari(this.alies, this.correu);
+    }
+
 }

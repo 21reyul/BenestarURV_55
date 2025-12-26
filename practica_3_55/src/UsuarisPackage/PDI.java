@@ -1,5 +1,4 @@
 package UsuarisPackage;
-
 /**
  * CLASSE FILLA USUARIS = PDI (Profesorat)
  * Conté l'informcio especifica dels usuaris tipus profesorat
@@ -34,7 +33,7 @@ public class Pdi extends Usuari{
 
     /*Programadora: Judit Carles Pallares */
     public String getCorreuComplet(){
-        return getCorreuComplet()+"@urv.cat";
+        return super.getCorreu()+"@urv.cat";
     }
 
     public void setCampus(String campus) {

@@ -76,11 +76,9 @@ public class LlistaUsuaris {
     public void setLlistaUsuaris(Usuari[] llistaUsuaris) {
         this.llistaUsuaris = llistaUsuaris;
     }
+    
 
-    public Usuari copia() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'copia'");
-    }
+
 
     //toString de la llista d'usuaris
     @Override
