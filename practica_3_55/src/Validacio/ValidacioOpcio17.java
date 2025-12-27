@@ -33,6 +33,8 @@ public class ValidacioOpcio17 {
 
         validacioGetValoracioUsuari(estudiant1, estudiant2, pdi1, inscripcio1);
         validacioCalcularValoracio(estudiant1, estudiant2, pdi1, ptgas1, actPer1, actDia2);
+
+        System.out.println("\n--- FINAL VALIDACIO OPCIO 17 ---");
      }
 
     private static void validacioGetValoracioUsuari(Estudiants estudiant1, Estudiants estudiant2, PDI pdi1, Inscripcions inscripcio1){
