@@ -88,8 +88,20 @@ public class LlistaUsuaris {
                 resultat = inscripcio.getValoracioUsuari(usuari);
             }
         }
-        
         return resultat; 
     }
+
+    public Usuaris buscarUsuariPerAlies(String alies) {
+    Usuaris trobat = null;
+    int i = 0;
+    while (i < nUsuaris && trobat == null) {
+        if (llistaUsuaris[i].getAlies().equalsIgnoreCase(alies)) {
+            trobat = llistaUsuaris[i];
+        }
+        i++;
+    }
+        return trobat;
+    }
+
 
 }
