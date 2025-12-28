@@ -161,6 +161,11 @@ public class App {
 
     }
 
+    /**
+     * Opció 10: inscriure a un usuari
+     * Programadora: Aina Garcia Albesa
+     * @param usuari
+     */
     private static void opcio10(Usuaris usuari){ //TODO 1 importar fitxer per usuari
         System.out.println("--- INSCRIPCIO A ALGUNA ACTIVITAT ---");
 
@@ -239,6 +244,10 @@ public class App {
 
     }
 
+    /**
+     * Opció 17: Obtenir un resum de les valoracions de les activitats acabades.
+     * Programadora: Aina Garcia Albesa
+     */
     private static void opcio17(){
         LlistaInscripcio llistaInscripcions = new LlistaInscripcio(100);
 

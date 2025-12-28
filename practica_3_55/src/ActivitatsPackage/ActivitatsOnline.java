@@ -6,6 +6,18 @@ public class ActivitatsOnline extends Activitats{
     private LocalDate dataIni;
     private int periode;
 
+    /**
+     * Constructor de la classe ActivitatsOnline
+     * @param n
+     * @param PDI
+     * @param PTGAS
+     * @param Estud
+     * @param dataI
+     * @param dataF
+     * @param enlla
+     * @param inici
+     * @param perio
+     */
     public ActivitatsOnline(String n, boolean PDI, boolean PTGAS, boolean Estud, LocalDate dataI, LocalDate dataF, String enlla, LocalDate inici, int perio){
         super(n, PDI, PTGAS, Estud, dataI, dataF);
         enllaç=enlla; 

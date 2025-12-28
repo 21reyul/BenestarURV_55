@@ -46,6 +46,12 @@ public class LlistaActivitats {
         return llista[i];
     }
 
+    /**
+     * Mètode que fa una llista amb totes les activitats acabades
+     * Programadora: Aina Garcia Albesa
+     * @param llista
+     * @return llista de les activitats que ho estan
+     */
     public LlistaActivitats actAcabades(LlistaInscripcio llista){
         LlistaActivitats activitatsAcabades= new LlistaActivitats(numElements);
         for (int i=0; i<llista.getNumElements(); i++ ){

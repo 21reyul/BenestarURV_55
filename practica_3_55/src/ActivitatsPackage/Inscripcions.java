@@ -114,7 +114,7 @@ public class Inscripcions implements Serializable {
      * Mètode que et dona la valoració d'un usuari
      * Programadora: Aina Garcia Albesa
      * @param usuari
-     * @return
+     * @return valoració d'un usuari (entera)
      */
     public Integer getValoracioUsuari(Usuaris usuari) {
         Integer resultat = null;

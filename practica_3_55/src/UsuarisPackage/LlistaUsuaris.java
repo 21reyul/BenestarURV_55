@@ -91,6 +91,12 @@ public class LlistaUsuaris {
         return resultat; 
     }
 
+    /**
+     * Mètode que busca a travès de l'àlies si un usuari existeix
+     * Programadora: Aina Garcia Albesa
+     * @param alies
+     * @return
+     */
     public Usuaris buscarUsuariPerAlies(String alies) {
     Usuaris trobat = null;
     int i = 0;

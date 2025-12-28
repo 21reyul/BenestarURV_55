@@ -22,11 +22,21 @@ public class LlistaInscripcio{
         return null;
     }   
 
-   public Activitats getLlistaInscritsPos(int i){
+    /**
+     * Getter de l'activitat en la posició determinada d'una llista
+     * @param i posició
+     * @return activitat
+     */
+    public Activitats getLlistaInscritsPos(int i){
         return this.inscripcions[i].getActivitat();
     }
     
-    public LlistaUsuaris getLlistaUsuarisInscrits(int i){ //Usuaris inscrits en una act
+    /**
+     * Getter dels usuaris inscrits en una activitat
+     * @param i
+     * @return llista d'usuaris inscrits en una activitat
+     */
+    public LlistaUsuaris getLlistaUsuarisInscrits(int i){ 
         return this.inscripcions[i].getLlistaInscrits();
     }
 
