@@ -7,7 +7,6 @@ import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 import ActivitatsPackage.*;
-import E.ForaDeRang;
 import Exception.*;
 import Lectors.*;
 import UsuarisPackage.*;
@@ -942,12 +941,13 @@ public class App {
     }
 
     /**
-     * OPCIO 20
+     * OPCIO 20:
      * Calcular l’usuari més actiu d’un cert col·lectiu, és a dir, el què s’ha apuntat a més activitats. En
      * cas d’empat s’escull qualsevol dels usuaris que compleixen els requisits. 
-     * @param usuaris20
+     * @param inscripcions20
+     * @param colectiu15
      */
-    private static void opcio20(LlistaUsuaris usuaris20){
+    private static void opcio20(LlistaInscripcio inscripcions20){
         Boolean correcte20=false;
         String colectiu20=null;
         do{
@@ -960,50 +960,35 @@ public class App {
         }while(!correcte20);
 
         /* RECORRER LLISTA INSCRIPCIO I FER UNA NOVA AMB NOMES ELS DELS COLETIU*/
-        LlistaUsuaris llistacolectiu20= new LlistaUsuaris(usuaris20.getnUsuaris()); 
+        LlistaInscripcio llistacolectiu20= new LlistaInscripcio(inscripcions20.getNumElements()); 
         
-        for (int i=0; i<usuaris20.getnUsuaris(); i++){
-            if (colectiu20.equals("PTGAS")){
-                if (usuaris20.getUsuarisPos(i) instanceof Ptgas) /* SI COLECTIU */
-                {
-                    llistacolectiu20.afegir(usuaris20.getUsuarisPos(i));
-                }
+        for (int i=0; i<inscripcions20.getNumElements(); i++){
+            if (inscripcions20.getInscripcioPos(i).getActivitat().esPerA(colectiu20)==true) /* SI COLECTIU */
+            {
+                llistacolectiu20.AfegirInscripcio(inscripcions20.getInscripcioPos(i));
             }
-            else if (colectiu20.equals("PDI")){
-                if (usuaris20.getUsuarisPos(i) instanceof Pdi) /* SI COLECTIU */
-                {
-                    llistacolectiu20.afegir(usuaris20.getUsuarisPos(i));
-                }
-            }
-            else if (colectiu20.equals("estudiants")){
-                if (usuaris20.getUsuarisPos(i) instanceof Estudiants) /* SI COLECTIU */
-                {
-                    llistacolectiu20.afegir(usuaris20.getUsuarisPos(i));
-                }
-            }
-            
         }
 
         /* SI NO HI HA RES A LA LLISTA NO HI HA CAP ACTIVITAT PER AL COLETIU */
-        if (llistacolectiu20.getnUsuaris() == 0) { 
-            System.out.println("No hi ha usuaris del col·lectiu: " + colectiu20); 
+        if (llistacolectiu20.getNumElements() == 0) { 
+            System.out.println("No hi ha activitats del col·lectiu: " + colectiu20); 
             return; 
         }
 
         /* COMPARAR LA PERSONA AMB MAXIM Nº D'ACTIVITATS INSCRIT DE CADA ACTIVITAT  */
-        String nom20 = llistacolectiu20.getUsuarisPos(0).getAlies();
-        int comptador20 = llistacolectiu20.getUsuarisPos(0).getContador();
-        for (int i = 0; i < llistacolectiu20.getnUsuaris(); i++) { 
-            if (comptador20<llistacolectiu20.getUsuarisPos(i).getContador()){
-                nom20 = llistacolectiu20.getUsuarisPos(i).getAlies();
-                comptador20 = llistacolectiu20.getUsuarisPos(i).getContador();
+        String nom20 = llistacolectiu20.getInscripcioPos(0).getLlistaInscrits().usuariMesInscrit(); 
+        int comptador20 = llistacolectiu20.getInscripcioPos(0).getLlistaInscrits().numeroMaximUsuariMesInscrit();
+        for (int i = 0; i < llistacolectiu20.getNumElements(); i++) { 
+            if (comptador20<llistacolectiu20.getInscripcioPos(i).getLlistaInscrits().numeroMaximUsuariMesInscrit()){
+                nom20 = llistacolectiu20.getInscripcioPos(i).getLlistaInscrits().usuariMesInscrit(); 
+                comptador20 = llistacolectiu20.getInscripcioPos(i).getLlistaInscrits().numeroMaximUsuariMesInscrit();
             }
         }
 
         System.out.print("El usuari més actiu de "+ colectiu20+" es: "+ nom20);
         
     }
-    
+
     private static void opcio21(Scanner teclat, LlistaInscripcio ins){
         LocalDate avui = demanarData();
         try {
