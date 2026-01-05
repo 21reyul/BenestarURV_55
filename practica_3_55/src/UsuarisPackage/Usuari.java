@@ -41,7 +41,6 @@ public class Usuari{
         return new Usuari(this.alies, this.correu);
     }
 
-<<<<<<< HEAD:practica_3_55/src/UsuarisPackage/Usuaris.java
     /* 
     public String toStringUsuaris(){
         return ("\\n" + "   Nom: " +this.getAlies()+"\\n");
@@ -60,6 +59,4 @@ public class Usuari{
 
 
 
-=======
->>>>>>> main:practica_3_55/src/UsuarisPackage/Usuari.java
 }

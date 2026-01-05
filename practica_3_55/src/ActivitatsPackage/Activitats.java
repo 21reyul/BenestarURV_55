@@ -8,7 +8,7 @@ public class Activitats {
     private LocalDate dataIni, dataFi;
 
 
-    public Activitats(String n, boolean PDI, boolean PTGAS, boolean Estud, LocalDate dataI, LocalDate dataF){
+    public Activitats(String n, boolean Pdi, boolean Ptgas, boolean Estud, LocalDate dataI, LocalDate dataF){
         nomActivitat=n; this.Pdi=Pdi; this.Ptgas=Ptgas; Estudiants=Estud; dataIni=dataI; dataFi=dataF;
     }
 
@@ -25,7 +25,7 @@ public class Activitats {
     }
 
     public void setPDI(boolean Pdi) {
-        Pdi = Pdi;
+        this.Pdi = Pdi;
     }
 
     public boolean isPTGAS() {
@@ -33,7 +33,7 @@ public class Activitats {
     }
 
     public void setPTGAS(boolean Ptgas) {
-        Ptgas = Ptgas;
+        this.Ptgas = Ptgas;
     }
 
     public boolean isEstudiants() {
@@ -66,28 +66,22 @@ public class Activitats {
                 + Estudiants + ", dataINI=" + dataIni + ", dataFi=" + dataFi + "]";
     }
 
-    //falta implementar
-    public Activitats copia() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'copia'");
-    }
-
     //comprobar si l'activitat ha acabat
     public boolean haAcabat(){
         return LocalDate.now().isAfter(dataFi);
     }
 
     public Activitats copia(){
-        Activitats activitat= new Activitats(this.nomActivitat, this.PDI, this.PTGAS, this.Estudiants, this.dataINI, this.dataFi);
+        Activitats activitat= new Activitats(this.nomActivitat, this.Pdi, this.Ptgas, this.Estudiants, this.dataIni, this.dataFi);
         return activitat;
     }
 
     public boolean esPerA(String colectiu) { 
         boolean es=false;
-        if (colectiu.equals("PDI") && this.PDI==true){
+        if (colectiu.equals("PDI") && this.Pdi==true){
             es=true;
         }
-        else if (colectiu.equals("PTGAS") && this.PTGAS==true){
+        else if (colectiu.equals("PTGAS") && this.Ptgas==true){
             es=true;
         }
         else if (colectiu.equals("estudiants") && this.Estudiants==true){

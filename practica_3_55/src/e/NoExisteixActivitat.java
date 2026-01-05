@@ -1,4 +1,4 @@
-package e;
+package E;
 import ActivitatsPackage.*;
 
 public class NoExisteixActivitat extends Exception{
