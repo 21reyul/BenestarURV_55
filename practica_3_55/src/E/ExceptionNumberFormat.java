@@ -1,4 +1,4 @@
-package Exception;
+package E;
 
 public class ExceptionNumberFormat extends Exception{
     public ExceptionNumberFormat(){

@@ -15,6 +15,8 @@ public class ValidacioUsuaris {
         Ptgas ptgas1 = new Ptgas("Eustaquio", "eusta", "Catalunya");
         Ptgas ptgas2 = new Ptgas("Juana", "juani", "Bellissens");
 
+        LlistaUsuaris llistaUsuaris = new LlistaUsuaris(10);
+
         //Comprobacions clase Estudiants
         System.out.println("COMPROBACIO CLASSE ESTUDIANTS:\n\n");
         System.out.println("Informacio estudiant 1 =>\n   Nom ="+ est1.getAlies() + "  Correu = " + est1.getCorreuComplet() + "  Ensenyament = " + est1.getEnsenyament() + " AnyInici = " + est1.getAnyIni()+"\n");

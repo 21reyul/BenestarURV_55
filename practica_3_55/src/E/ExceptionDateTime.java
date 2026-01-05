@@ -1,4 +1,4 @@
-package Exception;
+package E;
 
 public class ExceptionDateTime extends Exception {
     public ExceptionDateTime(){
