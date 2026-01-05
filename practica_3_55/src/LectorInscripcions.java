@@ -42,8 +42,11 @@ public class LectorInscripcions {
 
                 Usuari usu = buscarUsuari(llistaUsu, aliesUsu);
                 if (usu == null) {
-                    //usu = new Usuari(aliesUsu, "senseCorreu");
-                    //llistaUsu.afegir(usu);
+                    Usuari u = buscarUsuari(llistaUsu, aliesUsu);
+                    if (u == null) {
+                        System.err.println("Línia " + liniaNum + ": usuari no trobat: " + aliesUsu);
+                        continue;
+                    }
                 }
 
                 llistaIns.afegir(usu, act);

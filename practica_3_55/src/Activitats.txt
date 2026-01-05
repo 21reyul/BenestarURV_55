@@ -1,4 +1,4 @@
-Ioga;True;True;True;15/01/2026;15/03/2026;Martes;Poliesportiu Central;Barcelona;08:00;8;20;15.0
+Ioga;True;True;True;05/01/2026;15/03/2026;Martes;Poliesportiu Central;Barcelona;08:00;8;20;15.0
 Pilates;False;True;True;01/02/2026;01/04/2026;Jueves;Gimnàs Nord;Girona;18:30;8;15;12.5
 Escacs Avançat;True;False;True;10/01/2026;10/02/2026;Miércoles;Ateneu Popular;Reus;17:00;4;10;5.0
 Ceràmica;False;False;True;05/03/2026;05/05/2026;Lunes;Taller Art;Lleida;16:00;9;12;25.0

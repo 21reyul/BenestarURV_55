@@ -41,7 +41,7 @@ public class App {
                     break;
 
                 case 4:
-                    opcio4();
+                    opcio4(a, i);
                     break;
 
                 case 5:
@@ -89,7 +89,7 @@ public class App {
                     break;
 
                 case 16:
-                    opcio16();
+                    opcio16(a, i);
                     break;
 
                 case 17:
@@ -244,15 +244,13 @@ public static void opcio1(){
      * En aquest metode no tracto cpa excepcio perquè es un metode de consulta,
      * no es fa cap operació. 
     */
-    private static void opcio4(){
+    private static void opcio4(LlistaActivitats llistaActs, LlistaInscripcio llistaIns){
         boolean ple=false;
         boolean hiHaEspera=false;
         int compt=0;
 
         
         //canviar a les intàncies generals, sol son de prova
-        LlistaActivitats llistaActs = new LlistaActivitats(10);
-        LlistaInscripcio llistaIns = new LlistaInscripcio(10);
         LlistaActivitats actsAvui = llistaActs.activitatsAvui(data);
         actsAvui.toString();
         for(int i=0; i<actsAvui.getNumElements(); i++){
@@ -750,12 +748,10 @@ public static void opcio1(){
     }
 
     //valorar l'activitat per part de l'asistent
-    private static void opcio16(){
+    private static void opcio16(LlistaActivitats llistaActs, LlistaInscripcio llistaIns){
         try{
             System.out.println("Quina activitat vols valorar?");
             String nomAct= teclat.nextLine();//llegim el nom de l'activitat per teclat
-            LlistaActivitats llistaActs = new LlistaActivitats(10);
-            LlistaInscripcio llistaIns = new LlistaInscripcio(10);
             Activitats act = llistaActs.getActivitatPerNom(nomAct);
             if(act==null){
                 throw new NoExisteixActivitat(nomAct);
@@ -880,19 +876,19 @@ public static void opcio1(){
         //mostrar la mitja de cada colectiu
         System.out.println("MITJA DE LES VALORACIONS DE CADA COL·LECTIU");
         if(indexEstudiants>0){
-            System.out.println("PDI:"+((sumaEstudiants/indexEstudiants)));
+            System.out.println("Estudiants:"+((sumaEstudiants/indexEstudiants)));
         }else{
             System.out.println("No hi ha valoracions dels estudiants");
         }
         if(indexPdi>0){
             System.out.println("PDI:"+((sumaPdi/indexPdi)));
         }else{
-            System.out.println("No hi ha valoracions dels estudiants");
+            System.out.println("No hi ha valoracions dels PDI");
         }
         if(indexPtgas>0){
-            System.out.println("PDI:"+((sumaPtgas/indexPtgas)));
+            System.out.println("Ptgas:"+((sumaPtgas/indexPtgas)));
         }else{
-            System.out.println("No hi ha valoracions dels estudiants");
+            System.out.println("No hi ha valoracions dels Ptgas");
         }
     }
 
@@ -921,7 +917,7 @@ public static void opcio1(){
         for (int i=0; i<inscripcions20.getNumElements(); i++){
             if (inscripcions20.getInscripcioPos(i).getActivitat().esPerA(colectiu20)==true) /* SI COLECTIU */
             {
-                llistacolectiu20.afegirInscripcio(inscripcions20.getInscripcioPos(i));
+                llistacolectiu20.AfegirInscripcio(inscripcions20.getInscripcioPos(i));
             }
         }
 
