@@ -6,17 +6,18 @@ package UsuarisPackage;
  *      @alies = Identificador
  *      @correu = adreça electronica
  */
-public class Usuaris {
-    private String alies;
+public class Usuari{
+    protected String alies;
     private String correu;
 
     //Constructor
-    public Usuaris(String alies, String correu){
+    public Usuari(String alies, String correu){
         this.alies = alies;
         this.correu = correu;
     }
 
     //Getter i setters
+    //Programadora: Cristina Cozma
     public String getAlies(){
         return alies;
     }
@@ -33,11 +34,14 @@ public class Usuaris {
         this.correu = correu;
     }
 
-    public String getNomDept() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getNomDept'");
+    /**METODE COPIA
+     * Retorna una nstancia del matix tipus amb les mateixes dades
+     */
+    public Usuari copia() {
+        return new Usuari(this.alies, this.correu);
     }
 
+<<<<<<< HEAD:practica_3_55/src/UsuarisPackage/Usuaris.java
     /* 
     public String toStringUsuaris(){
         return ("\\n" + "   Nom: " +this.getAlies()+"\\n");
@@ -56,4 +60,6 @@ public class Usuaris {
 
 
 
+=======
+>>>>>>> main:practica_3_55/src/UsuarisPackage/Usuari.java
 }
