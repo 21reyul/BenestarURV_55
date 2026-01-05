@@ -9,8 +9,10 @@ public class ValidacioOpcio17 {
      public static void main(String[] args) throws Exception {
         System.out.println("--- VALIDACIO OPCIO 17 ---");
 
-        ActivitatsPeriodiques actPer1 = new ActivitatsPeriodiques("Curs B2 d'angles per a estudiants", false, false, true, LocalDate.of(2025, 9, 5), LocalDate.of(2025, 9, 22), "dijous", "Campus Catalunya", "Tarragona", LocalTime.of(17, 30), 20, 25, 100.0);
-
+        ActivitatsPeriodiques actPer1 = new ActivitatsPeriodiques("Curs B2 d'angles per a estudiants", false, false, true, 
+            LocalDate.of(2025, 9, 5), LocalDate.of(2025, 9, 22), "dijous", "Campus Catalunya", "Tarragona", 
+            LocalTime.of(17, 30), LocalDate.of(2025, 10, 15), 20, 25, 100.0);
+        
         ActivitatsUnDia actDia2 = new ActivitatsUnDia("Senderisme", true, true, true, 
             LocalDate.of(2025, 12, 2), LocalDate.of(2025, 12, 9), 40, 10.0, "Amposta", LocalTime.of(10, 0));
         
@@ -20,8 +22,8 @@ public class ValidacioOpcio17 {
         
         Estudiants estudiant1 = new Estudiants("Anna", "anna.g", "GEI", 2024);
         Estudiants estudiant2 = new Estudiants("Marc", "marc.b", "GES", 2023);
-        Pdi pdi1 = new Pdi("Dr. Garcia", "garcia.p", "DEIM", "Sescelades");
-        Ptgas ptgas1 = new Ptgas("Eustaquio", "eusta", "Catalunya");
+        PDI pdi1 = new PDI("Dr. Garcia", "garcia.p", "DEIM", "Sescelades");
+        PTGAS ptgas1 = new PTGAS("Eustaquio", "eusta", "Catalunya");
         
         // Afegir usuaris a les inscripcions
         inscripcio1.inscriures(estudiant1);
@@ -35,14 +37,14 @@ public class ValidacioOpcio17 {
         System.out.println("\n--- FINAL VALIDACIO OPCIO 17 ---");
      }
 
-    private static void validacioGetValoracioUsuari(Estudiants estudiant1, Estudiants estudiant2, Pdi pdi1, Inscripcions inscripcio1){
+    private static void validacioGetValoracioUsuari(Estudiants estudiant1, Estudiants estudiant2, PDI pdi1, Inscripcions inscripcio1){
         System.out.println("--- Validacio getValoracioUsuari()");
 
         // Creem una llista d'usuaris.
         LlistaUsuaris llistaUsuaris = new LlistaUsuaris(10);
-        llistaUsuaris.afegir(estudiant1);
-        llistaUsuaris.afegir(estudiant2);
-        llistaUsuaris.afegir(pdi1);
+        llistaUsuaris.Afegir(estudiant1);
+        llistaUsuaris.Afegir(estudiant2);
+        llistaUsuaris.Afegir(pdi1);
 
         // Afegim valoracions.
         inscripcio1.puntuar(8.5, estudiant1);
@@ -70,7 +72,7 @@ public class ValidacioOpcio17 {
         System.out.println("   Obtingut: " + valoracioInscNull);
      }
 
-    private static void validacioCalcularValoracio(Estudiants estudiant1, Estudiants estudiant2, Pdi pdi1, Ptgas ptgas1, ActivitatsPeriodiques actPer1, ActivitatsUnDia actDia2){
+    private static void validacioCalcularValoracio(Estudiants estudiant1, Estudiants estudiant2, PDI pdi1, PTGAS ptgas1, ActivitatsPeriodiques actPer1, ActivitatsUnDia actDia2){
         System.out.println("--- Validacio calcularValoracio()");
         
         ActivitatsUnDia activitatAcabada = new ActivitatsUnDia("Taller de Java 2024", true, true, true,
@@ -93,8 +95,8 @@ public class ValidacioOpcio17 {
         
         // Creem LlistaInscripcio per a activitats acabades
         LlistaInscripcio inscripcionsAcabades = new LlistaInscripcio(10);
-        inscripcionsAcabades.afegir(estudiant1, activitatAcabada);
-        inscripcionsAcabades.afegir(estudiant2, activitatAcabada);
+        inscripcionsAcabades.Afegir(estudiant1, activitatAcabada);
+        inscripcionsAcabades.Afegir(estudiant2, activitatAcabada);
         
         System.out.println("Prova: Calcular valoracions d'activitats acabades");
         String[] valoracions = inscripcionsAcabades.calcularValoracio(inscripcionsAcabades);

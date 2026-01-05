@@ -1,5 +1,6 @@
 package ActivitatsPackage;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public abstract class Activitats {
     private String nomActivitat;
@@ -106,7 +107,6 @@ public abstract class Activitats {
     public void setDataFi(LocalDate dataFi) {
         this.dataFi = dataFi;
     }
-    
 
     /**
      * ToString de la classe Activitats
@@ -133,9 +133,8 @@ public abstract class Activitats {
         return this.dataFi.isBefore(dataActual);
     }
     public Activitats copia(){
-        //Activitats activitat= new Activitats(this.nomActivitat, this.Pdi, this.Ptgas, this.Estudiants, this.dataIni, this.dataFi);
-        //return activitat;
-        return this;
+        Activitats activitat= new Activitats(this.nomActivitat, this.Pdi, this.Ptgas, this.Estudiants, this.dataIni, this.dataFi);
+        return activitat;
     }
 
     public boolean esPerA(String colectiu) { 
@@ -151,4 +150,7 @@ public abstract class Activitats {
         }
         return es;
     }
+
+
+
 }

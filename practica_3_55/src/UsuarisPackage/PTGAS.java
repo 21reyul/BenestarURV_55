@@ -40,4 +40,6 @@ public class Ptgas extends Usuari{
         Ptgas ptgas = new Ptgas(this.getAlies(), this.getCorreu(), this.getCampus());
         return ptgas;
     }
+
+
 }
