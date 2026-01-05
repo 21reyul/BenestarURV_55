@@ -59,7 +59,7 @@ public class App {
                 case 10:
                     System.out.print("Introdueix el teu alies: ");
                     String alies = teclat.nextLine();
-                    Usuaris usuariActual = llistaUsuaris.buscarUsuariPerAlies(alies);
+                    Usuari usuariActual = llistaUsuaris.buscarUsuariPerAlies(alies);
                     
                     if (usuariActual == null) {
                         System.out.println("L'usuari no existeix.");
@@ -166,7 +166,7 @@ public class App {
      * Programadora: Aina Garcia Albesa
      * @param usuari
      */
-    private static void opcio10(Usuaris usuari){ //TODO 1 importar fitxer per usuari
+    private static void opcio10(Usuari usuari){ //TODO 1 importar fitxer per usuari
         System.out.println("--- INSCRIPCIO A ALGUNA ACTIVITAT ---");
 
         Activitats[] activitats = mostrarActDisponiblesUsuari(llistaActivitats, usuari);
@@ -296,7 +296,7 @@ public class App {
      * @param usuari
      * @return llista amb les activitats que un usuari pot fer
      */
-    private static Activitats[] mostrarActDisponiblesUsuari(LlistaActivitats activitats, Usuaris usuari){
+    private static Activitats[] mostrarActDisponiblesUsuari(LlistaActivitats activitats, Usuari usuari){
         Activitats[] actDisponibles = new Activitats[100];
             int pos = 0; //Posició dins de la taula String
 
@@ -308,11 +308,11 @@ public class App {
                     actDisponibles[pos] = activitat;
                     pos++;
                 }
-                if (usuari instanceof PDI && activitat.isPDI()){
+                if (usuari instanceof Pdi && activitat.isPDI()){
                     actDisponibles[pos] = activitat;
                     pos++;
                 }
-                if (usuari instanceof PTGAS && activitat.isPTGAS()){
+                if (usuari instanceof Ptgas && activitat.isPTGAS()){
                     actDisponibles[pos] = activitat;
                     pos++;
                 }
@@ -320,7 +320,7 @@ public class App {
         }
         return actDisponibles;
     }
-    private static boolean estaInscrit(Inscripcions ins, Usuaris u) {
+    private static boolean estaInscrit(Inscripcions ins, Usuari u) {
         return (buscarAliesEnLlista(ins.getLlistaInscrits(), u.getAlies()) || 
                 buscarAliesEnLlista(ins.getLlistaDeEspera(), u.getAlies()));
     }

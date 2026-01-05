@@ -63,7 +63,7 @@ public class ValidacioOpcio10 {
     }
 
     
-    private static boolean estaInscrit(Inscripcions ins, Usuaris u) {
+    private static boolean estaInscrit(Inscripcions ins, Usuari u) {
         return (buscarAliesEnLlista(ins.getLlistaInscrits(), u.getAlies()) || 
                 buscarAliesEnLlista(ins.getLlistaDeEspera(), u.getAlies()));
     }

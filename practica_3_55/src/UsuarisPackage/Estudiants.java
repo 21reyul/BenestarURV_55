@@ -7,11 +7,12 @@ package UsuarisPackage;
  *      @ensenyament = grau en el que estan matriculats
  *      @anyIni = any en que l'usuari inicia els estudis
  */
-public class Estudiants extends Usuaris{
+public class Estudiants extends Usuari{
     private String ensenyament;
     private int anyIni;
 
     //Constructor
+    //Programadora: Cristina Cozma
     public Estudiants(String alies, String correu, String ensenyament, int anyIni) {
         super(alies, correu);
         this.ensenyament=ensenyament;
@@ -19,6 +20,7 @@ public class Estudiants extends Usuaris{
     }
 
     //Getters i setters
+    //Programadora: Cristina Cozma
     public String getEnsenyament() {
         return ensenyament;
     }
@@ -50,4 +52,5 @@ public class Estudiants extends Usuaris{
         Estudiants est= new Estudiants(this.getAlies(), this.getCorreu(), this.getEnsenyament(), this.getAnyIni());
         return est;
     }
+
 }

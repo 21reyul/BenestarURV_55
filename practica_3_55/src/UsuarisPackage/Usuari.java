@@ -6,17 +6,18 @@ package UsuarisPackage;
  *      @alies = Identificador
  *      @correu = adreça electronica
  */
-public abstract class Usuaris {
-    private String alies;
+public abstract class Usuari{
+    protected String alies;
     private String correu;
 
     //Constructor
-    public Usuaris(String alies, String correu){
+    public Usuari(String alies, String correu){
         this.alies = alies;
         this.correu = correu;
     }
 
     //Getter i setters
+    //Programadora: Cristina Cozma
     public String getAlies(){
         return alies;
     }
@@ -33,5 +34,11 @@ public abstract class Usuaris {
         this.correu = correu;
     }
 
-    
+    /**METODE COPIA
+     * Retorna una nstancia del matix tipus amb les mateixes dades
+     */
+    public Usuari copia() {
+        return this;
+    }
+
 }

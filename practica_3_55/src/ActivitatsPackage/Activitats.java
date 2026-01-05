@@ -1,10 +1,11 @@
 package ActivitatsPackage;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public abstract class Activitats {
     private String nomActivitat;
-    private boolean PDI, PTGAS, Estudiants;
-    private LocalDate dataINI, dataFi;
+    private boolean Pdi, Ptgas, Estudiants;
+    private LocalDate dataIni, dataFi;
 
     /**
      * Constructor de la classe Activitats
@@ -15,8 +16,8 @@ public abstract class Activitats {
      * @param dataI
      * @param dataF
      */
-    public Activitats(String n, boolean PDI, boolean PTGAS, boolean Estud, LocalDate dataI, LocalDate dataF){
-        nomActivitat=n; this.PDI=PDI; this.PTGAS=PTGAS; Estudiants=Estud; dataINI=dataI; dataFi=dataF;
+    public Activitats(String n, boolean Pdi, boolean Ptgas, boolean Estud, LocalDate dataI, LocalDate dataF){
+        nomActivitat=n; this.Pdi=Pdi; this.Ptgas=Ptgas; Estudiants=Estud; dataIni=dataI; dataFi=dataF;
     }
 
     /**
@@ -40,15 +41,11 @@ public abstract class Activitats {
      * @return cert si ho és, fals si no
      */
     public boolean isPDI() {
-        return PDI;
+        return Pdi;
     }
 
-    /**
-     * Setter de si és PDI
-     * @param pDI
-     */
-    public void setPDI(boolean pDI) {
-        PDI = pDI;
+    public void setPDI(boolean Pdi) {
+        this.Pdi = Pdi;
     }
 
     /**
@@ -56,15 +53,11 @@ public abstract class Activitats {
      * @return cert si ho és, fals si no
      */
     public boolean isPTGAS() {
-        return PTGAS;
+        return Ptgas;
     }
 
-    /**
-     * Setter de si és PTGAS
-     * @param pTGAS
-     */
-    public void setPTGAS(boolean pTGAS) {
-        PTGAS = pTGAS;
+    public void setPTGAS(boolean Ptgas) {
+        this.Ptgas = Ptgas;
     }
 
     /**
@@ -87,16 +80,16 @@ public abstract class Activitats {
      * Getter de la data d'inici
      * @return data d'inici
      */
-    public LocalDate getDataINI() {
-        return dataINI;
+    public LocalDate getDataIni() {
+        return dataIni;
     }
 
     /**
      * Setter de la data d'inici
      * @param dataINI
      */
-    public void setDataINI(LocalDate dataINI) {
-        this.dataINI = dataINI;
+    public void setDataIni(LocalDate dataINI) {
+        this.dataIni = dataINI;
     }
 
     /**
@@ -120,8 +113,19 @@ public abstract class Activitats {
      */
     @Override
     public String toString() {
-        return "Activitats [nomActivitat=" + nomActivitat + ", PDI=" + PDI + ", PTGAS=" + PTGAS + ", Estudiants="
-                + Estudiants + ", dataINI=" + dataINI + ", dataFi=" + dataFi + "]";
+        return "Activitats [nomActivitat=" + nomActivitat + ", PDI=" + Pdi + ", PTGAS=" + Ptgas + ", Estudiants="
+                + Estudiants + ", dataINI=" + dataIni + ", dataFi=" + dataFi + "]";
+    }
+
+    //falta implementar
+    public Activitats copia() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'copia'");
+    }
+
+    //comprobar si l'activitat ha acabat
+    public boolean haAcabat(){
+        return LocalDate.now().isAfter(dataFi);
     }
 
     /**
@@ -134,5 +138,6 @@ public abstract class Activitats {
         LocalDate dataActual = LocalDate.now();
         return this.dataFi.isBefore(dataActual);
     }
+
 
 }
