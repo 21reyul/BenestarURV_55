@@ -99,6 +99,9 @@ public class LlistaInscripcio {
         // vol dir que ningú s'hi ha inscrit: per tant hi ha places
         return true;
     }
+    public Inscripcions getInscripcioPos(int i){
+        return inscripcions[i];
+    }
 
 
 
@@ -118,6 +121,65 @@ public class LlistaInscripcio {
             }
         }
         return null;
+    }
+    /**
+     * Mètode que fa un resum de les valoracions de les activitats
+     * d'una llista
+     * Programadora: Aina Garcia Albesa
+     * @param activitats
+     * @return llista amb nom de l'activitat i valoració
+     */
+    public String[] calcularValoracio(LlistaInscripcio activitats) {
+        String[] valoracioActivitats = null;  // Únic return
+        
+        if (activitats != null) {
+            int numActivitats = activitats.getNumElements();
+            valoracioActivitats = new String[numActivitats];
+            
+            for (int i = 0; i < numActivitats; i++) {
+                Inscripcions inscripcio = activitats.getInscripcionsPos(i);
+                String valoracioString = "0.0";  // Valor per defecte
+                
+                if (inscripcio != null) {
+                    LlistaUsuaris usuarisActivitat = inscripcio.getLlistaInscrits();
+                    double total = 0;
+                    int nValoracions = 0;
+                    
+                    // Calcular suma de valoracions
+                    for (int j = 0; j < usuarisActivitat.getnUsuaris(); j++) {
+                        Usuaris usuari = usuarisActivitat.getUsuarisPos(j);
+                        Integer val = usuarisActivitat.getValoracioUsuari(usuari, inscripcio);
+                        
+                        if (val != null) {
+                            total += val;
+                            nValoracions++;
+                        }
+                    }
+                    
+                    // Calcular mitjana
+                    double mitjana = 0;
+                    if (nValoracions > 0) {
+                        mitjana = total / nValoracions;
+                    }
+                    
+                    Activitats activitat = inscripcio.getActivitat();
+                    valoracioString = activitat.getNomActivitat() + ": " + String.format("%.2f", mitjana);
+                }
+                
+                valoracioActivitats[i] = valoracioString;
+            }
+        }
+        
+        return valoracioActivitats;
+    }
+
+
+    public Inscripcions[] getInscripcio(){
+        return this.inscripcions;
+    }
+
+    public int getNumElements(){
+        return numElem;
     }
      
     //metode per obtenir les inscripcions d'una activitat

@@ -88,6 +88,54 @@ public class LlistaActivitats {
     }
 
     
+    public Activitats getActivitatPos(int i){
+        return llista[i];
+    }
+
+    /**
+     * Mètode que fa una llista amb totes les activitats acabades
+     * Programadora: Aina Garcia Albesa
+     * @param llista
+     * @return llista de les activitats que ho estan
+     */
+    public LlistaActivitats actAcabades(LlistaInscripcio llista){
+        LlistaActivitats activitatsAcabades= new LlistaActivitats(numElements);
+        for (int i=0; i<llista.getNumElements(); i++ ){
+            Inscripcions inscripcio=llista.getInscripcionsPos(i);
+            if (inscripcio.getActivitat().haFinalitzat()){
+                Activitats activitat=inscripcio.getActivitat();
+                activitatsAcabades.afegir(activitat);
+            }
+        }
+        return activitatsAcabades;
+    /*NUEVO*/
+    public Activitats trobaActivitat(String nomActivitat){
+        Activitats informacioActivitat = null;
+        int i=0;
+        boolean trobat=false;
+        while ((i<numElements) && (!trobat)){
+            if (this.llista[i].getNomActivitat().equals(nomActivitat)){
+                trobat=true;
+                informacioActivitat=this.llista[i].copia();
+            }
+            i++;
+        }
+        return informacioActivitat;
+    }
+
+    /*NUEVO */
+    public boolean hiHaActivitat(String nomActivitat){
+        int i=0;
+        boolean trobat=false;
+        while ((i<numElements) && (!trobat)){
+            if (this.llista[i].getNomActivitat().equals(nomActivitat)){
+                trobat=true;
+            }
+            i++;
+        }
+        return trobat;
+    }
+
     public Activitats getActivitatsPos(int i){
         return llista[i];
     }

@@ -62,6 +62,8 @@ public class Inscripcions implements Serializable {
     }
 
     private LlistaUsuaris espera;
+    private int[] valoracions;
+    int numValoracions;
 
     private String[] usuarisValorats;
     private int[] valors;
@@ -91,7 +93,8 @@ public class Inscripcions implements Serializable {
             numEspera++;
         }
     }
-    public void eliminaDeActivitat(Usuari u){
+
+  public void eliminaDeActivitat(Usuari u){
         inscrits.elimina(u);
         if (numInscrits > 0) numInscrits--;
 
@@ -105,7 +108,29 @@ public class Inscripcions implements Serializable {
         }
     }
 
-    
+    public void puntuar(double puntuacio, Usuari usuari){
+        
+        // Comprovem que la puntuació sigui vàlida
+        boolean puntuacioValida = puntuacio >= 0 && puntuacio <= 10;
+
+        if (puntuacioValida) {
+            boolean isInscrit = false;
+            int i = 0;
+            
+            // Bucle de cerca de l'usuari
+            while (i < inscrits.getnUsuaris() && !isInscrit) {
+                if (inscrits.getUsuarisPos(i) == usuari) {
+                    isInscrit = true;
+                }
+                i++;
+            }
+            
+            if (isInscrit) {
+                    this.valoracio = (int) (puntuacio + 0.5);
+            }
+        }
+    }
+
     //getters y setters
     public Activitats getActivitat() {
         return activitat;
@@ -121,6 +146,50 @@ public class Inscripcions implements Serializable {
 
     public void setValoracio(Integer valoracio) {
         this.valoracio = valoracio;
+    } 
+
+
+    public LlistaUsuaris getLlistaDeEspera() {
+        return espera;
+    }
+
+    public int[] getValoracions() {
+        int[] copia = new int[numInscrits];
+        for (int i = 0; i < numInscrits; i++) {
+            copia[i] = valoracions[i];
+        }
+        return copia;
+    }
+
+    /**
+     * Mètode que et dona la valoració d'un usuari
+     * Programadora: Aina Garcia Albesa
+     * @param usuari
+     * @return valoració d'un usuari (entera)
+     */
+    public Integer getValoracioUsuari(Usuari usuari) {
+        Integer resultat = null;
+        
+        if (usuari != null && inscrits != null) {
+            int i = 0;
+            boolean trobat = false;
+            
+            // Buscar si l'usuari està inscrit
+            while (i < inscrits.getnUsuaris() && !trobat) {
+                Usuari u = inscrits.getUsuarisPos(i);
+                if (u != null && u.getAlies().equals(usuari.getAlies())) {
+                    trobat = true;
+                }
+                i++;
+            }
+            
+            // Si està inscrit, retornar la valoració
+            if (trobat) {
+                resultat = this.valoracio;
+            }
+        }
+        
+        return resultat; 
     }
 
     public LlistaUsuaris getInscrits() {
