@@ -6,10 +6,10 @@ public class ActivitatsOnline extends Activitats{
     private LocalDate dataIni;
     private int periode;
 
-    public ActivitatsOnline(String n, boolean PDI, boolean PTGAS, boolean Estud, LocalDate dataI, LocalDate dataF, String enlla, LocalDate inici, int perio){
+    public ActivitatsOnline(String n, boolean PDI, boolean PTGAS, boolean Estud, LocalDate dataI, LocalDate dataF, String enlla, int perio){
         super(n, PDI, PTGAS, Estud, dataI, dataF);
         enllaç=enlla; 
-        inici=dataIni; 
+        dataI=dataIni; 
         this.periode=perio;
     }
 

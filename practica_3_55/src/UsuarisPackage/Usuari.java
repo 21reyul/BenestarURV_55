@@ -41,4 +41,22 @@ public class Usuari{
         return new Usuari(this.alies, this.correu);
     }
 
+    /* 
+    public String toStringUsuaris(){
+        return ("\\n" + "   Nom: " +this.getAlies()+"\\n");
+    }
+    */
+
+    
+    
+
+    
+
+    
+
+
+
+
+
+
 }

@@ -16,6 +16,25 @@ public class LlistaInscripcio{
     public LlistaInscripcio(int MAX) {
         inscripcions = new Inscripcions[MAX];
         numElem=0;
+   }
+    public void Afegir(Usuari u, Activitats a){
+        int i=0;
+        boolean trobat=false;
+        while(!trobat&&i<inscripcions.length){
+            if(inscripcions[i].getActivitat()==a){
+                trobat=true;
+            }
+            else{
+                i++;
+            }
+        }
+        if(trobat){
+            inscripcions[i].afegirActivitat(u);
+        }
+        else{
+            inscripcions[i]= new Inscripcions(a, 100);
+            inscripcions[i].afegirActivitat(u);
+        }
     }
     public Inscripcions getInscripcioPos(int i){
         return inscripcions[i];
@@ -57,6 +76,14 @@ public class LlistaInscripcio{
                 }
             }
         }
+    }
+
+    public Inscripcions[] getInscripcio(){
+        return this.inscripcions;
+    }
+
+    public int getNumElements(){
+        return numElem;
     }
      
     //metode per obtenir les inscripcions d'una activitat

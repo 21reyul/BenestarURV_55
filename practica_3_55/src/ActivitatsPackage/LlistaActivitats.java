@@ -49,6 +49,34 @@ public class LlistaActivitats {
         this.numElements = numElements;
     }
 
+    /*NUEVO*/
+    public Activitats trobaActivitat(String nomActivitat){
+        Activitats informacioActivitat = null;
+        int i=0;
+        boolean trobat=false;
+        while ((i<numElements) && (!trobat)){
+            if (this.llista[i].getNomActivitat().equals(nomActivitat)){
+                trobat=true;
+                informacioActivitat=this.llista[i].copia();
+            }
+            i++;
+        }
+        return informacioActivitat;
+    }
+
+    /*NUEVO */
+    public boolean hiHaActivitat(String nomActivitat){
+        int i=0;
+        boolean trobat=false;
+        while ((i<numElements) && (!trobat)){
+            if (this.llista[i].getNomActivitat().equals(nomActivitat)){
+                trobat=true;
+            }
+            i++;
+        }
+        return trobat;
+    }
+
     public Activitats getActivitatsPos(int i){
         return llista[i];
     }

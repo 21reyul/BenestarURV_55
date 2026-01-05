@@ -41,4 +41,5 @@ public class Ptgas extends Usuari{
         return ptgas;
     }
 
+
 }
