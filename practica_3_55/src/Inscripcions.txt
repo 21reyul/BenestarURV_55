@@ -1,0 +1,28 @@
+# nomActivitat;dniUsuari;valoracio
+Ioga;12345678A;-
+Ioga;87654321B;5
+Ioga;11111111C;4
+Ioga;33333333E;-
+Ioga;44444444F;3
+
+Pilates;22222222D;-
+Pilates;55555555G;4
+Pilates;66666666H;-
+Pilates;77777777I;5
+Pilates;88888888J;-
+
+Curs Python;99999999K;-
+Curs Python;10101010L;5
+Curs Python;12121212M;4
+Curs Python;13131313N;-
+Curs Python;14141414O;3
+
+Zumba;15151515P;-
+Zumba;16161616Q;5
+Zumba;17171717R;4
+Zumba;18181818S;-
+Zumba;19191919T;3
+
+Natacio;20202020U;-
+Natacio;21212121V;4
+
