@@ -107,6 +107,7 @@ public abstract class Activitats {
     public void setDataFi(LocalDate dataFi) {
         this.dataFi = dataFi;
     }
+    
 
     /**
      * ToString de la classe Activitats

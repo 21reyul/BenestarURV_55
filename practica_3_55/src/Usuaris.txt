@@ -1,0 +1,24 @@
+#TIPUS;ALIES;CORREU;CAMPUS;EXTRA
+PDI;12345678A;pdi1@urv.cat;Tarragona;Informatica
+PDI;23456789B;pdi2@urv.cat;Reus;Matematiques
+PDI;34567890C;pdi3@urv.cat;Tarragona;Fisica
+PDI;45678901D;pdi4@urv.cat;Reus;Quimica
+PDI;56789012E;pdi5@urv.cat;Tortosa;Economia
+PDI;67890123F;pdi6@urv.cat;Tarragona;Dret
+
+PTGAS;87654321B;ptgas1@urv.cat;Tarragona;-
+PTGAS;76543210C;ptgas2@urv.cat;Reus;-
+PTGAS;65432109D;ptgas3@urv.cat;Tortosa;-
+PTGAS;54321098E;ptgas4@urv.cat;Vilafranca;-
+PTGAS;43210987F;ptgas5@urv.cat;Tarragona;-
+PTGAS;32109876G;ptgas6@urv.cat;Reus;-
+
+EST;11111111A;est1@estudiants.urv.cat;Grau Informatica;2023
+EST;11111111B;est2@estudiants.urv.cat;Grau Informatica;2024
+EST;11111111C;est3@estudiants.urv.cat;Grau Disseny;2022
+EST;11111111D;est4@estudiants.urv.cat;Grau ADE;2021
+EST;11111111E;est5@estudiants.urv.cat;Grau Biologia;2023
+EST;11111111F;est6@estudiants.urv.cat;Grau Enginyeria;2020
+EST;11111111G;est7@estudiants.urv.cat;Grau Psicologia;2022
+EST;11111111H;est8@estudiants.urv.cat;Grau Educacio;2024
+

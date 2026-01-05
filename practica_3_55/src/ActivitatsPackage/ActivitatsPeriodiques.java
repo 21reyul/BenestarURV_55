@@ -10,7 +10,7 @@ public class ActivitatsPeriodiques extends Activitats{
     private double preu;
 
     public ActivitatsPeriodiques(String n, boolean PDI, boolean PTGAS, boolean Estud, LocalDate dataI, LocalDate dataF, String diaDeLaSemana, String nomCentre, String ciutat, LocalTime hora,
-             int numSetmanes, int limitPlaces, double preu) {
+            int numSetmanes, int limitPlaces, double preu) {
         super(n, PDI, PTGAS, Estud, dataI, dataF);
         this.diaDeLaSemana = diaDeLaSemana;
         this.nomCentre = nomCentre;

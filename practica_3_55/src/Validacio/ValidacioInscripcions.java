@@ -12,7 +12,8 @@ import UsuarisPackage.*;
 public class ValidacioInscripcions {
     public static void main(String[] args) throws Exception {
         ActivitatsPeriodiques actPer1 = new ActivitatsPeriodiques("Curs B2 d'angles per a estudiants", false, false, true, LocalDate.of(2025, 9, 5) , 
-                                                LocalDate.of(2025, 9, 22), "dijous", "Campus Catalunya", "Tarragona", LocalTime.of(17, 30), null, 0, 0, 0);
+                                                LocalDate.of(2025, 9, 22), "dijous", "Campus Catalunya", "Tarragona", LocalTime.of(17, 30), 
+                                                 20, 25, 100.0);
             
         ActivitatsUnDia actDia2 = new ActivitatsUnDia("Senderisme", true, true, true, LocalDate.of(2025, 12, 2), 
                                                 LocalDate.of(2025, 12, 9), 40, 10.0, "Amposta", LocalTime.of(10, 0)); 
@@ -22,6 +23,11 @@ public class ValidacioInscripcions {
 
         // getters
         System.out.println("Informacio inscripcio 1 inicial =>\n Places = " + inscripcio1.getNumPlaces() + 
+                            "\n Activitat = " + inscripcio1.getActivitat().getNomActivitat() +
+                            "\n MAX = " + Inscripcions.getMAX() + "\n");
+        
+        System.out.println("Informacio inscripcio 2 inicial =>\n Places = " + inscripcio2.getNumPlaces() + 
+                            "\n Activitat = " + inscripcio2.getActivitat().getNomActivitat() +
                             "\n Activitat = " + Inscripcions.getNumInscrits().getNomActivitat() +
                             "\n MAX = " + Inscripcions.getMAX() + "\n");
         
@@ -77,19 +83,17 @@ public class ValidacioInscripcions {
         // Mostrem estat actual
         System.out.println("\nEstat actual de l'inscripció 1:");
         System.out.println("Places: " + inscripcio1.getNumPlaces());
-        System.out.println("Llista inscrits: " + inscripcio1.getLlistaInscrits());
-        System.out.println("Llista d'espera: " + inscripcio1.getLlistaDeEspera());
-    }
+        System.out.println("Llista inscrits: " + inscripcio1.getInscrits());
+        System.out.println("Llista d'espera: " + inscripcio1.getEspera());
 
     private static void validacioEliminaDeActivitat(Inscripcions inscripcio1, Usuari usuari1){
         System.out.println("\n=== PROVA DE BAIXA ===");
         System.out.println("Donem de baixa a l'usuari 1:");
         inscripcio1.eliminaDeActivitat(usuari1); // S'executarà la baixa i es promocionarà PTGASEspera
         
-        System.out.println("\nEstat després de la baixa (usuariEspera promocionat):");
-        System.out.println("Llista inscrits: " + inscripcio1.getLlistaInscrits());
-        System.out.println("Llista d'espera: " + inscripcio1.getLlistaDeEspera());
-    }
+        System.out.println("\nEstat després de la baixa:");
+        System.out.println("Llista inscrits: " + inscripcio1.getInscrits());
+        System.out.println("Llista d'espera: " + inscripcio1.getEspera());
 
     private static void validacioPuntuar(Inscripcions inscripcio1, Usuari usuari1, Usuari usuari2, Usuari usuari3){
         System.out.println("\n=== PROVA DE PUNTUACIÓ  ===");

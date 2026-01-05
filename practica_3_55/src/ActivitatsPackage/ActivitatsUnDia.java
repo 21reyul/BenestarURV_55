@@ -47,8 +47,9 @@ public class ActivitatsUnDia extends Activitats{
 
     @Override
     public String toString() {
-        return "ActivitatsUnDia [hora=" + hora + ", places=" + limitPlaces + ", preu=" + preu + ", ciutat=" + ciutat
-                + ", NomActivitat()=" + getNomActivitat() + ", Data()=" + getDataIni() + "]";
+        return "ActivitatsUnDia [hora=" + hora + ", limitplaces=" + limitPlaces + ", preu=" + preu + ", ciutat="
+                + ciutat + "nom:" +getNomActivitat()+ "]";
     }
+
 
 }

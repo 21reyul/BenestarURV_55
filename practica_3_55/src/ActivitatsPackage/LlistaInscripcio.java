@@ -1,94 +1,127 @@
 package ActivitatsPackage;
+import java.time.LocalDate;
+
 import UsuarisPackage.*;
 
-public class LlistaInscripcio{
+public class LlistaInscripcio {
     private Inscripcions[] inscripcions;
     private int numElem;
 
-    public int getNumElem() {
-        return numElem;
-    }
-
-    public void setNumElem(int numElem) {
-        this.numElem = numElem;
-    }
-
     public LlistaInscripcio(int MAX) {
         inscripcions = new Inscripcions[MAX];
-        numElem=0;
-   }
-
-    public int getNumElements(){
-        return this.numElem;
+        numElem = 0;
     }
 
-    public Inscripcions getInscripcionsPos(int i) {
-        if (i >= 0 && i < numElem) {
-            return inscripcions[i];
+    private int posicioActivitat(Activitats a) {
+        for (int i = 0; i < numElem; i++) {
+            if (inscripcions[i].getActivitat() == a) return i;
         }
-        return null;
-    }   
-
-    /**
-     * Getter de l'activitat en la posició determinada d'una llista
-     * @param i posició
-     * @return activitat
-     */
-    public Activitats getLlistaInscritsPos(int i){
-        return this.inscripcions[i].getActivitat();
-    }
-    
-    /**
-     * Getter dels usuaris inscrits en una activitat
-     * @param i
-     * @return llista d'usuaris inscrits en una activitat
-     */
-    public LlistaUsuaris getLlistaUsuarisInscrits(int i){ 
-        return this.inscripcions[i].getLlistaInscrits();
+        return -1;
     }
 
-    public void afegir(Usuari u, Activitats a){
-        int i=0;
-        boolean trobat=false;
-        while(!trobat&&i<inscripcions.length){
-            if(inscripcions[i].getActivitat()==a){
-                trobat=true;
+    public void afegir(Usuari u, Activitats a) {
+        int pos = posicioActivitat(a);
+
+        if (pos != -1) {
+            inscripcions[pos].inscriures(u);
+            return;
+        }
+
+        // no existeix inscripció per aquesta activitat
+        inscripcions[numElem] = new Inscripcions(a, 100);
+        inscripcions[numElem].inscriures(u);
+        numElem++;
+    }
+
+    public void eliminar(Usuari u, Activitats a) {
+        int pos = posicioActivitat(a);
+        if (pos != -1) {
+            inscripcions[pos].eliminaDeActivitat(u);
+        }
+    }
+
+    public void Elimina(Inscripcions inscripcio) {
+        int pos = -1;
+        for (int i = 0; i < numElem; i++) {
+            if (inscripcions[i] == inscripcio) { pos = i; break; }
+        }
+        if (pos == -1) return;
+
+        for (int j = pos; j < numElem - 1; j++) {
+            inscripcions[j] = inscripcions[j + 1];
+        }
+        inscripcions[numElem - 1] = null;
+        numElem--;
+    }
+
+    public LlistaActivitats ActivitatsPertanyUsuari(Usuari u) {
+        LlistaActivitats activitats = new LlistaActivitats(numElem);
+
+        for (int i = 0; i < numElem; i++) {
+            LlistaUsuaris apuntats = inscripcions[i].getInscrits();
+            boolean trobat = apuntats.BuscarUsuari(u);
+            if (trobat) activitats.afegir(inscripcions[i].getActivitat());
+        }
+        return activitats;
+    }
+
+    public void DonarDeBaixaActivitat(LocalDate dataAvui) {
+        LocalDate avui = dataAvui;
+
+        for (int i = numElem - 1; i >= 0; i--) {
+            boolean acabada = avui.isAfter(inscripcions[i].getActivitat().getDataFi());
+            if (!acabada) continue;
+
+            boolean donarBaixa = false;
+
+            if (!(inscripcions[i].getActivitat() instanceof ActivitatsOnline)) {
+                double percentatge = (double) inscripcions[i].getNumInscrits() / inscripcions[i].getNumPlaces();
+                if (percentatge < 0.10) donarBaixa = true;
+            } else {
+                if (inscripcions[i].getNumInscrits() < 20) donarBaixa = true;
             }
-            else{
-                i++;
+
+            if (donarBaixa) Elimina(inscripcions[i]);
+        }
+    }
+
+    public boolean tePlaces(Activitats a) {
+        // Online: sempre places segons enunciat
+        if (a instanceof ActivitatsOnline) return true;
+
+        for (int i = 0; i < numElem; i++) {
+            if (inscripcions[i] != null && inscripcions[i].getActivitat() == a) {
+                return inscripcions[i].getNumInscrits() < inscripcions[i].getNumPlaces();
             }
         }
-        if(trobat){
-            inscripcions[i].inscriures(u);
-        }
-        else{
-            inscripcions[i]= new Inscripcions(a, 100);
-            inscripcions[i].inscriures(u);
-        }
+
+        // Si encara no hi ha "Inscripcions" creada per aquesta activitat,
+        // vol dir que ningú s'hi ha inscrit: per tant hi ha places
+        return true;
     }
     public Inscripcions getInscripcioPos(int i){
         return inscripcions[i];
     }
 
-    //metode que elimina un usuari d'una activitat
-    public void eliminar(Usuari u, Activitats a){
-        for(int i = 0; i < numElem; i++){
-            if(inscripcions[i] != null && inscripcions[i].getActivitat().equals(a)){
-                inscripcions[i].EliminaDeActivitat(u);
 
-                if(inscripcions[i].getNumInscrits() == 0 && inscripcions[i].getNumEspera() == 0){
-                    //eliminem l'element i movem tots els elements una posicio endavant
-                    for(int j = i; j < numElem - 1; j++){
-                        inscripcions[j] = inscripcions[j+1];
-                    }
-                    inscripcions[numElem-1] = null;
-                    numElem--;
-                    i--; 
-                }
+
+    public void posarValoracio(Activitats act, Usuari u, int valoracio) {
+        for (int i = 0; i < numElem; i++) {
+            if (inscripcions[i].getActivitat() == act) {
+                inscripcions[i].setValoracioUsuari(u, valoracio);
+                return;
             }
         }
     }
 
+    public Integer getValoracioUsuariEnActivitat(Activitats act, Usuari u) {
+        for (int i = 0; i < numElem; i++) {
+            if (inscripcions[i].getActivitat() == act) {
+                return inscripcions[i].getValoracioUsuari(u);
+            }
+        }
+        return null;
+    }
     /**
      * Mètode que fa un resum de les valoracions de les activitats
      * d'una llista
@@ -202,4 +235,5 @@ public class LlistaInscripcio{
         return sb.toString();
     }
 }
+
 

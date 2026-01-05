@@ -45,6 +45,13 @@ public class LlistaUsuaris {
         }
     }
 
+    public boolean BuscarUsuari(Usuari u){
+        for (int i = 0; i < nUsuaris; i++){
+            if (llistaUsuaris[i].equals(u)) return true;
+        }
+        return false;
+    }
+
     //getter i setter
     public int getnUsuaris() {
         return nUsuaris;
