@@ -21,11 +21,11 @@ public class LlistaInscripcio{
             }
         }
         if(trobat){
-            inscripcions[i].afegirAActivitat(u);
+            inscripcions[i].afegirActivitat(u);
         }
         else{
             inscripcions[i]= new Inscripcions(a, 100);
-            inscripcions[i].afegirAActivitat(u);
+            inscripcions[i].afegirActivitat(u);
         }
     }
     public void eliminar(Usuaris u, Activitats a){
@@ -56,6 +56,18 @@ public class LlistaInscripcio{
                 numElem--;
             }
         }
+    }
+
+    public Inscripcions[] getInscripcio(){
+        return this.inscripcions;
+    }
+
+    public int getNumElements(){
+        return numElem;
+    }
+
+    public Inscripcions getInscripcioPos(int pos) {
+        return inscripcions[pos];
     }
 }
 

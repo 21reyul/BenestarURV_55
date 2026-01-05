@@ -65,5 +65,24 @@ public class Activitats {
                 + Estudiants + ", dataINI=" + dataINI + ", dataFi=" + dataFi + "]";
     }
 
+    public Activitats copia(){
+        Activitats activitat= new Activitats(this.nomActivitat, this.PDI, this.PTGAS, this.Estudiants, this.dataINI, this.dataFi);
+        return activitat;
+    }
+
+    public boolean esPerA(String colectiu) { 
+        boolean es=false;
+        if (colectiu.equals("PDI") && this.PDI==true){
+            es=true;
+        }
+        else if (colectiu.equals("PTGAS") && this.PTGAS==true){
+            es=true;
+        }
+        else if (colectiu.equals("estudiants") && this.Estudiants==true){
+            es=true;
+        }
+        return es;
+    }
+
 
 }

@@ -38,6 +38,12 @@ public class Usuaris {
         throw new UnsupportedOperationException("Unimplemented method 'getNomDept'");
     }
 
+    /* 
+    public String toStringUsuaris(){
+        return ("\\n" + "   Nom: " +this.getAlies()+"\\n");
+    }
+    */
+
     
     
 

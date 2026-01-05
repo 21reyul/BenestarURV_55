@@ -3,6 +3,7 @@ package Validacio;
 import UsuarisPackage.Estudiants;
 import UsuarisPackage.PDI;
 import UsuarisPackage.PTGAS;
+import UsuarisPackage.Usuaris;
 
 /*Programadora: Cristina Cozma */
 /*Programadora: Judit Carles Pallares */
@@ -61,6 +62,8 @@ public class ValidacioUsuaris {
         PTGAS ptgas3=ptgas1.copia();
         System.out.println("Copia de estudiant 1 a estudaint 3 => "+ptgas3.toString());
 
+
+        
     }
     
 }
