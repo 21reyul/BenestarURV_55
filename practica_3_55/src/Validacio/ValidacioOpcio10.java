@@ -19,7 +19,7 @@ public class ValidacioOpcio10 {
 
         Inscripcions ins = new Inscripcions(taller, 1);
 
-        // Mirem si l'usuari existeix i si és així l'inscrivim si hi ha places.
+        // Mirem si l'usuari existeix i si és així l'inscrivim, si hi ha places.
         System.out.println("\nVerificant si " + usuari1.getAlies() + " està inscrit...");
         
         if (estaInscrit(ins, usuari1)) {
