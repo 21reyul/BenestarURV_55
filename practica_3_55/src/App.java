@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 import ActivitatsPackage.*;
 import Exception.*;
+import Lectors.LectorActivitats;
+import Lectors.LectorInscripcions;
+import Lectors.LectorUsuaris;
 import UsuarisPackage.*;
 
 public class App {
