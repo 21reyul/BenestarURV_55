@@ -33,10 +33,10 @@ public class LlistaUsuaris {
     public void elimina(Usuari a){
         for(int i=0; i<nUsuaris; i++){
             if(llistaUsuaris[i].equals(a)){
-                for(int j=i; j<nUsuaris-1; i--){//la meitat superior de la taula que queda, la movem una posicio cap endavant
+                for(int j=i; j<nUsuaris-1; j++){//la meitat superior de la taula que queda, la movem una posicio cap endavant
                     llistaUsuaris[j]=llistaUsuaris[j+1];
                 }
-                llistaUsuaris[i-1]=null;
+                llistaUsuaris[nUsuaris-1]=null;
                 nUsuaris--;
             }
         }
@@ -77,9 +77,6 @@ public class LlistaUsuaris {
         this.llistaUsuaris = llistaUsuaris;
     }
     
-
-
-
     //toString de la llista d'usuaris
     @Override
     public String toString() {

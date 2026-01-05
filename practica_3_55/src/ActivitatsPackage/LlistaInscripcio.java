@@ -43,7 +43,7 @@ public class LlistaInscripcio{
     //metode que elimina un usuari d'una activitat
     public void eliminar(Usuari u, Activitats a){
         for(int i = 0; i < numElem; i++){
-            if(inscripcions[i] != null && inscripcions[i].getActivitat() == a){
+            if(inscripcions[i] != null && inscripcions[i].getActivitat().equals(a)){
                 inscripcions[i].EliminaDeActivitat(u);
 
                 if(inscripcions[i].getNumInscrits() == 0 && inscripcions[i].getNumEspera() == 0){
@@ -101,26 +101,15 @@ public class LlistaInscripcio{
     //toString de la llista d'inscripcions
     @Override
     public String toString() {
-        String resultat = "LLISTA D'INSCRIPCIONS;\n";
-        for (int i = 0; i < numElem; i++) {
-            Inscripcions ins = inscripcions[i];
-            resultat = resultat + (i + 1) + ". Activitat: " + ins.getActivitat().getNomActivitat() + "\n";
-            resultat = resultat + "   -> Inscrits (" + ins.getNumInscrits() + "): ";
-            for (int j = 0; j < ins.getNumInscrits(); j++) {
-                resultat = resultat + ins.getInscrit(j).getAlies();
-                if (j < ins.getNumInscrits() - 1) resultat = resultat + ", ";
-            }
-            resultat = resultat + "\n";
-            resultat = resultat + "   -> En espera (" + ins.getNumEspera() + "): ";
-            for (int j = 0; j < ins.getNumEspera(); j++) {
-                resultat = resultat + ins.getEspera(j).getAlies();
-                if (j < ins.getNumEspera() - 1) resultat = resultat + ", ";
-            }
-            resultat = resultat + "\n";
-        }
-        if (numElem == 0) resultat = resultat + "La llista d'inscripcions esta buida\n";
-        return resultat;
-    }
+        if(numElem == 0) return "La llista d'inscripcions està buida\n";
 
+        StringBuilder sb = new StringBuilder("LLISTA D'INSCRIPCIONS;\n");
+        for(int i = 0; i < numElem; i++) {
+            if(inscripcions[i] != null) {
+                sb.append(i + 1).append(". ").append(inscripcions[i].toString());
+            }
+        }
+        return sb.toString();
+    }
 }
 

@@ -34,6 +34,9 @@ public class Usuari{
         this.correu = correu;
     }
 
+    /**METODE COPIA
+     * Retorna una nstancia del matix tipus amb les mateixes dades
+     */
     public Usuari copia() {
         return new Usuari(this.alies, this.correu);
     }

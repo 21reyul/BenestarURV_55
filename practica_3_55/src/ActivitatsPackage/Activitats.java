@@ -1,5 +1,6 @@
 package ActivitatsPackage;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Activitats {
     private String nomActivitat;
@@ -70,5 +71,12 @@ public class Activitats {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'copia'");
     }
+
+    //comprobar si l'activitat ha acabat
+    public boolean haAcabat(){
+        return LocalDate.now().isAfter(dataFi);
+    }
+
+
 
 }

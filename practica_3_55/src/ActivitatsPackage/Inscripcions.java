@@ -9,6 +9,8 @@ public class Inscripcions implements Serializable {
     private Integer valoracio; // null si no ha valorat
     private int numPlaces, numInscrits, numEspera;
    
+ 
+
     public int getNumPlaces() {
         return numPlaces;
     }
@@ -64,7 +66,7 @@ public class Inscripcions implements Serializable {
 
     public Inscripcions(Activitats a, int numPlaces) {
         this.activitat = a;
-        this.valoracio = null;
+        this.valoracio = 0;
         this.numPlaces = numPlaces;
         inscrits = new LlistaUsuaris(numPlaces);
         espera = new LlistaUsuaris(100);
@@ -104,5 +106,22 @@ public class Inscripcions implements Serializable {
 
     public void setValoracio(Integer valoracio) {
         this.valoracio = valoracio;
+    }
+
+    @Override
+    public String toString() {
+    String result = "Activitat: " + this.getActivitat().getNomActivitat() + "\n";
+    result += "-> Inscrits (" + this.getNumInscrits() + "): ";
+    for (int i = 0; i < this.getNumInscrits(); i++) {
+        result += this.getInscrit(i).getAlies();
+        if (i < this.getNumInscrits() - 1) result += ", ";
+    }
+    result += "\n-> En espera (" + this.getNumEspera() + "): ";
+    for (int i = 0; i < this.getNumEspera(); i++) {
+        result += this.getEspera(i).getAlies();
+        if (i < this.getNumEspera() - 1) result += ", ";
+    }
+    result += "\n";
+    return result;
     }
 }

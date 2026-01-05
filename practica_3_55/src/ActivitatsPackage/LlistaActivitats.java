@@ -20,18 +20,22 @@ public class LlistaActivitats {
     }
 
     public void elimina(Activitats a){
-        boolean trobat=false;
-        int i=0;
-        while(!trobat){
-            if(llista[i]==a){
-                trobat=true;
-                for(int j=i; j<numElements; j++){
-                    llista[j]=llista[j+1];
+        boolean trobat = false;
+        for (int i = 0; i < numElements; i++) {
+            if (llista[i].equals(a)) {
+                trobat = true;
+                for (int j = i; j < numElements - 1; j++) {
+                    llista[j] = llista[j + 1];
                 }
+                llista[numElements - 1] = null;
                 numElements--;
             }
         }
+        if (!trobat) {
+            System.out.println("L'activitat no existeix a la llista.");
+        }
     }
+
 
     public void setLlista(Activitats[] llista) {
         this.llista = llista;
@@ -67,7 +71,7 @@ public class LlistaActivitats {
     //metode que retorna l'activitat segons el nom
     public Activitats getActivitatPerNom(String nom) {
         for (int i = 0; i < numElements; i++) {
-            if (llista[i].getNomActivitat().equals(nom)) {
+            if (llista[i].getNomActivitat().equalsIgnoreCase(nom)) {
                 return llista[i];
             }
         }
