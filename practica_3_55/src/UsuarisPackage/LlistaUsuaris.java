@@ -21,32 +21,25 @@ public class LlistaUsuaris {
         nUsuaris++;
     }
 
-    public void Elimina(Usuaris a){
-        boolean trobat=false;
-        int i=0;
-        while(!trobat){
-            if(llistaUsuaris[i]==a){
-                trobat=true;
-                for(int j=i; j<nUsuaris; j++){
-                    llistaUsuaris[j]=llistaUsuaris[j+1];
-                }
-                nUsuaris--;
-            }
+    public void Elimina(Usuaris u){
+        int pos = -1;
+        for (int i = 0; i < nUsuaris; i++){
+            if (llistaUsuaris[i].equals(u)) { pos = i; break; }
         }
+        if (pos == -1) return;
+
+        for (int j = pos; j < nUsuaris - 1; j++){
+            llistaUsuaris[j] = llistaUsuaris[j + 1];
+        }
+        llistaUsuaris[nUsuaris - 1] = null;
+        nUsuaris--;
     }
 
     public boolean BuscarUsuari(Usuaris u){
-        boolean trobat = false;
-        int i=0;
-        do{
-            if(llistaUsuaris[i].equals(u)){
-                trobat=true;
-            }
-            else{
-                i++;
-            }
-        }while(!trobat&&i<nUsuaris);
-        return(trobat);
+        for (int i = 0; i < nUsuaris; i++){
+            if (llistaUsuaris[i].equals(u)) return true;
+        }
+        return false;
     }
     //getter i setter
     public int getnUsuaris() {

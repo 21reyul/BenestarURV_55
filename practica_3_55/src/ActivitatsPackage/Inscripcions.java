@@ -12,13 +12,22 @@ public class Inscripcions implements Serializable {
     private LlistaUsuaris inscrits;
     private LlistaUsuaris espera;
 
+    private String[] usuarisValorats;
+    private int[] valors;
+    private int nValoracions;
+
     public Inscripcions(Activitats a, int numPlaces) {
         this.activitat = a;
         this.valoracio = null;
+        this.numPlaces=numPlaces;
         inscrits = new LlistaUsuaris(numPlaces);
         espera = new LlistaUsuaris(100);
         numInscrits=0;
         numEspera=0;
+
+        usuarisValorats = new String[numPlaces + 200];
+        valors = new int[numPlaces + 200];
+        nValoracions = 0;
     }
 
     public void afegirActivitat(Usuaris u){
@@ -33,10 +42,18 @@ public class Inscripcions implements Serializable {
     }
     public void EliminaDeActivitat(Usuaris u){
         inscrits.Elimina(u);
-        Usuaris a = espera.getUsuarisPos(0);
-        inscrits.Afegir(a);
-        espera.Elimina(a);
+        if (numInscrits > 0) numInscrits--;
+
+        if (numEspera > 0) {
+            Usuaris primer = espera.getUsuarisPos(0);
+            espera.Elimina(primer);
+            numEspera--;
+
+            inscrits.Afegir(primer);
+            numInscrits++;
+        }
     }
+
     
     //getters y setters
     public Activitats getActivitat() {
@@ -93,5 +110,31 @@ public class Inscripcions implements Serializable {
 
     public void setNumEspera(int numEspera) {
         this.numEspera = numEspera;
-    } 
+    }
+
+    public void setValoracioUsuari(Usuaris u, int valoracio) {
+        String id = u.getAlies();
+        for (int i = 0; i < nValoracions; i++) {
+            if (usuarisValorats[i].equalsIgnoreCase(id)) {
+                valors[i] = valoracio;
+                return;
+            }
+        }
+        if (nValoracions < usuarisValorats.length) {
+            usuarisValorats[nValoracions] = id;
+            valors[nValoracions] = valoracio;
+            nValoracions++;
+        }
+    }
+
+    public Integer getValoracioUsuari(Usuaris u) {
+        String id = u.getAlies();
+        for (int i = 0; i < nValoracions; i++) {
+            if (usuarisValorats[i].equalsIgnoreCase(id)) {
+                return valors[i];
+            }
+        }
+        return null; // no ha valorat o no existeix
+    }
+
 }

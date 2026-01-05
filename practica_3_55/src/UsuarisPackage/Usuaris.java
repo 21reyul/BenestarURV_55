@@ -1,6 +1,6 @@
 package UsuarisPackage;
 
-import ActivitatsPackage.LlistaActivitats;
+import java.util.Objects;
 
 /**
  * CLASSE PARE USUARIS
@@ -18,39 +18,30 @@ public class Usuaris {
         this.correu = correu;
     }
 
-    //Getter i setters
-    public String getAlies(){
-        return alies;
-    }
-        
-    public String getCorreu(){
-        return correu;
-    }
-        
-    public void setAlies(String alies){
-        this.alies = alies;
-    }
-    
-    public void setCorreu(String correu){
-        this.correu = correu;
+    public String getAlies(){ return alies; }
+    public String getCorreu(){ return correu; }
+
+    public void setAlies(String alies){ this.alies = alies; }
+    public void setCorreu(String correu){ this.correu = correu; }
+
+    // IMPORTANT: comparar usuaris per alies (o DNI si ho uses així)
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (!(o instanceof Usuaris)) return false;
+        Usuaris other = (Usuaris) o;
+        return Objects.equals(this.alies, other.alies);
     }
 
-    public String getNomDept() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getNomDept'");
+    @Override
+    public int hashCode(){
+        return Objects.hash(alies);
     }
-
-    
-    
-    
-
-    
-
-    
-
-
-
-
-
-
 }
+
+
+    
+    
+    
+
+

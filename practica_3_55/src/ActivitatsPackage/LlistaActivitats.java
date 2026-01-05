@@ -1,8 +1,8 @@
 package ActivitatsPackage;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
-import UsuarisPackage.Usuaris;
 
 public class LlistaActivitats {
     private Activitats[] llista;
@@ -18,19 +18,24 @@ public class LlistaActivitats {
         numElements++;
     }
 
-    public void Elimina(Activitats a){
-        boolean trobat=false;
-        int i=0;
-        while(!trobat){
-            if(llista[i]==a){
-                trobat=true;
-                for(int j=i; j<numElements; j++){
-                    llista[j]=llista[j+1];
-                }
-                numElements--;
+    public void Elimina(Activitats a) {
+        int i = 0;
+        boolean trobat = false;
+
+        while (!trobat && i < numElements) {
+            if (llista[i] == a) trobat = true;
+            else i++;
+        }
+
+        if (trobat) {
+            for (int j = i; j < numElements - 1; j++) {
+                llista[j] = llista[j + 1];
             }
+            llista[numElements - 1] = null;
+            numElements--;
         }
     }
+
     public Activitats[] getLlista() {
         return llista;
     }
@@ -51,19 +56,7 @@ public class LlistaActivitats {
         return llista[i];
     }
 
-    public LlistaActivitats ActivitatsEncaraActives(){
-        LocalDate avui = LocalDate.now();
-        LlistaActivitats activitatsActives = new LlistaActivitats(numElements);
-        for(int i=0; i<numElements; i++){
-            if(avui.isBefore(llista[i].getDataFi())){
-                activitatsActives.Afegir(llista[i]);
-            }
-        }
-        return(activitatsActives);
-    }
-
-    public LlistaActivitats ActivitatsActives(){
-        LocalDate avui = LocalDate.now();
+    public LlistaActivitats ActivitatsEnPeriode(LocalDate avui){
         LlistaActivitats activitatsActives = new LlistaActivitats(numElements);
         for(int i=0; i<numElements; i++){
             if((llista[i].getDataINI().isBefore(avui)&&llista[i].getDataFi().isAfter(avui))||llista[i].getDataFi().isEqual(avui)||llista[i].getDataINI().isEqual(avui)){
@@ -71,6 +64,28 @@ public class LlistaActivitats {
             }
         }
         return(activitatsActives);
+    }
+
+    public LlistaActivitats ActivitatsActives(LocalDate avui){
+        LlistaActivitats activitatsActives = new LlistaActivitats(numElements);
+        for(int i=0; i<numElements; i++){
+            if((llista[i].getDataINI().isBefore(avui)&&llista[i].getDataFi().isAfter(avui))||llista[i].getDataFi().isEqual(avui)||llista[i].getDataINI().isEqual(avui)){
+                activitatsActives.Afegir(llista[i]);
+            }
+        }
+        return(activitatsActives);
+    }
+
+    public void MostrarNoms(){
+        System.out.println("Les activitats que estan actives avui:");
+        for(int i=0; i<numElements; i++){
+            System.out.println(llista[i].getNomActivitat());
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "LlistaActivitats [llista=" + Arrays.toString(llista) + "]";
     }
 
     

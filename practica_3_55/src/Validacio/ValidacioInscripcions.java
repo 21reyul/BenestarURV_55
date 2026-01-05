@@ -13,7 +13,7 @@ public class ValidacioInscripcions {
     public static void main(String[] args) throws Exception {
         ActivitatsPeriodiques actPer1 = new ActivitatsPeriodiques("Curs B2 d'angles per a estudiants", false, false, true, LocalDate.of(2025, 9, 5) , 
                                                 LocalDate.of(2025, 9, 22), "dijous", "Campus Catalunya", "Tarragona", LocalTime.of(17, 30), 
-                                                LocalDate.of(2025, 10, 15), 20, 25, 100.0);
+                                                 20, 25, 100.0);
             
         ActivitatsUnDia actDia2 = new ActivitatsUnDia("Senderisme", true, true, true, LocalDate.of(2025, 12, 2), 
                                                 LocalDate.of(2025, 12, 9), 40, 10.0, "Amposta", LocalTime.of(10, 0)); 

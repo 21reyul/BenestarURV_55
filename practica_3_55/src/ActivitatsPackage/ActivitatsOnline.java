@@ -9,7 +9,7 @@ public class ActivitatsOnline extends Activitats{
     public ActivitatsOnline(String n, boolean PDI, boolean PTGAS, boolean Estud, LocalDate dataI, LocalDate dataF, String enlla, LocalDate inici, int perio){
         super(n, PDI, PTGAS, Estud, dataI, dataF);
         enllaç=enlla; 
-        inici=dataIni; 
+        dataIni=inici; 
         this.periode=perio;
     }
 
