@@ -1,10 +1,5 @@
 package ActivitatsPackage;
-<<<<<<< HEAD
-import UsuarisPackage.LlistaUsuaris;
-import UsuarisPackage.Usuaris;
-=======
 import UsuarisPackage.*;
->>>>>>> main
 
 public class LlistaInscripcio{
     private Inscripcions[] inscripcions;
@@ -21,7 +16,6 @@ public class LlistaInscripcio{
     public LlistaInscripcio(int MAX) {
         inscripcions = new Inscripcions[MAX];
         numElem=0;
-<<<<<<< HEAD
    }
 
     public int getNumElements(){
@@ -53,7 +47,7 @@ public class LlistaInscripcio{
         return this.inscripcions[i].getLlistaInscrits();
     }
 
-    public void Afegir(Usuaris u, Activitats a){
+    public void afegir(Usuari u, Activitats a){
         int i=0;
         boolean trobat=false;
         while(!trobat&&i<inscripcions.length){
@@ -71,35 +65,9 @@ public class LlistaInscripcio{
             inscripcions[i]= new Inscripcions(a, 100);
             inscripcions[i].inscriures(u);
         }
-=======
->>>>>>> main
     }
     public Inscripcions getInscripcioPos(int i){
         return inscripcions[i];
-    }
-
-    public void afegir(Usuari u, Activitats a){
-        // Primer, buscar si ja existeix una inscripció per aquesta activitat
-        for(int i = 0; i < numElem; i++){
-            if(inscripcions[i].getActivitat() == a){
-                inscripcions[i].afegirActivitat(u);
-                return; // ja inscrit, sortim
-            }
-        }
-<<<<<<< HEAD
-        if(trobat){
-            inscripcions[i].eliminaDeActivitat(u);;
-=======
-
-        // Si no existeix, afegim una nova inscripció si hi ha espai
-        if(numElem < inscripcions.length){
-            inscripcions[numElem] = new Inscripcions(a, 100);
-            inscripcions[numElem].afegirActivitat(u);
-            numElem++;
-        } else {
-            System.out.println("No hi ha espai per afegir més inscripcions.");
->>>>>>> main
-        }
     }
 
     //metode que elimina un usuari d'una activitat
@@ -120,7 +88,6 @@ public class LlistaInscripcio{
             }
         }
     }
-<<<<<<< HEAD
 
     /**
      * Mètode que fa un resum de les valoracions de les activitats
@@ -173,7 +140,14 @@ public class LlistaInscripcio{
         return valoracioActivitats;
     }
 
-=======
+
+    public Inscripcions[] getInscripcio(){
+        return this.inscripcions;
+    }
+
+    public int getNumElements(){
+        return numElem;
+    }
      
     //metode per obtenir les inscripcions d'una activitat
     public Inscripcions getIncripcionsFromActivitat(Activitats act){
@@ -227,6 +201,5 @@ public class LlistaInscripcio{
         }
         return sb.toString();
     }
->>>>>>> main
 }
 

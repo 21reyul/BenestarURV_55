@@ -1,11 +1,5 @@
 package Validacio;
-import UsuarisPackage.Usuari;
-import UsuarisPackage.Estudiants;
-import UsuarisPackage.LlistaUsuaris;
-import UsuarisPackage.Pdi;
-import UsuarisPackage.Ptgas;
-
-
+import UsuarisPackage.*;
 /*Programadora: Cristina Cozma */
 /*Programadora: Judit Carles Pallares */
 
@@ -62,6 +56,9 @@ public class ValidacioUsuaris {
         System.out.println("ToString => "+ ptgas1.toString());
         Ptgas ptgas3=ptgas1.copia();
         System.out.println("Copia de estudiant 1 a estudaint 3 => "+ptgas3.toString());
+
+
+        
     }
 
 }

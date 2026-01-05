@@ -41,4 +41,22 @@ public abstract class Usuari{
         return this;
     }
 
+    /* 
+    public String toStringUsuaris(){
+        return ("\\n" + "   Nom: " +this.getAlies()+"\\n");
+    }
+    */
+
+    
+    
+
+    
+
+    
+
+
+
+
+
+
 }

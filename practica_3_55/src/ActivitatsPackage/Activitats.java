@@ -117,12 +117,6 @@ public abstract class Activitats {
                 + Estudiants + ", dataINI=" + dataIni + ", dataFi=" + dataFi + "]";
     }
 
-    //falta implementar
-    public Activitats copia() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'copia'");
-    }
-
     //comprobar si l'activitat ha acabat
     public boolean haAcabat(){
         return LocalDate.now().isAfter(dataFi);
@@ -138,6 +132,25 @@ public abstract class Activitats {
         LocalDate dataActual = LocalDate.now();
         return this.dataFi.isBefore(dataActual);
     }
+    public Activitats copia(){
+        Activitats activitat= new Activitats(this.nomActivitat, this.Pdi, this.Ptgas, this.Estudiants, this.dataIni, this.dataFi);
+        return activitat;
+    }
+
+    public boolean esPerA(String colectiu) { 
+        boolean es=false;
+        if (colectiu.equals("PDI") && this.Pdi==true){
+            es=true;
+        }
+        else if (colectiu.equals("PTGAS") && this.Ptgas==true){
+            es=true;
+        }
+        else if (colectiu.equals("estudiants") && this.Estudiants==true){
+            es=true;
+        }
+        return es;
+    }
+
 
 
 }
