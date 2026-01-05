@@ -39,18 +39,18 @@ public class LectorActivitats {
                 // Lógica para diferenciar tipos según número de columnas 
                 if (p.length == 13) { 
                     // PERIODIQUES: p[6]=dia, p[7]=centre, p[8]=ciutat, p[9]=hora, p[10]=setmanes, p[11]=places, p[12]=preu
-                    lista.Afegir(new ActivitatsPeriodiques(nom, pdi, ptgas, estud, dIni, dFi, p[6], p[7], p[8], LocalTime.parse(p[9], timeFormat),Integer.parseInt(p[10]), Integer.parseInt(p[11]), Double.parseDouble(p[12])));
+                    lista.afegir(new ActivitatsPeriodiques(nom, pdi, ptgas, estud, dIni, dFi, p[6], p[7], p[8], LocalTime.parse(p[9], timeFormat),Integer.parseInt(p[10]), Integer.parseInt(p[11]), Double.parseDouble(p[12])));
                 } 
                 else if (p.length == 10) {
                     // UN DIA: p[6]=places, p[7]=preu, p[8]=ciutat, p[9]=hora
-                    lista.Afegir(new ActivitatsUnDia(
+                    lista.afegir(new ActivitatsUnDia(
                         nom, pdi, ptgas, estud, dIni, dFi,
                         Integer.parseInt(p[6]), Double.parseDouble(p[7]), p[8], LocalTime.parse(p[9], timeFormat)
                     ));
                 } 
                 else if (p.length == 9) {
                     // ONLINE: p[6]=enllaç, p[7]=dataIniInterna, p[8]=periode
-                    lista.Afegir(new ActivitatsOnline(
+                    lista.afegir(new ActivitatsOnline(
                         nom, pdi, ptgas, estud, dIni, dFi,
                         p[6], LocalDate.parse(p[7], dateFormat), Integer.parseInt(p[8])
                     ));

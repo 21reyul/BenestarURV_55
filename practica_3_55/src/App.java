@@ -1,10 +1,11 @@
 import java.io.FileNotFoundException;
+import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 import ActivitatsPackage.*;
-import Exception.DataIncorrectaException;
-import Exception.GestorDates;
+import Exception.*;
 import UsuarisPackage.*;
 
 public class App {
@@ -12,6 +13,7 @@ public class App {
     static LlistaActivitats a;
     static LlistaInscripcio i;
     static LlistaUsuaris u;
+    private static LocalDate data = LocalDate.now();
     public static void main(String[] args) throws FileNotFoundException{
         boolean fi=false; 
         Scanner teclat = new Scanner(System.in);
@@ -51,7 +53,7 @@ public class App {
                     break;
 
                 case 7:
-                    opcio7();
+                    opcio7(a);
                     break;
 
                 case 8:
@@ -63,7 +65,7 @@ public class App {
                     break;
 
                 case 10:
-                    opcio10();
+                    opcio10(a, i, null);
                     break;
 
                 case 11:
@@ -75,15 +77,15 @@ public class App {
                     break;
 
                 case 13:
-                    opcio13();
+                    opcio13(a);
                     break;
 
                 case 14:
-                    opcio14();
+                    opcio14(a);
                     break;
 
                 case 15:
-                    opcio15();
+                    opcio15(a);
                     break;
 
                 case 16:
@@ -103,7 +105,7 @@ public class App {
                     break;
 
                 case 20:
-                    opcio20();
+                    opcio20(i);
                     break;
 
                 case 21:
@@ -374,7 +376,7 @@ public static void opcio1(){
      * Programadora: Aina Garcia Albesa
      * @param usuari
      */
-    private static void opcio10(Usuari usuari){ //TODO 1 importar fitxer per usuari
+    private static void opcio10(LlistaActivitats llistaActivitats, LlistaInscripcio llistaInscripcio, Usuari usuari){ //TODO 1 importar fitxer per usuari
         System.out.println("--- INSCRIPCIO A ALGUNA ACTIVITAT ---");
 
         Activitats[] activitats = mostrarActDisponiblesUsuari(llistaActivitats, usuari);
@@ -402,8 +404,8 @@ public static void opcio1(){
             // Buscar l'objecte Inscripcions d'aquella activitat
             Inscripcions ins = null;
             for (int i = 0; i < llistaInscripcio.getNumElements(); i++) {
-                if (llistaInscripcio.getInscripcionsPos(i).getActivitat().getNomActivitat().equals(act.getNomActivitat())) {
-                    ins = llistaInscripcio.getInscripcionsPos(i);
+                if (llistaInscripcio.getInscripcioPos(i).getActivitat().getNomActivitat().equals(act.getNomActivitat())) {
+                    ins = llistaInscripcio.getInscripcioPos(i);
                     break;
                 }
             }
@@ -572,7 +574,7 @@ public static void opcio1(){
         LocalTime temps13=introduirTemps();
 
         ActivitatsUnDia actUnDiaOpccio13 = new ActivitatsUnDia(nom13, pdiBoolea13, ptgasBoolea13, estudiantsBoolea13, dataIn13, dataFi13, nPlaces13, preu13, lloc13, temps13);
-        llistaActivitatsOpcio13.Afegir(actUnDiaOpccio13);
+        llistaActivitatsOpcio13.afegir(actUnDiaOpccio13);
     }
 
     /**
@@ -679,7 +681,7 @@ public static void opcio1(){
         }        
 
         ActivitatsPeriodiques actUnDiaOpccio14 = new ActivitatsPeriodiques(nom14, pdiBoolea14, ptgasBoolea14, estudiantsBoolea14, dataIn14, dataFi14, diasetmana14, nomCentre14, lloc14, temps14, nSetmanes14, nPlaces14, preu14);
-        llistaActivitatsOpcio14.Afegir(actUnDiaOpccio14);
+        llistaActivitatsOpcio14.afegir(actUnDiaOpccio14);
 
     }
 
@@ -744,7 +746,7 @@ public static void opcio1(){
         }        
 
         ActivitatsOnline actOnlineOpcio15 = new ActivitatsOnline(nom15, pdiBoolea15, ptgasBoolea15, estudiantsBoolea15, dataIn15, dataFi15, enllaç15, periode15);
-        llistaActivitatsOpcio15.Afegir(actOnlineOpcio15);
+        llistaActivitatsOpcio15.afegir(actOnlineOpcio15);
     }
 
     //valorar l'activitat per part de l'asistent
@@ -784,9 +786,9 @@ public static void opcio1(){
         // Obtenir la llista d'inscripcions de les activitats acabades
         LlistaInscripcio inscripcionsAcabades = new LlistaInscripcio(100);
         for (int i = 0; i < llistaInscripcions.getNumElements(); i++) {
-            Inscripcions inscripcio = llistaInscripcions.getInscripcionsPos(i);
+            Inscripcions inscripcio = llistaInscripcions.getInscripcioPos(i);
             if (inscripcio != null && inscripcio.getActivitat().haFinalitzat()) {
-                inscripcionsAcabades.Afegir(null, inscripcio.getActivitat()); // Es necessita un usuari, però el mètode no ho utilitza
+                inscripcionsAcabades.afegir(null, inscripcio.getActivitat()); // Es necessita un usuari, però el mètode no ho utilitza
             }
         }
 
@@ -855,7 +857,7 @@ public static void opcio1(){
             
             
         for(int i=0; i<llistaActs.getNumElements();i++){
-            for(int j=0; j<llistaIns.getNumElem();j++){
+            for(int j=0; j<llistaIns.getNumElements();j++){
                 Inscripcions ins = llistaIns.getInscripcioPos(i);
                 int v = ins.getValoracio();
                 if(v != 0){
@@ -919,7 +921,7 @@ public static void opcio1(){
         for (int i=0; i<inscripcions20.getNumElements(); i++){
             if (inscripcions20.getInscripcioPos(i).getActivitat().esPerA(colectiu20)==true) /* SI COLECTIU */
             {
-                llistacolectiu20.AfegirInscripcio(inscripcions20.getInscripcioPos(i));
+                llistacolectiu20.afegirInscripcio(inscripcions20.getInscripcioPos(i));
             }
         }
 

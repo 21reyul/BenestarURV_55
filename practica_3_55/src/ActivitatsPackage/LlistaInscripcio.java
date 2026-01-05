@@ -137,7 +137,7 @@ public class LlistaInscripcio {
             valoracioActivitats = new String[numActivitats];
             
             for (int i = 0; i < numActivitats; i++) {
-                Inscripcions inscripcio = activitats.getInscripcionsPos(i);
+                Inscripcions inscripcio = activitats.getInscripcioPos(i);
                 String valoracioString = "0.0";  // Valor per defecte
                 
                 if (inscripcio != null) {
@@ -147,7 +147,7 @@ public class LlistaInscripcio {
                     
                     // Calcular suma de valoracions
                     for (int j = 0; j < usuarisActivitat.getnUsuaris(); j++) {
-                        Usuaris usuari = usuarisActivitat.getUsuarisPos(j);
+                        Usuari usuari = usuarisActivitat.getUsuarisPos(j);
                         Integer val = usuarisActivitat.getValoracioUsuari(usuari, inscripcio);
                         
                         if (val != null) {

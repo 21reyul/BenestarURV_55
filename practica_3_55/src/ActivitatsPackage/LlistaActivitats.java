@@ -101,13 +101,14 @@ public class LlistaActivitats {
     public LlistaActivitats actAcabades(LlistaInscripcio llista){
         LlistaActivitats activitatsAcabades= new LlistaActivitats(numElements);
         for (int i=0; i<llista.getNumElements(); i++ ){
-            Inscripcions inscripcio=llista.getInscripcionsPos(i);
+            Inscripcions inscripcio=llista.getInscripcioPos(i);
             if (inscripcio.getActivitat().haFinalitzat()){
                 Activitats activitat=inscripcio.getActivitat();
                 activitatsAcabades.afegir(activitat);
             }
         }
         return activitatsAcabades;
+    }
     /*NUEVO*/
     public Activitats trobaActivitat(String nomActivitat){
         Activitats informacioActivitat = null;

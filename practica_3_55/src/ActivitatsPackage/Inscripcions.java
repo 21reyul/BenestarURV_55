@@ -161,37 +161,6 @@ public class Inscripcions implements Serializable {
         return copia;
     }
 
-    /**
-     * Mètode que et dona la valoració d'un usuari
-     * Programadora: Aina Garcia Albesa
-     * @param usuari
-     * @return valoració d'un usuari (entera)
-     */
-    public Integer getValoracioUsuari(Usuari usuari) {
-        Integer resultat = null;
-        
-        if (usuari != null && inscrits != null) {
-            int i = 0;
-            boolean trobat = false;
-            
-            // Buscar si l'usuari està inscrit
-            while (i < inscrits.getnUsuaris() && !trobat) {
-                Usuari u = inscrits.getUsuarisPos(i);
-                if (u != null && u.getAlies().equals(usuari.getAlies())) {
-                    trobat = true;
-                }
-                i++;
-            }
-            
-            // Si està inscrit, retornar la valoració
-            if (trobat) {
-                resultat = this.valoracio;
-            }
-        }
-        
-        return resultat; 
-    }
-
     public LlistaUsuaris getInscrits() {
         return inscrits;
     }
