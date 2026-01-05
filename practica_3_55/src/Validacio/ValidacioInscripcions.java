@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import ActivitatsPackage.*;
-import UsuarisPackage.Usuaris;
+import UsuarisPackage.Usuari;
 
 /* Programadora: Aina Garcia Albesa */
 
@@ -28,21 +28,25 @@ public class ValidacioInscripcions {
         
         System.out.println("Informacio inscripcio 2 inicial =>\n Places = " + inscripcio2.getNumPlaces() + 
                             "\n Activitat = " + inscripcio2.getActivitat().getNomActivitat() +
+                            "\n Activitat = " + Inscripcions.getNumInscrits().getNomActivitat() +
+                            "\n MAX = " + Inscripcions.getMAX() + "\n");
+        
+        System.out.println("Informacio inscripcio 2 inicial =>\n Places = " + inscripcio2.getNumPlaçes() + 
+                            "\n Activitat = " + inscripcio2.getMAX().getNomActivitat() +
                             "\n MAX = " + Inscripcions.getMAX() + "\n");
 
         // setters
         inscripcio1.setNumPlaces(25);
-        Inscripcions.setMAX(50); 
         
         System.out.println("Informacio inscripcio 1 modificada =>\n Places = " + inscripcio1.getNumPlaces() + 
                          "\n MAX = " + Inscripcions.getMAX + "\n");
 
         // Creació d'usuaris per proves
-        Usuaris usuari1 = new Usuaris("anna123", "anna.garcia@estudiants.urv.cat");
-        Usuaris usuari2 = new Usuaris("marc45", "marc.lopez@estudiants.urv.cat");
-        Usuaris usuari3 = new Usuaris("julia99", "julia.martinez@estudiants.urv.cat");
-        Usuaris usuari4 = new Usuaris("carlos77", "carlos.sarria@urv.cat");
-        Usuaris usuari5 = new Usuaris("laura22", "laura.fernandez@urv.cat");
+        Usuari usuari1 = new Usuari("anna123", "anna.garcia@estudiants.urv.cat");
+        Usuari usuari2 = new Usuari("marc45", "marc.lopez@estudiants.urv.cat");
+        Usuari usuari3 = new Usuari("julia99", "julia.martinez@estudiants.urv.cat");
+        Usuari usuari4 = new Usuari("carlos77", "carlos.sarria@urv.cat");
+        Usuari usuari5 = new Usuari("laura22", "laura.fernandez@urv.cat");
 
        // Proves d'inscripció
         System.out.println("\n=== PROVES D'INSCRIPCIÓ ===");

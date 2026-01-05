@@ -8,12 +8,12 @@ import java.util.Objects;
  *      @alies = Identificador
  *      @correu = adreça electronica
  */
-public class Usuaris {
-    private String alies;
+public abstract class Usuari{
+    protected String alies;
     private String correu;
 
     //Constructor
-    public Usuaris(String alies, String correu){
+    public Usuari(String alies, String correu){
         this.alies = alies;
         this.correu = correu;
     }
@@ -28,8 +28,8 @@ public class Usuaris {
     @Override
     public boolean equals(Object o){
         if (this == o) return true;
-        if (!(o instanceof Usuaris)) return false;
-        Usuaris other = (Usuaris) o;
+        if (!(o instanceof Usuari)) return false;
+        Usuari other = (Usuari) o;
         return Objects.equals(this.alies, other.alies);
     }
 

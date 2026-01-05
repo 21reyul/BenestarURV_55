@@ -40,13 +40,13 @@ public class LectorInscripcions {
                     continue;
                 }
 
-                Usuaris usu = buscarUsuari(llistaUsu, aliesUsu);
+                Usuari usu = buscarUsuari(llistaUsu, aliesUsu);
                 if (usu == null) {
-                    usu = new Usuaris(aliesUsu, "senseCorreu");
-                    llistaUsu.Afegir(usu);
+                    usu = new Usuari(aliesUsu, "senseCorreu");
+                    llistaUsu.afegir(usu);
                 }
 
-                llistaIns.Afegir(usu, act);
+                llistaIns.afegir(usu, act);
 
 
                 if (!valoracioTxt.equals("-")) {
@@ -78,9 +78,9 @@ public class LectorInscripcions {
         return null;
     }
 
-    private static Usuaris buscarUsuari(LlistaUsuaris llista, String alies) {
+    private static Usuari buscarUsuari(LlistaUsuaris llista, String alies) {
         for (int i = 0; i < llista.getnUsuaris(); i++) {
-            Usuaris u = llista.getUsuarisPos(i);
+            Usuari u = llista.getUsuarisPos(i);
             if (u.getAlies().equalsIgnoreCase(alies)) return u;
         }
         return null;

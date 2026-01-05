@@ -38,17 +38,17 @@ public class LectorUsuaris {
                 String extra  = p[4].trim();
 
                 try {
-                    Usuaris u;
+                    Usuari u;
 
                     switch (tipus) {
                         case "PDI":
                             // PDI(String alies, String correu, String nomDept, String campus)
-                            u = new PDI(alies, correu, extra, campus);
+                            u = new Pdi(alies, correu, extra, campus);
                             break;
 
                         case "PTGAS":
                             // PTGAS(String alies, String correu, String campus)
-                            u = new PTGAS(alies, correu, campus);
+                            u = new Ptgas(alies, correu, campus);
                             break;
 
                         case "EST":
@@ -65,7 +65,7 @@ public class LectorUsuaris {
                             continue;
                     }
 
-                    llistaUsu.Afegir(u);
+                    llistaUsu.afegir(u);
 
                 } catch (NumberFormatException e) {
                     System.err.println("Línia " + liniaNum + ": anyIni no és int -> " + extra);

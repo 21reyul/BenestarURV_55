@@ -1,8 +1,7 @@
 package ActivitatsPackage;
 import java.time.LocalDate;
 
-import UsuarisPackage.LlistaUsuaris;
-import UsuarisPackage.Usuaris;
+import UsuarisPackage.*;
 
 public class LlistaInscripcio {
     private Inscripcions[] inscripcions;
@@ -20,24 +19,24 @@ public class LlistaInscripcio {
         return -1;
     }
 
-    public void Afegir(Usuaris u, Activitats a) {
+    public void afegir(Usuari u, Activitats a) {
         int pos = posicioActivitat(a);
 
         if (pos != -1) {
-            inscripcions[pos].afegirActivitat(u);
+            inscripcions[pos].inscriures(u);
             return;
         }
 
         // no existeix inscripció per aquesta activitat
         inscripcions[numElem] = new Inscripcions(a, 100);
-        inscripcions[numElem].afegirActivitat(u);
+        inscripcions[numElem].inscriures(u);
         numElem++;
     }
 
-    public void eliminar(Usuaris u, Activitats a) {
+    public void eliminar(Usuari u, Activitats a) {
         int pos = posicioActivitat(a);
         if (pos != -1) {
-            inscripcions[pos].EliminaDeActivitat(u);
+            inscripcions[pos].eliminaDeActivitat(u);
         }
     }
 
@@ -55,13 +54,13 @@ public class LlistaInscripcio {
         numElem--;
     }
 
-    public LlistaActivitats ActivitatsPertanyUsuari(Usuaris u) {
+    public LlistaActivitats ActivitatsPertanyUsuari(Usuari u) {
         LlistaActivitats activitats = new LlistaActivitats(numElem);
 
         for (int i = 0; i < numElem; i++) {
             LlistaUsuaris apuntats = inscripcions[i].getInscrits();
             boolean trobat = apuntats.BuscarUsuari(u);
-            if (trobat) activitats.Afegir(inscripcions[i].getActivitat());
+            if (trobat) activitats.afegir(inscripcions[i].getActivitat());
         }
         return activitats;
     }
@@ -102,7 +101,8 @@ public class LlistaInscripcio {
     }
 
 
-    public void posarValoracio(Activitats act, Usuaris u, int valoracio) {
+
+    public void posarValoracio(Activitats act, Usuari u, int valoracio) {
         for (int i = 0; i < numElem; i++) {
             if (inscripcions[i].getActivitat() == act) {
                 inscripcions[i].setValoracioUsuari(u, valoracio);
@@ -111,13 +111,66 @@ public class LlistaInscripcio {
         }
     }
 
-    public Integer getValoracioUsuariEnActivitat(Activitats act, Usuaris u) {
+    public Integer getValoracioUsuariEnActivitat(Activitats act, Usuari u) {
         for (int i = 0; i < numElem; i++) {
             if (inscripcions[i].getActivitat() == act) {
                 return inscripcions[i].getValoracioUsuari(u);
             }
         }
         return null;
+    }
+     
+    //metode per obtenir les inscripcions d'una activitat
+    public Inscripcions getIncripcionsFromActivitat(Activitats act){
+        Inscripcions inscripcio = null;
+        boolean trobat=false;
+        int i=0;
+        while (!trobat && i<numElem){
+            Activitats aux = inscripcions[i].getActivitat();
+            if(aux.getNomActivitat().equals(act.getNomActivitat())){
+                trobat=true;
+                inscripcio=inscripcions[i];
+            }else{
+                i++;
+            }
+        }
+        return inscripcio;
+    }
+
+    //metode que retorna la llista d'espera d'una activitat
+    public LlistaInscripcio getLlistaEspera(Activitats act){
+        // Crear una nueva lista para la espera
+        LlistaInscripcio espera = new LlistaInscripcio(inscripcions.length);
+
+        // Recorrer todas las inscripciones
+        for(int i = 0; i < numElem; i++){
+            Inscripcions incs = inscripcions[i];
+
+            // Solo nos interesan las inscripciones de la actividad indicada
+            if(incs.getActivitat().getNomActivitat().equals(act.getNomActivitat())){
+                // Añadir todos los usuarios en espera
+                for(int j = 0; j < incs.getNumEspera(); j++){
+                    Usuari u = incs.getEspera(j);
+                    espera.afegir(u, act); // Añadimos a la lista de espera
+                }
+            }
+        }
+
+        return espera;
+    }
+        
+    //toString de la llista d'inscripcions
+    @Override
+    public String toString() {
+        if(numElem == 0) return "La llista d'inscripcions està buida\n";
+
+        StringBuilder sb = new StringBuilder("LLISTA D'INSCRIPCIONS;\n");
+        for(int i = 0; i < numElem; i++) {
+            if(inscripcions[i] != null) {
+                sb.append(i + 1).append(". ").append(inscripcions[i].toString());
+            }
+        }
+        return sb.toString();
     }
 }
 

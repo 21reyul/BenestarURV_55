@@ -5,11 +5,62 @@ import java.io.Serializable;
 
 //programador: Aroa Galvez Diaz;
 public class Inscripcions implements Serializable {
-
     private Activitats activitat;
     private Integer valoracio; // null si no ha valorat
     private int numPlaces, numInscrits, numEspera;
+   
+ 
+
+    public int getNumPlaces() {
+        return numPlaces;
+    }
+
+    public void setNumPlaces(int numPlaces) {
+        this.numPlaces = numPlaces;
+    }
+
+    public int getNumEspera() {
+        return numEspera;
+    }
+
+    public void setNumEspera(int numEspera) {
+        this.numEspera = numEspera;
+    }
+
+    public int getNumInscrits() {
+        return numInscrits;
+    }
+
+    public void setNumInscrits(int numInscrits) {
+        this.numInscrits = numInscrits;
+    }
+
+    //Retorna l'inscrit en la posicio i
+    public Usuari getInscrit(int i) {
+        if (i >= 0 && i < inscrits.getnUsuaris()) {
+            return inscrits.getUsuarisPos(i);
+        }
+        return null; // o lanzar excepción si prefieres
+    }
+
+    // Retorna l'inscrit en la posicio i de la llisat d'espera
+    public Usuari getEspera(int i) {
+        if (i >= 0 && i < espera.getnUsuaris()) {
+            return espera.getUsuarisPos(i);
+        }
+        return null;
+    }
+
     private LlistaUsuaris inscrits;
+   
+    public LlistaUsuaris getLlistaInscrits() {
+        return inscrits;
+    }
+
+    public void setLlistaInscrits(LlistaUsuaris inscrits) {
+        this.inscrits = inscrits;
+    }
+
     private LlistaUsuaris espera;
 
     private String[] usuarisValorats;
@@ -30,26 +81,26 @@ public class Inscripcions implements Serializable {
         nValoracions = 0;
     }
 
-    public void afegirActivitat(Usuaris u){
+    public void inscriures(Usuari u){
         if(numInscrits<numPlaces){
-            inscrits.Afegir(u);
+            inscrits.afegir(u);
             numInscrits++;
         }
         else{
-            espera.Afegir(u);
+            espera.afegir(u);
             numEspera++;
         }
     }
-    public void EliminaDeActivitat(Usuaris u){
-        inscrits.Elimina(u);
+    public void eliminaDeActivitat(Usuari u){
+        inscrits.elimina(u);
         if (numInscrits > 0) numInscrits--;
 
         if (numEspera > 0) {
-            Usuaris primer = espera.getUsuarisPos(0);
-            espera.Elimina(primer);
+            Usuari primer = espera.getUsuarisPos(0);
+            espera.elimina(primer);
             numEspera--;
 
-            inscrits.Afegir(primer);
+            inscrits.afegir(primer);
             numInscrits++;
         }
     }
@@ -88,31 +139,7 @@ public class Inscripcions implements Serializable {
         this.espera = espera;
     }
 
-    public int getNumPlaces() {
-        return numPlaces;
-    }
-
-    public void setNumPlaces(int numPlaces) {
-        this.numPlaces = numPlaces;
-    }
-
-    public int getNumInscrits() {
-        return numInscrits;
-    }
-
-    public void setNumInscrits(int numInscrits) {
-        this.numInscrits = numInscrits;
-    }
-
-    public int getNumEspera() {
-        return numEspera;
-    }
-
-    public void setNumEspera(int numEspera) {
-        this.numEspera = numEspera;
-    }
-
-    public void setValoracioUsuari(Usuaris u, int valoracio) {
+    public void setValoracioUsuari(Usuari u, int valoracio) {
         String id = u.getAlies();
         for (int i = 0; i < nValoracions; i++) {
             if (usuarisValorats[i].equalsIgnoreCase(id)) {
@@ -127,7 +154,7 @@ public class Inscripcions implements Serializable {
         }
     }
 
-    public Integer getValoracioUsuari(Usuaris u) {
+    public Integer getValoracioUsuari(Usuari u) {
         String id = u.getAlies();
         for (int i = 0; i < nValoracions; i++) {
             if (usuarisValorats[i].equalsIgnoreCase(id)) {
@@ -137,4 +164,20 @@ public class Inscripcions implements Serializable {
         return null; // no ha valorat o no existeix
     }
 
+    @Override
+    public String toString() {
+    String result = "Activitat: " + this.getActivitat().getNomActivitat() + "\n";
+    result += "-> Inscrits (" + this.getNumInscrits() + "): ";
+    for (int i = 0; i < this.getNumInscrits(); i++) {
+        result += this.getInscrit(i).getAlies();
+        if (i < this.getNumInscrits() - 1) result += ", ";
+    }
+    result += "\n-> En espera (" + this.getNumEspera() + "): ";
+    for (int i = 0; i < this.getNumEspera(); i++) {
+        result += this.getEspera(i).getAlies();
+        if (i < this.getNumEspera() - 1) result += ", ";
+    }
+    result += "\n";
+    return result;
+    }
 }
