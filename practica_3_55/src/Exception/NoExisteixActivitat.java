@@ -1,5 +1,4 @@
-package E;
-import ActivitatsPackage.*;
+package Exception;
 
 public class NoExisteixActivitat extends Exception{
     public NoExisteixActivitat(String nomAct){
