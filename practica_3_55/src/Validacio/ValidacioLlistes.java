@@ -19,10 +19,10 @@ public class ValidacioLlistes {
         //Crear activitats per a la llista
         Activitats act1 = new ActivitatsUnDia("Taller de Ceramica", true, true, true, LocalDate.now(), LocalDate.now(),12, 25.0, "Tarragona", LocalTime.of(14,0));
         Activitats act2 = new ActivitatsOnline("Pilates Online", true, true, true, LocalDate.now(), LocalDate.now().plusDays(7), "https://zoom.com/pilates", LocalDate.now(), 7);
-        Activitats act3 = new ActivitatsPeriodiques("Gimnas Setmanal", true, false, true, LocalDate.now(), LocalDate.now().plusWeeks(4), "Dilluns", "Centre A", "Barcelona", LocalTime.of(18,0), LocalDate.now(), 4, 20, 50.0);
+        Activitats act3 = new ActivitatsPeriodiques("Gimnas Setmanal", true, false, true, LocalDate.now(), LocalDate.now().plusWeeks(4), "Dilluns", "Centre A", "Barcelona", LocalTime.of(18,0), 4, 20, 50.0);
         Activitats act4 = new ActivitatsUnDia("Taller de Cuina", true, true, true, LocalDate.now(), LocalDate.now(), 15, 30.0, "Girona", LocalTime.of(10,0));
         Activitats act5 = new ActivitatsOnline("Running", false, true, true, LocalDate.now(), LocalDate.now().plusDays(6), "https://zoom.com/cardio", LocalDate.now(), 6);
-        Activitats act6 = new ActivitatsPeriodiques("Natació Setmanal", true, false, true,LocalDate.now(), LocalDate.now().plusWeeks(5),"Dimecres", "Centre B", "Barcelona",LocalTime.of(17,0),LocalDate.now(), 5, 15, 45.0);
+        Activitats act6 = new ActivitatsPeriodiques("Natació Setmanal", true, false, true,LocalDate.now(), LocalDate.now().plusWeeks(5),"Dimecres", "Centre B", "Barcelona",LocalTime.of(17,0), 5, 15, 45.0);
         Activitats act7 = new ActivitatsUnDia("Taller de Fotografia", true, true, true, LocalDate.now(), LocalDate.now(), 12, 25.0, "Tarragona", LocalTime.of(14,0));
 
         //Crear usuaris per a la llista

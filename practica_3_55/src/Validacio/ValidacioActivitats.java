@@ -20,11 +20,11 @@ public class ValidacioActivitats {
                                                     
         ActivitatsPeriodiques actPer1 = new ActivitatsPeriodiques("Curs B2 d'angles per a estudiants", false, false, true, LocalDate.of(2025, 9, 5) , 
                                                     LocalDate.of(2025, 9, 22), "dijous", "Campus Catalunya", "Tarragona", LocalTime.of(17, 30), 
-                                                    LocalDate.of(2025, 10, 15), 20, 25, 100.0);
+                                                     20, 25, 100.0);
         
         ActivitatsPeriodiques actPer2 = new ActivitatsPeriodiques("Curs B2 d'angles per a professorat i administracio", true, true, false, LocalDate.of(2025, 9, 5) , 
                                                     LocalDate.of(2025, 9, 22), "dimarts", "Campus Catalunya", "Tarragona", LocalTime.of(17, 30), 
-                                                    LocalDate.of(2025, 10, 15), 15, 25, 70.0);
+                                                     15, 25, 70.0);
 
         ActivitatsUnDia actDia1 = new ActivitatsUnDia("Seguretat a internet", false, false, true, LocalDate.of(2025, 12, 2), 
                                                     LocalDate.of(2025, 12, 9), 20, 5.0, "Tarragona", LocalTime.of(17, 0));   
@@ -110,5 +110,4 @@ public class ValidacioActivitats {
         System.out.println(actDia1.toString());
         System.out.println(actDia2.toString());
     }
-
 }

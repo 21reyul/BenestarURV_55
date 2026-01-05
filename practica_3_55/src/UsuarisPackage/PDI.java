@@ -50,6 +50,4 @@ public class Pdi extends Usuari{
         Pdi pdi = new Pdi(this.getAlies(), this.getCorreuComplet(), this.getNomDept(), this.getCampus());
         return pdi;
     }
-
-
 }

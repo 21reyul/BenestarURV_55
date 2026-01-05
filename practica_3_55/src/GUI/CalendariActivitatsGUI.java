@@ -1,7 +1,6 @@
 package GUI;
 
 import ActivitatsPackage.*;
-import UsuarisPackage.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -138,13 +137,6 @@ public class CalendariActivitatsGUI extends JFrame{
         etiquetaInfo.setHorizontalAlignment(SwingConstants.CENTER);
         panellInferior.add(etiquetaInfo, BorderLayout.CENTER);
         
-        // Botó per exportar
-        JButton botoExportar = new JButton("Exportar a PDF");
-        botoExportar.addActionListener(e -> exportarAPDF());
-        panellInferior.add(botoExportar, BorderLayout.EAST);
-        
-        add(panellInferior, BorderLayout.SOUTH);
-        
         // Afegir listener per doble clic
         taulaActivitats.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -210,7 +202,7 @@ public class CalendariActivitatsGUI extends JFrame{
                 // Afegir fila a la taula
                 modelTaula.addRow(new Object[]{
                     activitat.getNomActivitat(),
-                    activitat.getDataINI().format(formatter),
+                    activitat.getDataIni().format(formatter),
                     activitat.getDataFi().format(formatter),
                     tipus,
                     estat,
@@ -266,7 +258,7 @@ public class CalendariActivitatsGUI extends JFrame{
         
         // L'activitat està dins del rang si comença o acaba dins de la setmana
         // o si la setmana està dins del període de l'activitat
-        return (!activitat.getDataINI().isAfter(fiSetmana) && 
+        return (!activitat.getDataIni().isAfter(fiSetmana) && 
                 !activitat.getDataFi().isBefore(iniciSetmana));
     }
     
@@ -284,7 +276,7 @@ public class CalendariActivitatsGUI extends JFrame{
     private int obtenirNumeroParticipants(Activitats activitat) {
         // Buscar la inscripció corresponent a l'activitat
         for (int i = 0; i < llistaInscripcions.getNumElements(); i++) {
-            Inscripcions inscripcio = llistaInscripcions.getInscripcionsPos(i);
+            Inscripcions inscripcio = llistaInscripcions.getInscripcioPos(i);
             if (inscripcio != null && inscripcio.getActivitat() == activitat) {
                 return inscripcio.getLlistaInscrits().getnUsuaris();
             }
@@ -295,7 +287,7 @@ public class CalendariActivitatsGUI extends JFrame{
     private double obtenirValoracioMitjana(Activitats activitat) {
         // Buscar la inscripció corresponent a l'activitat
         for (int i = 0; i < llistaInscripcions.getNumElements(); i++) {
-            Inscripcions inscripcio = llistaInscripcions.getInscripcionsPos(i);
+            Inscripcions inscripcio = llistaInscripcions.getInscripcioPos(i);
             if (inscripcio != null && inscripcio.getActivitat() == activitat) {
                 Integer valoracio = inscripcio.getValoracio();
                 return valoracio != null ? valoracio : 0.0;
@@ -337,7 +329,7 @@ public class CalendariActivitatsGUI extends JFrame{
                 panellInfo.add(new JLabel(activitat.getNomActivitat()));
                 
                 panellInfo.add(new JLabel("Data Inici:"));
-                panellInfo.add(new JLabel(activitat.getDataINI().format(formatter)));
+                panellInfo.add(new JLabel(activitat.getDataIni().format(formatter)));
                 
                 panellInfo.add(new JLabel("Data Fi:"));
                 panellInfo.add(new JLabel(activitat.getDataFi().format(formatter)));
@@ -395,15 +387,6 @@ public class CalendariActivitatsGUI extends JFrame{
         return "";
     }
     
-    private void exportarAPDF() {
-        // Aquest mètode implementaria l'exportació a PDF
-        // Per simplificació, només mostrarem un missatge
-        JOptionPane.showMessageDialog(this,
-            "Funció d'exportació a PDF en desenvolupament",
-            "Exportar",
-            JOptionPane.INFORMATION_MESSAGE);
-    }
-    
     // Mètode per mostrar el calendari
     public static void mostrarCalendari(LlistaActivitats activitats, LlistaInscripcio inscripcions) {
         SwingUtilities.invokeLater(() -> {
@@ -411,74 +394,4 @@ public class CalendariActivitatsGUI extends JFrame{
             calendari.setVisible(true);
         });
     }
-    
-    // Mètode principal per proves
-    public static void main(String[] args) {
-        // Crear dades de prova
-        LlistaActivitats activitats = crearDadesProva();
-        LlistaInscripcio inscripcions = crearInscripcionsProva(activitats);
-        
-        // Mostrar el calendari
-        mostrarCalendari(activitats, inscripcions);
-    }
-    
-    private static LlistaActivitats crearDadesProva() {
-        LlistaActivitats activitats = new LlistaActivitats(10);
-        
-        // Crear algunes activitats de prova
-        LocalDate avui = LocalDate.now();
-        
-        // Activitat d'un dia
-        ActivitatsUnDia activitat1 = new ActivitatsUnDia(
-            "Visita al Museu",
-            true, true, true,
-            avui.plusDays(1), avui.plusDays(1),
-            30, 5.0, "Tarragona", java.time.LocalTime.of(10, 0)
-        );
-        
-        // Activitat periòdica
-        ActivitatsPeriodiques activitat2 = new ActivitatsPeriodiques(
-            "Curs de Programació",
-            true, true, true,
-            avui.minusDays(5), avui.plusDays(20),
-            "Dimecres", "Campus Sescelades", "Tarragona",
-            java.time.LocalTime.of(16, 0), avui.minusDays(5),
-            8, 25, 50.0
-        );
-        
-        // Activitat online
-        ActivitatsOnline activitat3 = new ActivitatsOnline(
-            "Webinar d'IA",
-            true, false, true,
-            avui.minusDays(10), avui.minusDays(5),
-            "https://meet.google.com/abc-defg-hij",
-            avui.minusDays(10), 5
-        );
-        
-        activitats.Afegir(activitat1);
-        activitats.Afegir(activitat2);
-        activitats.Afegir(activitat3);
-        
-        return activitats;
-    }
-    
-    private static LlistaInscripcio crearInscripcionsProva(LlistaActivitats activitats) {
-        LlistaInscripcio inscripcions = new LlistaInscripcio(10);
-        
-        // Crear alguns usuaris de prova
-        PDI professor = new PDI("jdoe", "john.doe", "Informàtica", "Sescelades");
-        Estudiants estudiant = new Estudiants("mroe", "mary.roe", "Enginyeria Informàtica", 2023);
-        PTGAS personal = new PTGAS("ajohn", "anna.john", "Campus Catalunya");
-        
-        // Inscriure usuaris a les activitats
-        for (int i = 0; i < activitats.getNumElements(); i++) {
-            Activitats activitat = activitats.getActivitatPos(i);
-            inscripcions.Afegir(professor, activitat);
-            inscripcions.Afegir(estudiant, activitat);
-            inscripcions.Afegir(personal, activitat);
-        }
-        
-        return inscripcions;
-    }
 }
-

@@ -2,9 +2,6 @@ package ActivitatsPackage;
 
 import java.time.LocalDate;
 
-import UsuarisPackage.*;
-
-
 public class LlistaActivitats {
     private Activitats[] llista;
     private int numElements;
@@ -19,23 +16,30 @@ public class LlistaActivitats {
         numElements++;
     }
 
-    public void elimina(Activitats a){
+    public void elimina(Activitats a) {
+        int i = 0;
         boolean trobat = false;
-        for (int i = 0; i < numElements; i++) {
-            if (llista[i].equals(a)) {
-                trobat = true;
-                for (int j = i; j < numElements - 1; j++) {
-                    llista[j] = llista[j + 1];
-                }
-                llista[numElements - 1] = null;
-                numElements--;
+
+        while (!trobat && i < numElements) {
+            if (llista[i] == a) trobat = true;
+            else i++;
+        }
+
+        if (trobat) {
+            for (int j = i; j < numElements - 1; j++) {
+                llista[j] = llista[j + 1];
             }
+            llista[numElements - 1] = null;
+            numElements--;
         }
         if (!trobat) {
             System.out.println("L'activitat no existeix a la llista.");
         }
     }
 
+    public Activitats[] getLlista() {
+        return llista;
+    }
 
     public void setLlista(Activitats[] llista) {
         this.llista = llista;
@@ -49,6 +53,38 @@ public class LlistaActivitats {
         this.numElements = numElements;
     }
 
+    public Activitats getActivitat(int i){
+        return llista[i];
+    }
+
+    public LlistaActivitats ActivitatsEnPeriode(LocalDate avui){
+        LlistaActivitats activitatsActives = new LlistaActivitats(numElements);
+        for(int i=0; i<numElements; i++){
+            if((llista[i].getDataIni().isBefore(avui)&&llista[i].getDataFi().isAfter(avui))||llista[i].getDataFi().isEqual(avui)||llista[i].getDataIni().isEqual(avui)){
+                activitatsActives.afegir(llista[i]);
+            }
+        }
+        return(activitatsActives);
+    }
+
+    public LlistaActivitats ActivitatsActives(LocalDate avui){
+        LlistaActivitats activitatsActives = new LlistaActivitats(numElements);
+        for(int i=0; i<numElements; i++){
+            if((llista[i].getDataIni().isBefore(avui)&&llista[i].getDataFi().isAfter(avui))||llista[i].getDataFi().isEqual(avui)||llista[i].getDataIni().isEqual(avui)){
+                activitatsActives.afegir(llista[i]);
+            }
+        }
+        return(activitatsActives);
+    }
+
+    public void MostrarNoms(){
+        System.out.println("Les activitats que estan actives avui:");
+        for(int i=0; i<numElements; i++){
+            System.out.println(llista[i].getNomActivitat());
+        }
+    }
+
+    
     public Activitats getActivitatPos(int i){
         return llista[i];
     }
@@ -62,13 +98,14 @@ public class LlistaActivitats {
     public LlistaActivitats actAcabades(LlistaInscripcio llista){
         LlistaActivitats activitatsAcabades= new LlistaActivitats(numElements);
         for (int i=0; i<llista.getNumElements(); i++ ){
-            Inscripcions inscripcio=llista.getInscripcionsPos(i);
+            Inscripcions inscripcio=llista.getInscripcioPos(i);
             if (inscripcio.getActivitat().haFinalitzat()){
                 Activitats activitat=inscripcio.getActivitat();
                 activitatsAcabades.afegir(activitat);
             }
         }
         return activitatsAcabades;
+    }
     /*NUEVO*/
     public Activitats trobaActivitat(String nomActivitat){
         Activitats informacioActivitat = null;
@@ -139,8 +176,4 @@ public class LlistaActivitats {
         if (numElements == 0) resultat = resultat + "No hi ha activitats.\n";
         return resultat;
     }
-
-
-
-
 }
