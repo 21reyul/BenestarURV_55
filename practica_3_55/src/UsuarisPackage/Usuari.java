@@ -6,7 +6,7 @@ package UsuarisPackage;
  *      @alies = Identificador
  *      @correu = adreça electronica
  */
-public class Usuari{
+public abstract class Usuari{
     protected String alies;
     private String correu;
 
@@ -38,7 +38,7 @@ public class Usuari{
      * Retorna una nstancia del matix tipus amb les mateixes dades
      */
     public Usuari copia() {
-        return new Usuari(this.alies, this.correu);
+        return this;
     }
 
     /* 

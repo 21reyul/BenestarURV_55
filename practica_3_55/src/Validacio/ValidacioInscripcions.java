@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import ActivitatsPackage.*;
-import UsuarisPackage.Usuari;
+import UsuarisPackage.*;
 
 /* Programadora: Aina Garcia Albesa */
 
@@ -31,66 +31,82 @@ public class ValidacioInscripcions {
 
         // setters
         inscripcio1.setNumPlaces(25);
-        Inscripcions.setNumPlaces(50); 
         
-        System.out.println("Informacio inscripcio 1 modificada =>\n Places = " + inscripcio1.getNumPlaçes() + 
-                         "\n MAX = " + Inscripcions.getMAX() + "\n");
+        System.out.println("Informacio inscripcio 1 modificada =>\n Places = " + inscripcio1.getNumPlaces());
 
         // Creació d'usuaris per proves
-        Usuari usuari1 = new Usuari("anna123", "anna.garcia@estudiants.urv.cat");
-        Usuari usuari2 = new Usuari("marc45", "marc.lopez@estudiants.urv.cat");
-        Usuari usuari3 = new Usuari("julia99", "julia.martinez@estudiants.urv.cat");
-        Usuari usuari4 = new Usuari("carlos77", "carlos.sarria@urv.cat");
-        Usuari usuari5 = new Usuari("laura22", "laura.fernandez@urv.cat");
+        Usuari usuari1 = new Estudiants("estudiant1", "est1@estudiants.urv.cat", "GEI", 2025);
+        Usuari usuari2 = new Pdi("PDI1", "pdi1@urv.cat", "DEIM", "Sescelades");
+        Usuari usuari3 = new Pdi("PDI2", "pdi2@urv.cat", "Historia", "Catalunya");
+        /*Usuaris usuari4 = new PTGAS("PTGAS1", "ptgas1@urv.cat", "Bellisens");
+        Usuaris usuari5 = new PTGAS("PTGAS2", "ptgas2@urv.cat", "Terres de l'Ebre");*/
 
-       // Proves d'inscripció
+        // Proves d'inscripció i control de llista d'espera
+        validacioInscripcioMesLlistaEspera(inscripcio1, usuari1, usuari2);
+
+        // Prova de baixa
+        validacioEliminaDeActivitat(inscripcio1, usuari1);
+        // Prova de puntuació
+        validacioPuntuar(inscripcio1, usuari1, usuari2, usuari3);
+    }
+
+    private static void validacioInscripcioMesLlistaEspera(Inscripcions inscripcio1, Usuaris usuari1, Usuaris usuari2){
         System.out.println("\n=== PROVES D'INSCRIPCIÓ ===");
         
-        System.out.println("Inscripció usuari 1 a activitat 1 (Curs B2):");
+        System.out.println("Inscripció usuari 1 a activitat 1 (Curs B2)");
         inscripcio1.inscriures(usuari1);
-        System.out.println("Usuari inscrit: " + usuari1.getAlies());
         
-        System.out.println("\nInscripció usuari 2 a activitat 1:");
+        System.out.println("Inscripció usuari 2 a activitat 1");
         inscripcio1.inscriures(usuari2);
-        System.out.println("Usuari inscrit: " + usuari2.getAlies());
 
         // Prova de llista d'espera
         System.out.println("\n=== PROVA LLISTA D'ESPERA ===");
-        System.out.println("Places totals a activitat 1: " + inscripcio1.getNumPlaçes());
+        System.out.println("Places totals a activitat 1: " + inscripcio1.getNumPlaces()); // Places = 25
         
-        // Inscrivim més usuaris per omplir les places
-        System.out.println("\nInscrivint més usuaris per omplir places:");
-        for (int i = 0; i < 18; i++) { // Ja tenim 2, en falta 18 per arribar a 20
-            Usuaris usuariExtra = new Usuaris("extra" + i, "extra" + i + "@urv.cat");
+        // Inscrivim més usuaris per omplir les places (2 ja inscrits, falten 23)
+        System.out.println("Inscrivint més usuaris per omplir places (Falten 23 per les 25 places)");
+        for (int i = 0; i < 23; i++) { 
+            Usuari usuariExtra = new Estudiants("estExtra" + (i+3), "estExtra"+(i+3)+"@estudiants.urv.cat", "GESST", 2022);
             inscripcio1.inscriures(usuariExtra);
-            System.out.println("Usuari extra" + i + " inscrit");
         }
         
-        System.out.println("\nIntentant inscriure un usuari extra (hauria d'anar a llista d'espera):");
-        Usuaris usuariEspera = new Usuaris("espera1", "espera@urv.cat");
-        inscripcio1.inscriures(usuariEspera);
-        System.out.println("Usuari " + usuariEspera.getAlies() + " afegit a llista d'espera");
+        System.out.println("Intentant inscriure un usuari extra (hauria d'anar a llista d'espera):");
+        Usuari usuariEspera = new Ptgas("PTGASEspera", "ptgasespera@urv.cat", "Sescelades");
+        inscripcio1.inscriures(usuariEspera); 
 
         // Mostrem estat actual
         System.out.println("\nEstat actual de l'inscripció 1:");
-        System.out.println("Places: " + inscripcio1.getNumPlaçes());
+        System.out.println("Places: " + inscripcio1.getNumPlaces());
         System.out.println("Llista inscrits: " + inscripcio1.getLlistaInscrits());
         System.out.println("Llista d'espera: " + inscripcio1.getLlistaDeEspera());
+    }
 
-        // Prova de baixa
+    private static void validacioEliminaDeActivitat(Inscripcions inscripcio1, Usuari usuari1){
         System.out.println("\n=== PROVA DE BAIXA ===");
         System.out.println("Donem de baixa a l'usuari 1:");
-        inscripcio1.baixa(usuari1);
-        System.out.println("Baixa realitzada per a: " + usuari1.getAlies());
+        inscripcio1.eliminaDeActivitat(usuari1); // S'executarà la baixa i es promocionarà PTGASEspera
         
-        System.out.println("\nEstat després de la baixa:");
+        System.out.println("\nEstat després de la baixa (usuariEspera promocionat):");
         System.out.println("Llista inscrits: " + inscripcio1.getLlistaInscrits());
         System.out.println("Llista d'espera: " + inscripcio1.getLlistaDeEspera());
+    }
 
-        // Prova de puntuació
-        System.out.println("\n=== PROVA DE PUNTUACIÓ ===");
-        inscripcio1.puntuar(8.5, usuari2);
-        System.out.println("Puntuació 8.5 aplicada a l'usuari " + usuari2.getAlies());
+    private static void validacioPuntuar(Inscripcions inscripcio1, Usuari usuari1, Usuari usuari2, Usuari usuari3){
+        System.out.println("\n=== PROVA DE PUNTUACIÓ  ===");
         
+        // Estat inicial de la valoració
+        System.out.println("Valoració inicial de l'activitat: " + inscripcio1.getValoracio());
+
+        // Puntuació vàlida
+        inscripcio1.puntuar(8.5, usuari2); 
+        System.out.println("Valoració de l'usuari2:" + inscripcio1.getValoracio() + " (Esperat: 9)"); 
+
+        // Puntuació invàlida (fora de rang)
+        inscripcio1.puntuar(15.0, usuari3); 
+        System.out.println("Valoració de l'usuari3: " + inscripcio1.getValoracio() + " (Esperat: 9, sense canvis)"); 
+
+        // Puntuació d'un usuari que ha estat donat de baixa (usuari1)
+        inscripcio1.puntuar(9.0, usuari1); 
+        System.out.println("Valoració de l'usuari 1 (donat de baixa): " + inscripcio1.getValoracio() + " (Esperat: 9, sense canvis)");   
     }
 }
