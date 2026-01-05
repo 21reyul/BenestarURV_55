@@ -50,10 +50,7 @@ public class LectorActivitats {
                 } 
                 else if (p.length == 9) {
                     // ONLINE: p[6]=enllaç, p[7]=dataIniInterna, p[8]=periode
-                    lista.afegir(new ActivitatsOnline(
-                        nom, pdi, ptgas, estud, dIni, dFi,
-                        p[6], LocalDate.parse(p[7], dateFormat), Integer.parseInt(p[8])
-                    ));
+                    lista.afegir(new ActivitatsOnline(nom, pdi, ptgas, estud, LocalDate.parse(p[7], dateFormat), dFi, p[6], Integer.parseInt(p[8])));
                 }
             }
             System.out.println("Carga finalizada. Total actividades: " + lista.getNumElements());

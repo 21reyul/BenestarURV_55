@@ -5,7 +5,6 @@ import java.time.LocalTime;
 public class ActivitatsPeriodiques extends Activitats{
     private String diaDeLaSemana, nomCentre, ciutat;
     private LocalTime hora;
-    private LocalDate dataIni;
     private int numSetmanes, limitPlaces;
     private double preu;
 
@@ -16,7 +15,6 @@ public class ActivitatsPeriodiques extends Activitats{
         this.nomCentre = nomCentre;
         this.ciutat = ciutat;
         this.hora = hora;
-        this.dataIni = dataI;
         this.numSetmanes = numSetmanes;
         this.limitPlaces = limitPlaces;
         this.preu = preu;
@@ -55,11 +53,11 @@ public class ActivitatsPeriodiques extends Activitats{
     }
 
     public LocalDate getDataIni() {
-        return dataIni;
+        return super.getDataIni();
     }
 
     public void setDataIni(LocalDate dataIni) {
-        this.dataIni = dataIni;
+        super.setDataIni(dataIni);
     }
 
     public int getNumSetmanes() {
@@ -89,7 +87,7 @@ public class ActivitatsPeriodiques extends Activitats{
     @Override
     public String toString() {
         return "ActivitatsPeriodiques [diaDeLaSemana=" + diaDeLaSemana + ", nomCentre=" + nomCentre + ", ciutat="
-                + ciutat + ", hora=" + hora + ", dataIni=" + dataIni + ", numSetmanes=" + numSetmanes + ", limitPlaces="
+                + ciutat + ", hora=" + hora +", numSetmanes=" + numSetmanes + ", limitPlaces="
                 + limitPlaces + ", preu=" + preu + ", Nom Activitat()=" + getNomActivitat() + "]";
     }
 }

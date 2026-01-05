@@ -133,28 +133,28 @@ public static void opcio1(){
     
     Scanner teclat = new Scanner(System.in);
     //La data inicial sera la del servidor
-    System.out.println("La data del dia d'avui es:\s" + data.getDayOfMonth() + "/" + data.getMonthValue() + "/"+ data.getYear());
+    System.out.println("la data de avui es:\n" + data.getDayOfMonth() + "/" + data.getMonthValue() + "/"+ data.getYear());
     System.out.println("Si vols modificar la data introdueix: OK");
     String resposta=teclat.nextLine();//llegim la resposta de teclat, si es que si, entrem en un bucle per modificar la data
     try{
         if(resposta.equalsIgnoreCase("OK")){
             System.out.println("Introdueix el nou any:");
-            var anyNou=Integer.parseInt(teclat.nextLine());
+            int anyNou=Integer.parseInt(teclat.nextLine());
                         
             System.out.println("Introdueix el nou mes:");
-            var mesNou=Integer.parseInt(teclat.nextLine());
+            int mesNou=Integer.parseInt(teclat.nextLine());
 
             System.out.println("Introdueix el nou dia:");
-            var diaNou=Integer.parseInt(teclat.nextLine());
+            int diaNou=Integer.parseInt(teclat.nextLine());
 
             if(diaNou >= 1 && diaNou <= 31 && mesNou >= 1 && mesNou <= 12 && anyNou>0){
                 data = LocalDate.of(anyNou, mesNou, diaNou);
-                System.out.println("Data actualitzada:\s" + data.getDayOfMonth() + "/" + data.getMonth() + "/" + data.getYear());
+                System.out.println("Data actualitzada:\n" + data.getDayOfMonth() + "/" + data.getMonth() + "/" + data.getYear());
             }else{
                 System.out.println("Data incorrecta");
             }
         }else{
-            System.out.println("No s'ha modificat la data,  la data del dia d'avui es:\s" + data.getDayOfMonth() + "/" + data.getMonthValue() + "/"+ data.getYear());
+            System.out.println("No s'ha modificat la data,  la data del dia d'avui es:\n" + data.getDayOfMonth() + "/" + data.getMonthValue() + "/"+ data.getYear());
         }
     }catch(NumberFormatException e){
         System.out.println("Les dades introduïdes han de ser enters");

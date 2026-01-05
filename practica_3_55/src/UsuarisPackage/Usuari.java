@@ -11,6 +11,7 @@ import java.util.Objects;
 public abstract class Usuari{
     protected String alies;
     private String correu;
+    private int contador;
 
     //Constructor
     public Usuari(String alies, String correu){
@@ -20,9 +21,11 @@ public abstract class Usuari{
 
     public String getAlies(){ return alies; }
     public String getCorreu(){ return correu; }
+    public int getContador(){return contador; }
 
     public void setAlies(String alies){ this.alies = alies; }
     public void setCorreu(String correu){ this.correu = correu; }
+    public void setContador(int contador){ this.contador = contador; }
 
     // IMPORTANT: comparar usuaris per alies (o DNI si ho uses així)
     @Override

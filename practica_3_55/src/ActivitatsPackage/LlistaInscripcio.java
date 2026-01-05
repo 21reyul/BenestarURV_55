@@ -181,6 +181,10 @@ public class LlistaInscripcio {
     public int getNumElements(){
         return numElem;
     }
+
+    public void AfegirInscripcio(Inscripcions ins) {
+        inscripcions[numElem] = ins; numElem++;
+    }
      
     //metode per obtenir les inscripcions d'una activitat
     public Inscripcions getIncripcionsFromActivitat(Activitats act){

@@ -3,7 +3,6 @@ import java.time.LocalDate;
 
 public class ActivitatsOnline extends Activitats{
     private String enllaç;
-    private LocalDate dataIni;
     private int periode;
 
     /**
@@ -18,10 +17,9 @@ public class ActivitatsOnline extends Activitats{
      * @param inici
      * @param perio
      */
-    public ActivitatsOnline(String n, boolean PDI, boolean PTGAS, boolean Estud, LocalDate dataI, LocalDate dataF, String enlla, LocalDate inici, int perio){
+    public ActivitatsOnline(String n, boolean PDI, boolean PTGAS, boolean Estud, LocalDate dataI, LocalDate dataF, String enlla, int perio){
         super(n, PDI, PTGAS, Estud, dataI, dataF);
-        enllaç=enlla; 
-        dataIni=inici; 
+        enllaç=enlla;  
         this.periode=perio;
     }
 
@@ -35,11 +33,11 @@ public class ActivitatsOnline extends Activitats{
     }
 
     public LocalDate getDataIni() {
-        return dataIni;
+        return super.getDataIni();
     }
 
-    public void setDataIni(LocalDate dataIni) {
-        this.dataIni = dataIni;
+    public void setDataIni(LocalDate dataI) {
+        super.setDataIni(dataI);
     }
 
     public int getPeriode() {
@@ -53,7 +51,7 @@ public class ActivitatsOnline extends Activitats{
 
     @Override
     public String toString() {
-        return "ActivitatsOnline [enllaç=" + enllaç + ", dataIni=" + dataIni + ", periode=" + periode + ", nom:" +this.getNomActivitat() + "]";
+        return "ActivitatsOnline [enllaç=" + enllaç + ", periode=" + periode + ", nom:" +this.getNomActivitat() + "]";
     }
 }
    

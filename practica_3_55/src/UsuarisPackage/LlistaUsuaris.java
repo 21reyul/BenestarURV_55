@@ -136,7 +136,28 @@ public class LlistaUsuaris {
         return trobat;
     }
 
-
+    public String usuariMesInscrit(){
+        String nom=llistaUsuaris[0].getAlies();
+        int numero=llistaUsuaris[0].getContador();
+        for (int i=0; i<nUsuaris; i++){
+            if (numero<llistaUsuaris[i].getContador()){
+                nom=llistaUsuaris[i].getAlies();
+                numero=llistaUsuaris[i].getContador();
+            }
+        }
+        return nom;
+    }
+ 
+     public int numeroMaximUsuariMesInscrit(){
+        int numero=llistaUsuaris[0].getContador();
+        for (int i=0; i<nUsuaris; i++){
+            if (numero<llistaUsuaris[i].getContador()){
+                numero=llistaUsuaris[i].getContador();
+            }
+        }
+        return numero;
+    }
+ 
     
     //toString de la llista d'usuaris
     @Override
